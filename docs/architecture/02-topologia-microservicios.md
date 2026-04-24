@@ -32,7 +32,7 @@ Consumidor múltiple. Escucha todos los eventos relevantes y enruta (Content-Bas
 Servicio de scoring. Expone endpoint `POST /score` con `{userId, requestedItems, context}` y devuelve `{score: 0..1, drivers: [...]}`. Modelo entrenado offline (Python/scikit-learn) con features: historial de devoluciones tardías, tipo de recurso, carrera, período académico, historial de faltantes. Emite `risk.scored` asíncrono para registro; su respuesta síncrona es la que decide el flujo.
 
 ### `ai-assistant-svc`
-Servidor MCP + cliente que lo consume desde OpenAI. Expone tools al LLM: `consultar_inventario`, `validar_disponibilidad`, `sugerir_recursos_por_actividad`, `crear_solicitud_borrador`. El cliente traduce estas tools MCP a function calls de OpenAI y orquesta la conversación desde el portal web. Detalle en `05-ia-mcp.md`.
+Servidor MCP + cliente que lo consume desde OpenAI. Expone tools al LLM: `consultar_inventario`, `validar_disponibilidad`, `sugerir_recursos_por_actividad`, `crear_solicitud_borrador`. El cliente traduce estas tools MCP a function calls de OpenAI y orquesta la conversación desde el portal web. Detalle en `06-ia-mcp.md`.
 
 ## Comunicación entre servicios
 

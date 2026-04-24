@@ -2,7 +2,7 @@
 
 ## Propósito
 
-Este documento describe la arquitectura del Sistema de Pañol a nivel conceptual. Es el punto de entrada a la carpeta `architecture/`; los documentos hermanos (`01-stack`, `02-topología`, `03-eventos-dominio`, etc.) detallan cada aspecto.
+Este documento describe la arquitectura del Sistema de Pañol a nivel conceptual. Es el punto de entrada a la carpeta `architecture/`; los documentos hermanos (`01-stack`, `02-topología`, `03-eventos-dominio`, `04-eip-catalog`, `05-saga-coreografiada`, `06-ia-mcp`) detallan cada aspecto. Los ADRs asociados viven en `docs/design/adrs/`.
 
 ## Idea central
 
@@ -23,7 +23,7 @@ Cada rol tiene responsabilidades acotadas y ninguno invade el trabajo del otro. 
 
 1. **Desacoplamiento por eventos**. Un servicio no conoce a sus consumidores. Publica hechos; otros deciden qué hacer con ellos.
 2. **Propiedad de los datos**. Cada servicio es único dueño de su esquema PostgreSQL. Ningún otro servicio accede a esas tablas; si necesita la información, la recibe como evento.
-3. **Patrones de integración explícitos**. Toda integración entre servicios se implementa mediante un Enterprise Integration Pattern identificable (Publish-Subscribe, Content-Based Router, Message Expiration, Dead Letter Channel, Request-Reply). El catálogo completo está en `03-eip-catalog.md`.
+3. **Patrones de integración explícitos**. Toda integración entre servicios se implementa mediante un Enterprise Integration Pattern identificable (Publish-Subscribe, Content-Based Router, Message Expiration, Dead Letter Channel, Request-Reply). El catálogo completo está en `04-eip-catalog.md`.
 4. **Consistencia eventual con outbox pattern**. Publicar un evento y persistir en la base local ocurren atómicamente mediante la tabla `outbox_events` + relay. Esto evita pérdidas de mensajes y dobles publicaciones.
 5. **Expiración temporal como mecanismo de limpieza**. Las reservas de stock vencen automáticamente mediante el patrón Message Expiration. No hay job externo ni lógica imperativa de "revisar reservas vencidas".
 6. **IA tratada como servicio con contrato claro**. El scoring de riesgo y el asistente conversacional son microservicios con interfaz definida. Se pueden reemplazar, desactivar o evolucionar sin impactar al flujo transaccional principal.
@@ -55,7 +55,7 @@ El siguiente flujo es el corazón funcional del sistema y es el caso que demuest
 4. El alumno se presenta en el pañol antes de que expire el TTL. El pañolero abre el tótem, ubica la solicitud por RUT o ID y la valida. `loan-svc` crea el préstamo y emite `loan.issued`. `inventory-svc` descuenta definitivamente el stock reservado. `notification-svc` genera el ticket PDF y lo entrega como notificación in-app al alumno.
 5. El alumno devuelve los recursos. El pañolero registra la devolución. `loan-svc` emite `loan.returned`. `inventory-svc` reabre el stock; si hay faltante o daño, se registra el evento `stock.lost` con ajuste de baja.
 
-El caso de compensación ocurre cuando el alumno no se presenta en el pañol antes del TTL: la reserva expira automáticamente, `request-svc` emite `request.expired`, `inventory-svc` libera el stock reservado y `loan-svc` no hace nada porque nunca hubo préstamo. Este comportamiento es lo que implementa la Saga coreografiada y el patrón Message Expiration de forma coordinada. Detalle en `04-saga-coreografiada.md`.
+El caso de compensación ocurre cuando el alumno no se presenta en el pañol antes del TTL: la reserva expira automáticamente, `request-svc` emite `request.expired`, `inventory-svc` libera el stock reservado y `loan-svc` no hace nada porque nunca hubo préstamo. Este comportamiento es lo que implementa la Saga coreografiada y el patrón Message Expiration de forma coordinada. Detalle en `05-saga-coreografiada.md`.
 
 ## Alcance del MVP
 

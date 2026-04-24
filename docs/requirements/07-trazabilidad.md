@@ -121,3 +121,48 @@ Estructura prevista:
 | US | Épica | Equipo | CU | RF | Sprint |
 |---|---|---|---|---|---|
 | US-XXX | — | A o B | CU-N | RF.N | Sprint N |
+
+---
+
+## Apéndice — Matriz granular RS ↔ RF ↔ CU por rol
+
+Esta matriz desglosa cada requerimiento de sistema individual para enlazarlo con el RF y el CU que lo implementa. Reemplaza la descripción agregada de la sección "Por rol".
+
+### Jefe de Carrera
+
+| RS | Descripción breve | RF | CU |
+|---|---|---|---|
+| RS-JC.1 | Crear Coord, Pañolero, Docente, Alumno | RF.2, RF.3 | CU2 |
+| RS-JC.2 | Modificar / baja lógica de cualquier usuario | RF.2, RF.3 | CU2 |
+| RS-JC.3 | Administrar recursos (alta, modificación, baja) | RF.4, RF-C.08 | CU3 |
+| RS-JC.4 | Generar reportes de gestión | RF.9b, RF.13 | CU7 |
+| RS-JC.5 | Configurar parámetros operativos de la Escuela | RF.4 (parámetros), RC.01–RC.13 configurables | CU3 (extensión) |
+
+### Coordinador de Carrera
+
+| RS | Descripción breve | RF | CU |
+|---|---|---|---|
+| RS-CC.1 | Crear Alumnos individualmente | RF.3 | CU2 |
+| RS-CC.2 | Importar Alumnos desde Excel/CSV | RF.3 | CU2 (flujo alterno A) |
+| RS-CC.3 | Bloquear/desbloquear morosos (Alumnos y Docentes) | RF.14, RC.10 | CU6 |
+| RS-CC.4 | Generar los mismos reportes que el Jefe | RF.9b, RF.13 | CU7 |
+
+### Pañolero
+
+| RS | Descripción breve | RF | CU |
+|---|---|---|---|
+| RS-PN.1 | Ingresar y mantener recursos del inventario | RF.4 | CU3 |
+| RS-PN.2 | Consultar solicitudes y préstamos del día | RF.6, RF.9 | CU5 |
+| RS-PN.3 | Validar solicitud y registrar préstamo | RF.7, RF.8, RF-C.06 | CU5 |
+| RS-PN.4 | Dar de baja o anular préstamos no efectivos | RF.8 (extensión) | CU5 (flujo alterno B) |
+| RS-PN.5 | Consultar reportes de estado | RF.9, RF.9b | CU7 |
+| RS-PN.6 | Bloquear Alumnos morosos | RF.14, RC.08 | CU6 |
+| — | Crear solicitud a nombre de otro usuario | RF-C.13 | CU4 (flujo alterno C) |
+
+### Docente y Alumno
+
+| RS | Descripción breve | RF | CU |
+|---|---|---|---|
+| RS-DA.1 | Crear solicitud web | RF.5 | CU4 |
+| RS-DA.2 | Interactuar con el asistente conversacional | RF-C.03 | CU4b |
+| RS-DA.3 | Consultar historial personal | RF-C.11 | CU4 |
