@@ -112,15 +112,64 @@ Indica qué RF implementa cada microservicio. Apoya la distribución de trabajo 
 
 ---
 
-## Matriz CU ↔ Backlog (pendiente)
+## Matriz CU ↔ Backlog
 
-Esta sección se completa una vez construido el backlog LeSS. Cada user story del CSV apunta al CU y al RF que implementa, lo que permite verificar cobertura del backlog respecto de los requerimientos antes de iniciar los sprints.
+El backlog completo vive en `docs/agile/backlog.csv` (importable a Taiga; instrucciones en `docs/agile/README.md`). La matriz a continuación enlaza cada US con su CU, RF, equipo y sprint, permitiendo verificar cobertura del backlog respecto de los requerimientos antes de iniciar los sprints.
 
-Estructura prevista:
-
-| US | Épica | Equipo | CU | RF | Sprint |
+| US | Épica | Equipo | CU | RF / Regla | Sprint |
 |---|---|---|---|---|---|
-| US-XXX | — | A o B | CU-N | RF.N | Sprint N |
+| US-001 | plataforma | A | — | técnica (monorepo) | Sprint 0 |
+| US-002 | plataforma | A | — | técnica (broker + BD) | Sprint 0 |
+| US-003 | plataforma | B | — | técnica (libs/events) | Sprint 0 |
+| US-004 | plataforma | B | — | técnica (infra-nestjs) | Sprint 0 |
+| US-005 | plataforma | A | — | técnica (CI/CD) | Sprint 0 |
+| US-006 | auth | A | CU1 | RF.1 | Sprint 0 |
+| US-007 | auth | A | CU1 | RF-C.10 / RC.13 | Sprint 0 |
+| US-008 | auth | A | CU1 | RS.3, RS.4 | Sprint 0 |
+| US-009 | auth | A | CU2 | RF.2 / RC.08 | Sprint 0 |
+| US-010 | auth | B | CU2 | RF-C.12 / RC.04 | Sprint 0 |
+| US-011 | auth | B | CU2 | RF.3 | Sprint 0 |
+| US-012 | auth | B | CU2 | RF.3 (alterno) | Sprint 0 |
+| US-013 | totem | B | — | técnica (kiosko) | Sprint 0 |
+| US-014 | portal | A | — | técnica (shell Next.js) | Sprint 0 |
+| US-015 | inventario | B | CU3 | RF.4 / RC.03, RC.18 | Sprint 1 |
+| US-016 | inventario | B | CU3 | RF.4 / RC.09 | Sprint 1 |
+| US-017 | inventario | B | CU3 | RF-C.08 / RC.18 | Sprint 1 |
+| US-018 | solicitudes | A | CU4 | RF.5 | Sprint 1 |
+| US-019 | solicitudes | A | CU4 | RC.16 | Sprint 1 |
+| US-020 | solicitudes | A | CU4 | RF-C.01 / RC.06 | Sprint 1 |
+| US-021 | solicitudes | A | CU4 | RF-C.04 / RC.01, RC.10 | Sprint 1 |
+| US-022 | totem | A | CU5 | RF.6 / CN.05 | Sprint 1 |
+| US-023 | totem | A | CU5 | RF-C.09 / RC.14 | Sprint 1 |
+| US-024 | prestamos | A | CU5 | RF.7 / RC.07, RC.17 | Sprint 1 |
+| US-025 | prestamos | A | CU5 | RF.8 / RC.17 | Sprint 1 |
+| US-026 | prestamos | A | CU5 | RF-C.06 | Sprint 1 |
+| US-027 | prestamos | A | CU5 | RF-C.07 / RC.17, RC.18 | Sprint 1 |
+| US-028 | notificaciones | B | CU5 | RF.10 / RC.07 | Sprint 1 |
+| US-029 | notificaciones | B | — | técnica (WebSocket) | Sprint 1 |
+| US-030 | notificaciones | B | CU5 | RF.10 | Sprint 1 |
+| US-031 | portal | B | CU4 | RF-C.11 | Sprint 1 |
+| US-032 | ia | B | CU4b | RF-C.03 | Sprint 1 |
+| US-033 | solicitudes | A | CU4 (alterno C) | RF-C.13 | Sprint 1 |
+| US-034 | ia | B | CU4 | RF-C.02 / RC.11 | Sprint 2 |
+| US-035 | ia | B | CU4 | RC.11 | Sprint 2 |
+| US-036 | solicitudes | A | CU4c | RF-C.05 / RC.02 | Sprint 2 |
+| US-037 | solicitudes | A | CU4c | RF-C.05 | Sprint 2 |
+| US-038 | gestion | A | CU6 | RF.11 | Sprint 2 |
+| US-039 | gestion | A | CU6 | RF.14 / RC.01 | Sprint 2 |
+| US-040 | gestion | A | CU6 | RC.10 / RC.08 | Sprint 2 |
+| US-041 | gestion | B | CU6 | RF.12 / RS.1 | Sprint 2 |
+| US-042 | inventario | B | CU3 | RC.05 | Sprint 2 |
+| US-043 | reportes | B | CU7 | RF.9 | Sprint 2 |
+| US-044 | reportes | B | CU7 | RF.13 / RF.9b | Sprint 2 |
+| US-045 | gestion | A | CU3 (extensión) | RS-JC.5 | Sprint 2 |
+| US-046 | ia | B | CU4b | RF-C.03 | Sprint 2 |
+| US-047 | ia | B | CU4b | RC.15 | Sprint 2 |
+| US-048 | plataforma | A | — | técnica (DLC + reconciliación) | Sprint 2 |
+| US-049 | plataforma | B | — | técnica (observabilidad) | Sprint 2 |
+| US-050 | gestion | A | — | RC.13, RC.14 (auditoría) | Sprint 2 |
+
+**Cobertura**: las 50 US cubren los 14 RF originales + 13 RF-C, las 18 reglas RC y los CU1–CU7. Las US técnicas (plataforma, infra, observabilidad) no enlazan a un RF de negocio pero son enablers necesarios para el cumplimiento. La trazabilidad inversa (RF → US) se valida con búsqueda por tag `RF:RF.N` en Taiga.
 
 ---
 

@@ -1,0 +1,2960 @@
+{
+  "name": "Sistema de Pañol — UNAB Viña del Mar",
+  "slug": "panol-unab",
+  "description": "Sistema de gestión de pañol para la Escuela de Informática UNAB Viña del Mar. Caso 11 del MIT Design Full Stack + MIT Design AI. Backlog único, metodología LeSS básica con 2 equipos Feature, sprints de 2 semanas.",
+  "creation_template": null,
+  "is_private": true,
+  "is_kanban_activated": false,
+  "is_backlog_activated": true,
+  "is_issues_activated": true,
+  "is_wiki_activated": true,
+  "is_epics_activated": true,
+  "is_contact_activated": false,
+  "videoconferences": "",
+  "videoconferences_extra_data": "",
+  "anon_permissions": [],
+  "public_permissions": [],
+  "modules_config": {},
+  "logo": null,
+  "total_milestones": null,
+  "total_story_points": null,
+  "tags": [
+    "epic:inventario",
+    "epic:totem",
+    "tipo:negocio",
+    "epic:solicitudes",
+    "RF:RF.8",
+    "RF:RF.4",
+    "RF:RF-C.08",
+    "RF:RF-C.04",
+    "RF:RF.2",
+    "RF:RF-C.12",
+    "RF:RF-C.03",
+    "RF:RF.10",
+    "RF:RF.12",
+    "RF:RF-C.05",
+    "sprint:1",
+    "RF:RC.16",
+    "RF:RF-C.09",
+    "RF:RS.4",
+    "epic:gestion",
+    "RF:RS-JC.5",
+    "sprint:2",
+    "RF:RF.11",
+    "RF:RF.1",
+    "epic:portal",
+    "RF:RS.3",
+    "epic:ia",
+    "RF:RF.14",
+    "RF:RF.13",
+    "RF:RF.6",
+    "RF:RF-C.02",
+    "epic:prestamos",
+    "epic:reportes",
+    "RF:RF-C.13",
+    "RF:RF-C.07",
+    "RF:RF-C.10",
+    "RF:RF-C.01",
+    "epic:notificaciones",
+    "epic:plataforma",
+    "RF:RF-C.06",
+    "RF:RC.05",
+    "tipo:tecnica",
+    "RF:RC.10",
+    "RF:RF.3",
+    "RF:RF-C.11",
+    "team:A",
+    "RF:RF.7",
+    "RF:RC.11",
+    "epic:auth",
+    "RF:RC.15",
+    "RF:RF.5",
+    "sprint:0",
+    "team:B",
+    "RF:RF.9"
+  ],
+  "tags_colors": [],
+  "default_us_status": "New",
+  "default_points": "?",
+  "default_priority": "Normal",
+  "default_severity": "Normal",
+  "default_task_status": "New",
+  "default_issue_status": "New",
+  "default_issue_type": "Bug",
+  "default_epic_status": "New",
+  "us_statuses": [
+    {
+      "name": "New",
+      "slug": "new",
+      "order": 1,
+      "is_closed": false,
+      "color": "#999999",
+      "wip_limit": null
+    },
+    {
+      "name": "Ready",
+      "slug": "ready",
+      "order": 2,
+      "is_closed": false,
+      "color": "#70728F",
+      "wip_limit": null
+    },
+    {
+      "name": "In progress",
+      "slug": "in-progress",
+      "order": 3,
+      "is_closed": false,
+      "color": "#E47C40",
+      "wip_limit": null
+    },
+    {
+      "name": "Ready for test",
+      "slug": "ready-for-test",
+      "order": 4,
+      "is_closed": false,
+      "color": "#E4CE40",
+      "wip_limit": null
+    },
+    {
+      "name": "Done",
+      "slug": "done",
+      "order": 5,
+      "is_closed": true,
+      "color": "#A8E440",
+      "wip_limit": null
+    }
+  ],
+  "us_duedates": [],
+  "task_statuses": [
+    {
+      "name": "New",
+      "slug": "new",
+      "order": 1,
+      "is_closed": false,
+      "color": "#999999"
+    },
+    {
+      "name": "In progress",
+      "slug": "in-progress",
+      "order": 2,
+      "is_closed": false,
+      "color": "#E47C40"
+    },
+    {
+      "name": "Ready for test",
+      "slug": "ready-for-test",
+      "order": 3,
+      "is_closed": false,
+      "color": "#E4CE40"
+    },
+    {
+      "name": "Closed",
+      "slug": "closed",
+      "order": 4,
+      "is_closed": true,
+      "color": "#A8E440"
+    },
+    {
+      "name": "Needs Info",
+      "slug": "needs-info",
+      "order": 5,
+      "is_closed": false,
+      "color": "#5178D3"
+    }
+  ],
+  "task_duedates": [],
+  "issue_statuses": [
+    {
+      "name": "New",
+      "slug": "new",
+      "order": 1,
+      "is_closed": false,
+      "color": "#999999"
+    },
+    {
+      "name": "In progress",
+      "slug": "in-progress",
+      "order": 2,
+      "is_closed": false,
+      "color": "#E47C40"
+    },
+    {
+      "name": "Ready for test",
+      "slug": "ready-for-test",
+      "order": 3,
+      "is_closed": false,
+      "color": "#E4CE40"
+    },
+    {
+      "name": "Closed",
+      "slug": "closed",
+      "order": 4,
+      "is_closed": true,
+      "color": "#A8E440"
+    },
+    {
+      "name": "Needs Info",
+      "slug": "needs-info",
+      "order": 5,
+      "is_closed": false,
+      "color": "#5178D3"
+    },
+    {
+      "name": "Rejected",
+      "slug": "rejected",
+      "order": 6,
+      "is_closed": true,
+      "color": "#FA8072"
+    },
+    {
+      "name": "Postponed",
+      "slug": "postponed",
+      "order": 7,
+      "is_closed": false,
+      "color": "#5C3566"
+    }
+  ],
+  "issue_duedates": [],
+  "issue_types": [
+    {
+      "name": "Bug",
+      "order": 1,
+      "color": "#CC0000"
+    },
+    {
+      "name": "Question",
+      "order": 2,
+      "color": "#669933"
+    },
+    {
+      "name": "Enhancement",
+      "order": 3,
+      "color": "#0000FF"
+    }
+  ],
+  "epic_statuses": [
+    {
+      "name": "New",
+      "slug": "new",
+      "order": 1,
+      "is_closed": false,
+      "color": "#999999"
+    },
+    {
+      "name": "In progress",
+      "slug": "in-progress",
+      "order": 2,
+      "is_closed": false,
+      "color": "#E47C40"
+    },
+    {
+      "name": "Ready for test",
+      "slug": "ready-for-test",
+      "order": 3,
+      "is_closed": false,
+      "color": "#E4CE40"
+    },
+    {
+      "name": "Done",
+      "slug": "done",
+      "order": 4,
+      "is_closed": true,
+      "color": "#A8E440"
+    }
+  ],
+  "priorities": [
+    {
+      "name": "Low",
+      "order": 1,
+      "color": "#666666"
+    },
+    {
+      "name": "Normal",
+      "order": 3,
+      "color": "#669933"
+    },
+    {
+      "name": "High",
+      "order": 5,
+      "color": "#CC0000"
+    }
+  ],
+  "severities": [
+    {
+      "name": "Wishlist",
+      "order": 1,
+      "color": "#666666"
+    },
+    {
+      "name": "Minor",
+      "order": 2,
+      "color": "#669933"
+    },
+    {
+      "name": "Normal",
+      "order": 3,
+      "color": "#0000FF"
+    },
+    {
+      "name": "Important",
+      "order": 4,
+      "color": "#FF8A84"
+    },
+    {
+      "name": "Critical",
+      "order": 5,
+      "color": "#CC0000"
+    }
+  ],
+  "points": [
+    {
+      "name": "?",
+      "value": null,
+      "order": 1
+    },
+    {
+      "name": "0",
+      "value": 0,
+      "order": 2
+    },
+    {
+      "name": "1",
+      "value": 1,
+      "order": 3
+    },
+    {
+      "name": "2",
+      "value": 2,
+      "order": 4
+    },
+    {
+      "name": "3",
+      "value": 3,
+      "order": 5
+    },
+    {
+      "name": "5",
+      "value": 5,
+      "order": 6
+    },
+    {
+      "name": "8",
+      "value": 8,
+      "order": 7
+    },
+    {
+      "name": "13",
+      "value": 13,
+      "order": 8
+    },
+    {
+      "name": "21",
+      "value": 21,
+      "order": 9
+    },
+    {
+      "name": "40",
+      "value": 40,
+      "order": 10
+    }
+  ],
+  "roles": [
+    {
+      "name": "Equipo Feature",
+      "slug": "equipo-feature",
+      "order": 1,
+      "computable": true,
+      "permissions": [
+        "view_project",
+        "view_milestones",
+        "add_milestone",
+        "modify_milestone",
+        "delete_milestone",
+        "view_epics",
+        "add_epic",
+        "modify_epic",
+        "comment_epic",
+        "delete_epic",
+        "view_us",
+        "add_us",
+        "modify_us",
+        "comment_us",
+        "delete_us",
+        "view_tasks",
+        "add_task",
+        "modify_task",
+        "comment_task",
+        "delete_task",
+        "view_issues",
+        "add_issue",
+        "modify_issue",
+        "comment_issue",
+        "delete_issue",
+        "view_wiki_pages",
+        "add_wiki_page",
+        "modify_wiki_page",
+        "comment_wiki_page",
+        "delete_wiki_page",
+        "view_wiki_links",
+        "add_wiki_link",
+        "modify_wiki_link",
+        "delete_wiki_link"
+      ]
+    },
+    {
+      "name": "Product Owner",
+      "slug": "product-owner",
+      "order": 2,
+      "computable": false,
+      "permissions": [
+        "view_project",
+        "view_milestones",
+        "add_milestone",
+        "modify_milestone",
+        "delete_milestone",
+        "view_epics",
+        "add_epic",
+        "modify_epic",
+        "comment_epic",
+        "delete_epic",
+        "view_us",
+        "add_us",
+        "modify_us",
+        "comment_us",
+        "delete_us",
+        "view_tasks",
+        "add_task",
+        "modify_task",
+        "comment_task",
+        "delete_task",
+        "view_issues",
+        "add_issue",
+        "modify_issue",
+        "comment_issue",
+        "delete_issue",
+        "view_wiki_pages",
+        "add_wiki_page",
+        "modify_wiki_page",
+        "comment_wiki_page",
+        "delete_wiki_page",
+        "view_wiki_links",
+        "add_wiki_link",
+        "modify_wiki_link",
+        "delete_wiki_link"
+      ]
+    }
+  ],
+  "memberships": [],
+  "milestones": [
+    {
+      "name": "Sprint 0",
+      "slug": "sprint-0",
+      "estimated_start": "2026-04-27",
+      "estimated_finish": "2026-05-10",
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "closed": false,
+      "disponibility": 0.0,
+      "order": 1
+    },
+    {
+      "name": "Sprint 1",
+      "slug": "sprint-1",
+      "estimated_start": "2026-05-11",
+      "estimated_finish": "2026-05-24",
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "closed": false,
+      "disponibility": 0.0,
+      "order": 2
+    },
+    {
+      "name": "Sprint 2",
+      "slug": "sprint-2",
+      "estimated_start": "2026-05-25",
+      "estimated_finish": "2026-06-07",
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "closed": false,
+      "disponibility": 0.0,
+      "order": 3
+    }
+  ],
+  "user_stories": [
+    {
+      "ref": 1,
+      "subject": "Setup monorepo con pnpm + turborepo",
+      "description": "Como equipo, quiero un monorepo con apps y libs separadas para que cada microservicio se desarrolle de forma independiente compartiendo código tipado.\n\n**Criterios de aceptación**\n- pnpm-workspace.yaml definido con apps/* y libs/*.\n- turbo.json con tareas build, test, lint, typecheck.\n- README de root con instrucciones de boot.\n- Pipeline mínima de build verde en CI.",
+      "tags": [
+        [
+          "epic:plataforma",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ]
+      ],
+      "status": "Ready",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 1,
+      "sprint_order": 1,
+      "kanban_order": 1,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 2,
+      "subject": "Levantar docker-compose con RabbitMQ + Postgres",
+      "description": "Como equipo, quiero docker-compose que levante el stack mínimo (RabbitMQ con plugins delayed-message y shovel, Postgres 16, Adminer, Grafana, Loki, Tempo) para desarrollar localmente.\n\n**Criterios de aceptación**\n- compose up arranca todos los servicios sin errores.\n- Plugin rabbitmq_delayed_message_exchange habilitado.\n- Postgres expone puerto 5432 con user/passwd de dev.\n- README de infra con comandos de boot, reset y logs.",
+      "tags": [
+        [
+          "epic:plataforma",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ]
+      ],
+      "status": "Ready",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 2,
+      "sprint_order": 2,
+      "kanban_order": 2,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 3,
+      "subject": "Definir biblioteca compartida libs/events con Zod",
+      "description": "Como equipo, quiero esquemas Zod compartidos entre publishers y consumers para que los contratos de eventos sean type-safe y validables en runtime.\n\n**Criterios de aceptación**\n- libs/events/ con un esquema por evento listado en docs/architecture/03-eventos-dominio.md.\n- Validación al publicar y al consumir.\n- Test unitario por esquema.\n- Versión declarada (x-schema-version).",
+      "tags": [
+        [
+          "epic:plataforma",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ]
+      ],
+      "status": "Ready",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 3,
+      "sprint_order": 3,
+      "kanban_order": 3,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 4,
+      "subject": "Crear módulo común infra-nestjs (logging, tracing, outbox)",
+      "description": "Como equipo, quiero módulos NestJS reutilizables para que los 8 servicios compartan logging estructurado (Pino), tracing OpenTelemetry y outbox pattern sin duplicar código.\n\n**Criterios de aceptación**\n- Módulo LoggingModule con Pino + correlation-id.\n- Módulo TracingModule con OpenTelemetry SDK + propagación AMQP.\n- Módulo OutboxModule con tabla outbox_events + relay (@nestjs/schedule).\n- Documentación de uso en libs/infra-nestjs/README.",
+      "tags": [
+        [
+          "epic:plataforma",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ]
+      ],
+      "status": "Ready",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 4,
+      "sprint_order": 4,
+      "kanban_order": 4,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "8"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 5,
+      "subject": "Pipeline CI/CD en GitHub Actions",
+      "description": "Como equipo, quiero que cada push corra build, lint, type-check y tests por servicio para que la calidad no dependa de la disciplina manual.\n\n**Criterios de aceptación**\n- Workflow ci.yml con matrix por app.\n- Cache de pnpm y turbo.\n- Build de Docker image por servicio (no push en MVP).\n- Badge de estado en README root.",
+      "tags": [
+        [
+          "epic:plataforma",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ]
+      ],
+      "status": "Ready",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 5,
+      "sprint_order": 5,
+      "kanban_order": 5,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 6,
+      "subject": "Login con email y password emite JWT",
+      "description": "Como cualquier usuario, quiero autenticarme con email y contraseña para recibir un JWT y operar en el sistema (RF.1).\n\n**Criterios de aceptación**\n- POST /auth/login devuelve access token JWT firmado.\n- Token incluye userId, role, sessionId.\n- Contraseñas almacenadas con bcrypt.\n- Tests unitarios y e2e del happy path y de credenciales inválidas.",
+      "tags": [
+        [
+          "epic:auth",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ],
+        [
+          "RF:RF.1",
+          null
+        ]
+      ],
+      "status": "Ready",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 6,
+      "sprint_order": 6,
+      "kanban_order": 6,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 7,
+      "subject": "Cambio obligatorio de clave en primer login",
+      "description": "Como usuario, debo cambiar mi clave la primera vez que inicio sesión y luego cada 90 días para que mi cuenta cumpla la política de seguridad (RF-C.10, RC.13).\n\n**Criterios de aceptación**\n- Flag must_change_password en BD.\n- Endpoint POST /auth/change-password.\n- Bloqueo de toda otra acción hasta que se cumpla.\n- Política configurable de longitud y complejidad.",
+      "tags": [
+        [
+          "epic:auth",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ],
+        [
+          "RF:RF-C.10",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 7,
+      "sprint_order": 7,
+      "kanban_order": 7,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 8,
+      "subject": "Saludo personalizado y cierre por inactividad",
+      "description": "Como usuario logueado, quiero que el portal muestre mi nombre y cierre mi sesión tras X minutos de inactividad para que mi cuenta no quede expuesta (RS.3, RS.4).\n\n**Criterios de aceptación**\n- Saludo con nombre del usuario en header del portal y tótem.\n- Inactividad configurable: portal 15 min por defecto, tótem mantiene sesión durante el turno (excepción RC.14).\n- Modal de aviso 1 min antes del cierre.",
+      "tags": [
+        [
+          "epic:auth",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ],
+        [
+          "RF:RS.3",
+          null
+        ],
+        [
+          "RF:RS.4",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 8,
+      "sprint_order": 8,
+      "kanban_order": 8,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 9,
+      "subject": "Crear usuarios administrativos (Jefe → Coord, Pañolero)",
+      "description": "Como Jefe de Carrera, quiero crear y modificar usuarios de perfil Coordinador y Pañolero para conformar el equipo administrativo del pañol (RF.2, RC.08).\n\n**Criterios de aceptación**\n- UI portal sección Administración → Usuarios.\n- Validaciones de unicidad de documento y email.\n- Solo roles Jefe y (transitivamente) Coord pueden ver esta sección.\n- Baja lógica (no hard delete).\n- Publica user.created/user.updated.",
+      "tags": [
+        [
+          "epic:auth",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ],
+        [
+          "RF:RF.2",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 9,
+      "sprint_order": 9,
+      "kanban_order": 9,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 10,
+      "subject": "Identificación sin RUT chileno",
+      "description": "Como usuario internacional o sin RUT, quiero identificarme con DNI, pasaporte u otro ID para registrarme en el sistema (RF-C.12, RC.04).\n\n**Criterios de aceptación**\n- Campo documento permite cualquier formato alfanumérico hasta 30 caracteres.\n- Tipo_documento enum: RUT, DNI, PASAPORTE, OTRO.\n- Unicidad por (tipo_documento, documento).\n- No hay validación de dígito verificador chileno.",
+      "tags": [
+        [
+          "epic:auth",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ],
+        [
+          "RF:RF-C.12",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 10,
+      "sprint_order": 10,
+      "kanban_order": 10,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "2"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 11,
+      "subject": "Crear alumnos individualmente",
+      "description": "Como Coordinador, quiero crear alumnos uno a uno para registrar a un estudiante que se incorporó tarde a la carrera (RF.3, RS-CC.1).\n\n**Criterios de aceptación**\n- Form con nombres, apellidos, documento, email, carrera.\n- Validación obligatoria de nombres en plural (SP.13).\n- Genera contraseña inicial aleatoria que se entrega por canal seguro.\n- Marca must_change_password=true.",
+      "tags": [
+        [
+          "epic:auth",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ],
+        [
+          "RF:RF.3",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 11,
+      "sprint_order": 11,
+      "kanban_order": 11,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 12,
+      "subject": "Importar alumnos desde Excel/CSV",
+      "description": "Como Coordinador, quiero subir un archivo Excel con alumnos para registrar a la generación entrante de un golpe (RS-CC.2, RF.3 alterno).\n\n**Criterios de aceptación**\n- Drag-and-drop en portal acepta .xlsx y .csv.\n- Validación pre-import: fila por fila, errores reportados antes de persistir.\n- Reporte de éxito/fallo descargable.\n- Idempotente: si una fila ya existe (por documento) se omite con warning.",
+      "tags": [
+        [
+          "epic:auth",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ],
+        [
+          "RF:RF.3",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 12,
+      "sprint_order": 12,
+      "kanban_order": 12,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 13,
+      "subject": "Tótem en modo kiosko (shell Vite + React)",
+      "description": "Como Pañolero, quiero que el tótem arranque en pantalla completa sin barra de navegador para que no haya distracciones durante la atención.\n\n**Criterios de aceptación**\n- Vite + React + Zustand inicial.\n- Modo fullscreen automático al login.\n- Sesión persistente durante el turno.\n- Configuración por env: URL del API gateway.",
+      "tags": [
+        [
+          "epic:totem",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 13,
+      "sprint_order": 13,
+      "kanban_order": 13,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 14,
+      "subject": "Portal Next.js con login",
+      "description": "Como Alumno, Docente, Coord o Jefe, quiero entrar al portal para usar las funciones de mi perfil.\n\n**Criterios de aceptación**\n- Next.js 14 con App Router.\n- Página /login y middleware de auth.\n- Redirecciones por rol (alumno → /home, jefe → /admin, etc.).\n- TanStack Query configurado.",
+      "tags": [
+        [
+          "epic:portal",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:0",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 0",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 14,
+      "sprint_order": 14,
+      "kanban_order": 14,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 15,
+      "subject": "CRUD de recursos del inventario",
+      "description": "Como Pañolero o Jefe, quiero crear, modificar y dar de baja recursos del inventario para mantener actualizado el catálogo (RF.4, RC.03, RC.18).\n\n**Criterios de aceptación**\n- Form con nombre, descripción, categoría (Material/Herramienta/Equipo), stock, unidad.\n- Baja lógica (estado=BAJA).\n- Publica stock.changed con motivo.\n- Auditoría de cambios.",
+      "tags": [
+        [
+          "epic:inventario",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF.4",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 15,
+      "sprint_order": 1,
+      "kanban_order": 15,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 16,
+      "subject": "Imagen 150x100 del recurso",
+      "description": "Como Pañolero, al crear un recurso quiero subir una imagen 150x100 px para que aparezca en el portal y en el tótem (RC.09, RS-PN.1).\n\n**Criterios de aceptación**\n- Upload con preview.\n- Validación de tamaño exacto 150x100 px (con redimensionamiento sugerido si excede).\n- Almacenamiento en object storage (filesystem local en MVP).\n- Reflejada en listados y detalle.",
+      "tags": [
+        [
+          "epic:inventario",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF.4",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 16,
+      "sprint_order": 2,
+      "kanban_order": 16,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 17,
+      "subject": "Estado En Mantención de un recurso",
+      "description": "Como Pañolero o Jefe, quiero marcar un recurso como En Mantención para que no aparezca disponible mientras se repara (RF-C.08, RC.18).\n\n**Criterios de aceptación**\n- Estado adicional en RC.18.\n- Transiciones: Disponible → En_Mantencion → Disponible o Baja.\n- Recursos En_Mantencion no aparecen en validador de disponibilidad.\n- Auditoría con motivo y fecha estimada de retorno.",
+      "tags": [
+        [
+          "epic:inventario",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.08",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 17,
+      "sprint_order": 3,
+      "kanban_order": 17,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 18,
+      "subject": "Crear solicitud web",
+      "description": "Como Alumno o Docente, quiero crear una solicitud desde el portal seleccionando recursos y fecha de retiro para asegurar disponibilidad antes de ir al pañol (RF.5).\n\n**Criterios de aceptación**\n- UI con buscador de recursos y carrito.\n- Validación de disponibilidad pre-confirmación (Request-Reply a inventory-svc).\n- Confirmación dispara transición Borrador → Reservada.\n- Notificación in-app de confirmación.",
+      "tags": [
+        [
+          "epic:solicitudes",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF.5",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 18,
+      "sprint_order": 4,
+      "kanban_order": 18,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "8"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 19,
+      "subject": "Workflow de estados de solicitud",
+      "description": "Como sistema, quiero que cada solicitud transite los estados Borrador, Reservada, Materializada, Materializada_Parcial, Cancelada, Expirada para que el flujo sea trazable (RC.16).\n\n**Criterios de aceptación**\n- Máquina de estados implementada en request-svc.\n- Transiciones inválidas rechazadas.\n- Tabla request_state_history para auditoría.\n- Test de cada transición.",
+      "tags": [
+        [
+          "epic:solicitudes",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RC.16",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 19,
+      "sprint_order": 5,
+      "kanban_order": 19,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 20,
+      "subject": "TTL de reserva con Message Expiration",
+      "description": "Como sistema, quiero que las reservas expiren automáticamente al cumplirse el TTL configurable para liberar el stock sin job externo (RF-C.01, RC.06).\n\n**Criterios de aceptación**\n- Exchange domain.delayed con plugin x-delayed-message.\n- request-svc publica request.expire al crear solicitud con header x-delay=ttl_ms.\n- Al recibir el mensaje, valida estado actual y publica request.expired si aplica.\n- inventory-svc libera reserva.\n- Configurable por Jefe (default 4h).",
+      "tags": [
+        [
+          "epic:solicitudes",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.01",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 20,
+      "sprint_order": 6,
+      "kanban_order": 20,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "8"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 21,
+      "subject": "Workflow con blacklist en creación de solicitud",
+      "description": "Como sistema, quiero que un usuario en blacklist no pueda crear solicitudes para forzar el cumplimiento de la regla de morosidad (RF-C.04, RC.01, RC.10).\n\n**Criterios de aceptación**\n- request-svc consulta auth-svc por bloqueo activo.\n- Si está bloqueado, retorna 403 con motivo.\n- Notificación in-app al usuario explicando la causa.\n- Test con casos blacklist y unblacklist.",
+      "tags": [
+        [
+          "epic:solicitudes",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.04",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 21,
+      "sprint_order": 7,
+      "kanban_order": 21,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 22,
+      "subject": "Validar solicitud en tótem ítem por ítem",
+      "description": "Como Pañolero, quiero abrir la solicitud por documento del solicitante y marcar disponibilidad real ítem por ítem para confirmar que puedo entregar lo solicitado (RF.6, CN.05).\n\n**Criterios de aceptación**\n- UI tótem busca por documento o ID.\n- Lista ítems con checkbox disponible_real.\n- No materializa hasta que el Pañolero confirme.\n- Acción sensible: requiere PIN.",
+      "tags": [
+        [
+          "epic:totem",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF.6",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 22,
+      "sprint_order": 8,
+      "kanban_order": 22,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 23,
+      "subject": "PIN de cuatro dígitos para acciones sensibles",
+      "description": "Como sistema, quiero que validar, prestar, devolver y dar de baja exijan re-ingresar PIN de 4 dígitos del Pañolero para reducir el riesgo de uso indebido del tótem (RF-C.09, RC.14).\n\n**Criterios de aceptación**\n- Modal de PIN con 4 dígitos numéricos.\n- 3 intentos antes de bloquear y forzar re-login.\n- Logging de cada validación de PIN (éxito/fracaso) en auditoría.",
+      "tags": [
+        [
+          "epic:totem",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.09",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 23,
+      "sprint_order": 9,
+      "kanban_order": 23,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 24,
+      "subject": "Materializar solicitud en préstamo",
+      "description": "Como Pañolero, quiero confirmar la materialización de la solicitud para crear el préstamo y descontar el stock (RF.7, RC.07, RC.17).\n\n**Criterios de aceptación**\n- loan-svc crea préstamo en estado Activo.\n- Genera ticketId correlativo.\n- Publica loan.issued (Outbox).\n- Solicitud transita a Materializada.\n- Concurrencia optimista contra otra materialización simultánea.",
+      "tags": [
+        [
+          "epic:prestamos",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF.7",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 24,
+      "sprint_order": 10,
+      "kanban_order": 24,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "8"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 25,
+      "subject": "Registrar préstamos y devoluciones",
+      "description": "Como Pañolero, quiero registrar la devolución de un préstamo consignando el estado de cada recurso para cerrar el ciclo (RF.8, RC.17).\n\n**Criterios de aceptación**\n- UI tótem busca préstamo por documento o ticketId.\n- Para cada ítem: estado OK, DAÑADO, FALTANTE.\n- loan-svc emite loan.returned y stock.lost si corresponde.\n- inventory-svc reabre o decrementa stock según el caso.",
+      "tags": [
+        [
+          "epic:prestamos",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF.8",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 25,
+      "sprint_order": 11,
+      "kanban_order": 25,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "8"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 26,
+      "subject": "Préstamo parcial",
+      "description": "Como Pañolero, quiero materializar una solicitud entregando menos unidades de las solicitadas si solo hay parte disponible para que el flujo no se bloquee (RF-C.06).\n\n**Criterios de aceptación**\n- En la pantalla de validación, ajustar cantidad por ítem.\n- loan-svc registra cantidad efectiva.\n- Solicitud transita a Materializada_Parcial.\n- Diferencia se libera de la reserva, no se cuenta como pérdida.",
+      "tags": [
+        [
+          "epic:prestamos",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.06",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 26,
+      "sprint_order": 12,
+      "kanban_order": 26,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 27,
+      "subject": "Estados de devolución (OK/Dañado/Faltante)",
+      "description": "Como Pañolero, quiero clasificar cada recurso devuelto para que el inventario refleje pérdidas y daños reales (RF-C.07, RC.17, RC.18).\n\n**Criterios de aceptación**\n- 3 estados disponibles en UI tótem.\n- DAÑADO transiciona el recurso a En_Mantencion.\n- FALTANTE publica stock.lost y registra contra historial del usuario.\n- OK reabre stock disponible.",
+      "tags": [
+        [
+          "epic:prestamos",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.07",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 27,
+      "sprint_order": 13,
+      "kanban_order": 27,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 28,
+      "subject": "Ticket PDF de respaldo",
+      "description": "Como sistema, quiero generar un ticket PDF descargable tras cada préstamo y devolución para que el usuario tenga respaldo (RF.10, RC.07).\n\n**Criterios de aceptación**\n- notification-svc consume loan.issued y loan.returned.\n- Genera PDF con PDFKit (logo, ticketId, items, fecha, firma del Pañolero).\n- Adjunta al evento de notificación.\n- Descargable desde portal y desde la bandeja.",
+      "tags": [
+        [
+          "epic:notificaciones",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF.10",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 28,
+      "sprint_order": 14,
+      "kanban_order": 28,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 29,
+      "subject": "Notificaciones in-app por WebSocket",
+      "description": "Como usuario, quiero recibir notificaciones en tiempo real cuando cambia el estado de mi solicitud o préstamo para enterarme sin recargar.\n\n**Criterios de aceptación**\n- Socket.IO en api-gateway.\n- notification-svc empuja evento al gateway.\n- Cliente portal y tótem muestra toast + actualiza bandeja.\n- Reconexión automática.",
+      "tags": [
+        [
+          "epic:notificaciones",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 29,
+      "sprint_order": 15,
+      "kanban_order": 29,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 30,
+      "subject": "Bandeja persistente in-app",
+      "description": "Como usuario, quiero ver mis notificaciones leídas y no leídas desde el portal y poder marcarlas como leídas para gestionar mi información (RF.10).\n\n**Criterios de aceptación**\n- Tabla notifications en notification-svc con TTL 90 días.\n- UI portal con paginación, filtros (no leídas) y marcar todas.\n- Contador en header.",
+      "tags": [
+        [
+          "epic:notificaciones",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF.10",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 30,
+      "sprint_order": 16,
+      "kanban_order": 30,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 31,
+      "subject": "Historial personal de solicitudes y préstamos",
+      "description": "Como Alumno o Docente, quiero ver mi historial de los últimos 24 meses para revisar mis solicitudes pasadas (RF-C.11).\n\n**Criterios de aceptación**\n- UI portal /historial con tabla y filtros (estado, fecha, tipo).\n- Backend: agrega request-svc + loan-svc.\n- Pagina con cursor.\n- Solo el propio usuario puede ver el suyo.",
+      "tags": [
+        [
+          "epic:portal",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.11",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 31,
+      "sprint_order": 17,
+      "kanban_order": 31,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 32,
+      "subject": "Asistente conversacional - tools básicas",
+      "description": "Como Alumno o Docente, quiero conversar con un asistente para preguntarle qué hay disponible y armar mi solicitud sin conocer el catálogo de memoria (RF-C.03).\n\n**Criterios de aceptación**\n- ai-assistant-svc con servidor MCP.\n- Tools: consultar_inventario, validar_disponibilidad, crear_solicitud_borrador.\n- Cliente OpenAI function calling.\n- UI chat embebido en portal.\n- Memoria conversacional 7 días.\n- Borrador siempre requiere confirmación explícita del usuario.",
+      "tags": [
+        [
+          "epic:ia",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.03",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 32,
+      "sprint_order": 18,
+      "kanban_order": 32,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "13"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 33,
+      "subject": "Solicitud en nombre de otro usuario",
+      "description": "Como Pañolero (en tótem) o Coordinador (en portal), quiero crear una solicitud a nombre de un Alumno o Docente que no puede generarla por sí mismo para no bloquear su retiro (RF-C.13).\n\n**Criterios de aceptación**\n- Buscador de usuario en formulario de solicitud.\n- Solicitud queda asociada al documento del solicitante.\n- Flag creada_por_operador=true y operador_id registrado.\n- Notificación al solicitante de que se creó en su nombre.",
+      "tags": [
+        [
+          "epic:solicitudes",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:1",
+          null
+        ],
+        [
+          "RF:RF-C.13",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 1",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 33,
+      "sprint_order": 19,
+      "kanban_order": 33,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 34,
+      "subject": "Modelo de scoring de riesgo entrenado",
+      "description": "Como ai-risk-svc, quiero un modelo Random Forest entrenado offline en scikit-learn y exportado a ONNX para servir scoring con baja latencia (RF-C.02, RC.11).\n\n**Criterios de aceptación**\n- Notebook de entrenamiento con datos sintéticos.\n- Modelo ONNX en libs/risk-model/.\n- onnxruntime-node en ai-risk-svc.\n- Endpoint AMQP risk.score con timeout 1.5s.\n- Test con 5 perfiles de usuario.",
+      "tags": [
+        [
+          "epic:ia",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF-C.02",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 34,
+      "sprint_order": 1,
+      "kanban_order": 34,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "13"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 35,
+      "subject": "Aplicar score en flujo de solicitud",
+      "description": "Como request-svc, quiero consultar score antes de aceptar la solicitud y aplicar las acciones por umbral para reducir morosidad preventivamente (RC.11).\n\n**Criterios de aceptación**\n- score<0.4 acepta normal.\n- 0.4-0.7 marca flag riesgo_medio en tótem.\n- ≥0.7 rechaza con drivers como explicación.\n- Umbrales configurables por Jefe.\n- Fallback a score 0.5 si timeout.",
+      "tags": [
+        [
+          "epic:ia",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RC.11",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 35,
+      "sprint_order": 2,
+      "kanban_order": 35,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 36,
+      "subject": "Préstamo Especial multi-día",
+      "description": "Como Docente, quiero solicitar un préstamo Especial multi-día para llevar un equipo a una clase fuera del horario normal (RF-C.05, RC.02).\n\n**Criterios de aceptación**\n- UI portal opción tipo_prestamo=ESPECIAL_MULTIDIA.\n- Campos adicionales: fecha_inicio, fecha_fin, motivo.\n- Estado adicional Pendiente_Aprobacion.\n- Validación: solo Docente puede solicitar autónomamente; Alumno requiere patrocinador (Docente o Coord).",
+      "tags": [
+        [
+          "epic:solicitudes",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF-C.05",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 36,
+      "sprint_order": 3,
+      "kanban_order": 36,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "8"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 37,
+      "subject": "Aprobación de préstamos Especiales",
+      "description": "Como Coord o Jefe, quiero aprobar o rechazar los préstamos Especiales pendientes para autorizar el uso multi-día (RF-C.05).\n\n**Criterios de aceptación**\n- Bandeja UI Administración → Pendientes.\n- Acción aprobar/rechazar con motivo.\n- Si aprueba, transita a Reservada y aplica TTL extendido (configurable).\n- Notificación al solicitante.",
+      "tags": [
+        [
+          "epic:solicitudes",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF-C.05",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 37,
+      "sprint_order": 4,
+      "kanban_order": 37,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 38,
+      "subject": "Alerta automática de morosos",
+      "description": "Como sistema, quiero detectar préstamos atrasados y emitir loan.overdue para alertar a quienes corresponda (RF.11).\n\n**Criterios de aceptación**\n- Job en loan-svc que cada 5 min detecta fechaLimite < now y estado=Activo.\n- Publica loan.overdue una vez por préstamo.\n- notification-svc avisa al usuario y al Coord como observador.",
+      "tags": [
+        [
+          "epic:gestion",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF.11",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 38,
+      "sprint_order": 5,
+      "kanban_order": 38,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 39,
+      "subject": "Bloqueo automático por regla RC.01",
+      "description": "Como sistema, quiero bloquear automáticamente al usuario al detectar el tercer atraso del semestre para hacer cumplir la política (RF.14, RC.01).\n\n**Criterios de aceptación**\n- loan-svc cuenta atrasos por usuario en ventana semestral.\n- Al alcanzar el umbral, publica solicitud de bloqueo.\n- auth-svc persiste user.blocked con reason=MOROSIDAD_AUTOMATICA.\n- Notificación al usuario y al Coord.",
+      "tags": [
+        [
+          "epic:gestion",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF.14",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 39,
+      "sprint_order": 6,
+      "kanban_order": 39,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "8"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 40,
+      "subject": "Bloqueo manual de morosos",
+      "description": "Como Coord (alumnos y docentes) o Pañolero (solo alumnos), quiero bloquear o desbloquear con motivo obligatorio para gestionar casos especiales (RC.10, RC.08, RS-CC.3, RS-PN.6).\n\n**Criterios de aceptación**\n- UI Administración → Usuarios con acción Bloquear/Desbloquear.\n- Motivo obligatorio.\n- Auditoría con operador_id y timestamp.\n- Pañolero no ve la opción para Docentes ni Admin.",
+      "tags": [
+        [
+          "epic:gestion",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RC.10",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 40,
+      "sprint_order": 7,
+      "kanban_order": 40,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 41,
+      "subject": "Alerta automática de stock bajo",
+      "description": "Como sistema, quiero emitir alerta cuando el stock cruce el umbral configurado para que la administración reponga a tiempo (RF.12, RS.1).\n\n**Criterios de aceptación**\n- inventory-svc evalúa al cambiar stock.\n- Publica stock.low con nivel.\n- Histéresis: una alerta por transición descendente, no spam.\n- notification-svc avisa a Jefe, Coord y Pañolero.",
+      "tags": [
+        [
+          "epic:gestion",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF.12",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 41,
+      "sprint_order": 8,
+      "kanban_order": 41,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 42,
+      "subject": "Niveles Normal/Bajo/Crítico de stock",
+      "description": "Como sistema, quiero clasificar el stock en tres niveles configurables por recurso para diferenciar la urgencia (RC.05).\n\n**Criterios de aceptación**\n- Cada recurso tiene umbral_bajo y umbral_critico.\n- UI muestra el nivel con color.\n- Solo Crítico genera notificación urgente.\n- Default global configurable.",
+      "tags": [
+        [
+          "epic:inventario",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RC.05",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 42,
+      "sprint_order": 9,
+      "kanban_order": 42,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 43,
+      "subject": "Reportes operativos del día (Pañolero)",
+      "description": "Como Pañolero, quiero ver los préstamos abiertos del día y los pendientes de devolución para gestionar mi turno (RF.9, RS-PN.5).\n\n**Criterios de aceptación**\n- Dashboard tótem con préstamos del día filtrables por estado.\n- Suma de préstamos atrasados.\n- Refresco automático cada 30s.",
+      "tags": [
+        [
+          "epic:reportes",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF.9",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 43,
+      "sprint_order": 10,
+      "kanban_order": 43,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 44,
+      "subject": "Reportes de gestión (Jefe / Coord)",
+      "description": "Como Jefe o Coord, quiero ver reportes de recursos más solicitados, tasas de pérdida, morosidad y stock crítico para tomar decisiones (RF.13, RF.9b, RS-JC.4, RS-CC.4).\n\n**Criterios de aceptación**\n- 5 reportes mínimos: top recursos, morosos, stock crítico, devoluciones con daño, tasa de incumplimiento.\n- Filtros por rango de fecha y carrera.\n- Export CSV.\n- UI portal sección Reportes.",
+      "tags": [
+        [
+          "epic:reportes",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF.13",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 44,
+      "sprint_order": 11,
+      "kanban_order": 44,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "8"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 45,
+      "subject": "Configurar parámetros operativos",
+      "description": "Como Jefe, quiero configurar TTL de reserva, umbrales de stock, ventana semestral y umbrales de scoring sin requerir despliegue (RS-JC.5).\n\n**Criterios de aceptación**\n- Tabla parametros_operativos con auditoría de cambios.\n- UI Administración → Parámetros.\n- Cambio surte efecto sin reiniciar.\n- Test de cada parámetro respetado por el servicio correspondiente.",
+      "tags": [
+        [
+          "epic:gestion",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RS-JC.5",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 45,
+      "sprint_order": 12,
+      "kanban_order": 45,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 46,
+      "subject": "Asistente: sugerir recursos por actividad",
+      "description": "Como Alumno, quiero pedirle al asistente recursos para una actividad concreta (por ejemplo práctica de redes capa 2) y recibir sugerencias para no investigar el catálogo manualmente (RF-C.03).\n\n**Criterios de aceptación**\n- Tool sugerir_recursos_por_actividad alimentada con tabla actividades_recursos curada por Pañolero.\n- RAG simple sobre la tabla.\n- Respuesta cita los ítems sugeridos.",
+      "tags": [
+        [
+          "epic:ia",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RF-C.03",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 46,
+      "sprint_order": 13,
+      "kanban_order": 46,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 47,
+      "subject": "Asistente con guardrail de moroso",
+      "description": "Como sistema, quiero que el asistente se niegue a ayudar a un usuario bloqueado por morosidad para coherencia con la regla RC.15.\n\n**Criterios de aceptación**\n- Servidor MCP rechaza tools de escritura si user.blocked.\n- Mensaje al usuario explicando la causa y derivando al Coord.\n- Test con usuario bloqueado y no bloqueado.",
+      "tags": [
+        [
+          "epic:ia",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ],
+        [
+          "RF:RC.15",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 47,
+      "sprint_order": 14,
+      "kanban_order": 47,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "3"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 48,
+      "subject": "Dead Letter Channel + reconciliación nocturna",
+      "description": "Como sistema, quiero capturar mensajes muertos y reconciliar stock vs préstamos abiertos cada noche para detectar inconsistencias (EIP).\n\n**Criterios de aceptación**\n- Exchange domain.dlx fanout y cola audit.dead-letters.\n- Servicio audit-svc o módulo en notification-svc persiste mensajes muertos.\n- Job nocturno en inventory-svc compara stock vs loans abiertos.\n- Discrepancias generan alerta in-app al Jefe.",
+      "tags": [
+        [
+          "epic:plataforma",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 48,
+      "sprint_order": 15,
+      "kanban_order": 48,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 49,
+      "subject": "Observabilidad: OpenTelemetry + Grafana",
+      "description": "Como equipo, quiero tener trazas distribuidas, logs estructurados y métricas básicas para debuggear y mostrar la cadena de eventos en mesa redonda.\n\n**Criterios de aceptación**\n- OpenTelemetry SDK en cada servicio.\n- Propagación de trace-id por headers AMQP.\n- Grafana con dashboards de Tempo y Loki.\n- Demo: una solicitud completa visible como traza única.",
+      "tags": [
+        [
+          "epic:plataforma",
+          null
+        ],
+        [
+          "team:B",
+          null
+        ],
+        [
+          "tipo:tecnica",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint 2",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 49,
+      "sprint_order": 16,
+      "kanban_order": 49,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    },
+    {
+      "ref": 50,
+      "subject": "Auditoría de acciones sensibles",
+      "description": "Como Jefe o auditor, quiero ver un log inmutable de toda acción sensible (login, bloqueo, materialización, baja, cambio de parámetro) para cumplir con la trazabilidad (RC.13, RC.14).\n\n**Criterios de aceptación**\n- Tabla audit_log append-only con tipo, actor, sujeto, payload-resumen, timestamp.\n- Cada servicio publica audit.event.\n- audit-svc consume y persiste.\n- UI Administración → Auditoría con filtros.",
+      "tags": [
+        [
+          "epic:gestion",
+          null
+        ],
+        [
+          "team:A",
+          null
+        ],
+        [
+          "tipo:negocio",
+          null
+        ],
+        [
+          "sprint:2",
+          null
+        ]
+      ],
+      "status": "New",
+      "milestone": "Sprint",
+      "is_closed": false,
+      "client_requirement": false,
+      "team_requirement": false,
+      "backlog_order": 50,
+      "sprint_order": 0,
+      "kanban_order": 50,
+      "created_date": "2026-04-27T00:00:00+0000",
+      "modified_date": "2026-04-27T00:00:00+0000",
+      "finish_date": null,
+      "external_reference": null,
+      "watchers": [],
+      "role_points": [
+        {
+          "role": "Equipo Feature",
+          "points": "5"
+        }
+      ],
+      "generated_from_issue": null,
+      "tribe_gig": null,
+      "due_date": null,
+      "due_date_reason": ""
+    }
+  ],
+  "epics": [],
+  "tasks": [],
+  "issues": [],
+  "wiki_pages": [],
+  "wiki_links": [],
+  "custom_attributes_values": {
+    "epics": [],
+    "userstories": [],
+    "tasks": [],
+    "issues": []
+  },
+  "userstorycustomattributes": [],
+  "taskcustomattributes": [],
+  "issuecustomattributes": [],
+  "epiccustomattributes": []
+}
