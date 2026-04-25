@@ -1,6 +1,6 @@
 # Diagramas — Sistema de Pañol
 
-Catálogo de los 14 diagramas que acompañan la documentación de arquitectura. Todos en formato `.drawio` (compatible con [diagrams.net](https://app.diagrams.net) y draw.io desktop).
+Catálogo de los 19 diagramas que acompañan la documentación de arquitectura. Todos en formato `.drawio` (compatible con [diagrams.net](https://app.diagrams.net) y draw.io desktop).
 
 ## Cómo abrir
 
@@ -57,16 +57,29 @@ Todos usan `shape=mxgraph.eip.*` con la nomenclatura oficial del libro de Hohpe.
 | `EIP-04-request-reply-correlation.drawio` | Request-Reply + Correlation Identifier | loan-svc envía request con `correlation_id` y `reply_to` a ai-risk-svc. Reply asíncrona vuelve por cola temporal. |
 | `EIP-05-outbox-idempotent-receiver.drawio` | Transactional Outbox + Idempotent Receiver | Servicio escribe BD + tabla `outbox_events` en una transacción. Relay polling publica al broker. Consumer deduplica con `processed_events`. |
 
+### Grupo D — Máquinas de estado UML
+
+Cubren el ciclo de vida de cada entidad principal según se contrata en `docs/architecture/08-estados-entidades.md`. Estados terminales con doble borde (`strokeWidth=3`). Notación: `disparador [guard] / efecto`.
+
+| Archivo | Entidad | Servicio dueño | Qué muestra |
+|---|---|---|---|
+| `STATE-01-usuario.drawio` | Usuario | `auth-svc` | `CREADO → PENDIENTE_CAMBIO_CLAVE → ACTIVO`, ciclos de bloqueo (morosidad RC.01 y administrativo RC.10), estado terminal `INACTIVO`. |
+| `STATE-02-solicitud.drawio` | Solicitud | `request-svc` | RC.16 completo: `BORRADOR`, `PENDIENTE`, `PENDIENTE_APROBACION`, `APROBADA`, terminales `MATERIALIZADA`/`MATERIALIZADA_PARCIAL`/`VENCIDA`/`CANCELADA`/`RECHAZADA`. Incluye el disparador delayed `request.expire`. |
+| `STATE-03-prestamo.drawio` | Préstamo | `loan-svc` | RC.17: `EN_CURSO` → `DEVUELTO`/`DEVUELTO_CON_FALTANTE`/`ANULADO`, con el flag transitorio `ATRASADO`. |
+| `STATE-04-recurso.drawio` | Recurso | `inventory-svc` | RC.18: `ACTIVO ↔ EN_MANTENCION`, terminal `BAJA`. Nota sobre por qué NORMAL/BAJO/CRITICO no son estados del recurso. |
+| `STATE-05-reserva-stock.drawio` | Reserva de stock | `inventory-svc` | `ACTIVA` → `CONSUMIDA`/`LIBERADA_PARCIAL`/`LIBERADA_POR_EXPIRACION`/`LIBERADA_POR_CANCELACION`. Cobertura de ADR-010 y RC.12. |
+
 ## Trazabilidad
 
 Cada diagrama está vinculado a documentos de `docs/architecture/`:
 
 | Diagrama | Doc relacionado |
 |---|---|
-| DC-01, DC-02 | `00-overview.md`, `02-topologia-microservicios.md` |
+| DC-01, DC-02 | `00-overview.md`, `02-topologia-microservicios.md`, `07-microservicios-responsabilidades.md` |
 | DC-03 | `02-topologia-microservicios.md` (sección despliegue) |
 | SEQ-* | `05-saga-coreografiada.md`, `06-ia-mcp.md` |
 | EIP-* | `04-eip-catalog.md`, `03-eventos-dominio.md` |
+| STATE-* | `08-estados-entidades.md`, `05-reglas-de-negocio.md` (RC.16/RC.17/RC.18) |
 
 Y a casos de uso de `docs/requirements/`:
 
@@ -77,6 +90,23 @@ Y a casos de uso de `docs/requirements/`:
 | SEQ-03 | CU3 + CU6 — Validación + scoring |
 | SEQ-04 | CU4 — Devolución |
 | SEQ-05 | CU7 — Asistente conversacional |
+| STATE-01 | CU1, CU2 (usuarios, bloqueo) |
+| STATE-02 | CU2 — Solicitud |
+| STATE-03 | CU3, CU4 — Préstamo, devolución |
+| STATE-04 | CU3 (administración de inventario) |
+| STATE-05 | CU2, CU3 (reserva y consumo de stock) |
+
+## Pendiente de actualización
+
+Los siguientes diagramas fueron creados antes de incorporar `reports-svc` (ADR-015) y **aún no lo muestran** como componente:
+
+- `DC-01-contexto.drawio` (menciona 3 sistemas externos; reports-svc no es externo, pero conviene actualizar leyenda)
+- `DC-02-componentes.drawio` (muestra 8 microservicios; debe pasar a 9)
+- `DC-03-despliegue.drawio` (nodos de aplicación deberían incluir reports-svc)
+- `EIP-01-topologia-mensajeria.drawio` (reports-svc no aparece como consumer en el bus)
+- `EIP-02-pubsub-content-router.drawio` (cuando el ejemplo usa `request.created`, falta la rama a reports-svc)
+
+La actualización de estos diagramas está planificada como tarea separada y no forma parte de la entrega que agregó los STATE-* y reports-svc a la documentación escrita.
 
 ## Exportación a PNG/SVG (para PPT)
 

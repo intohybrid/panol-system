@@ -176,7 +176,7 @@ Para el video y la mesa redonda, la tesis articulada es:
 
 **Problema**: los cuatro problemas documentados en `00-contexto.md` sección "Problema".
 
-**Propuesta**: sistema event-driven con ocho microservicios, integración explícita de EIP, IA aplicada al dominio (asistente + scoring), y metodología LeSS en Taiga.
+**Propuesta**: sistema event-driven con nueve microservicios (ocho transaccionales + `reports-svc` como read-model CQRS), integración explícita de EIP, IA aplicada al dominio (asistente + scoring), y metodología LeSS en Taiga.
 
 **Amenazas** (clasificadas arriba): dependencia LLM, pérdida de recursos, datos personales, disponibilidad, resistencia al cambio, fallas físicas, inyección, sesgo del scoring, costos LLM, futuros sistemas universitarios. Cada una con mitigación anclada en un requerimiento concreto.
 

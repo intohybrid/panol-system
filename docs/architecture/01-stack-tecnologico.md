@@ -37,6 +37,7 @@ panol-system/
 │   ├── notification-svc/
 │   ├── ai-risk-svc/
 │   ├── ai-assistant-svc/     # incluye el servidor MCP
+│   ├── reports-svc/          # read-model CQRS (ADR-015)
 │   ├── web-portal/           # Next.js
 │   └── totem/                # Vite + React
 ├── libs/

@@ -1,0 +1,71 @@
+<mxfile host="app.diagrams.net" agent="hand-crafted" type="device">
+  <diagram id="state-05-reserva" name="STATE-05 Reserva de stock">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="STATE-05 — Máquina de estado: Reserva de stock&#10;Servicio dueño: inventory-svc   |   Referencia: docs/architecture/08-estados-entidades.md §5   |   RC.06, RC.12, ADR-010" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1520" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="start" value="" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_activa" value="ACTIVA&#10;(stock retenido, no descontado)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="260" y="300" width="260" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_consumida" value="CONSUMIDA&#10;(préstamo materializado,&#10;stock descontado — terminal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="700" y="130" width="280" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_parcial" value="LIBERADA_PARCIAL&#10;(parte consumida, resto liberado&#10;— RF-C.06, terminal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="700" y="260" width="280" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_expiracion" value="LIBERADA_POR_EXPIRACION&#10;(TTL venció — terminal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="700" y="400" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_cancelacion" value="LIBERADA_POR_CANCELACION&#10;(solicitud cancelada — terminal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="700" y="520" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_start" value="request.created / request.approved&#10;[stock disponible, lock optimista OK — RC.12] /&#10;descuenta disponibilidad" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="start" target="s_activa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_cons" value="loan.issued [cantidad completa] /&#10;stock.changed motivo=PRESTAMO" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_activa" target="s_consumida">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_parcial" value="loan.issued [cantidad &lt; reservada] /&#10;descuenta parcial, reincorpora resto" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_activa" target="s_parcial">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_exp" value="request.expired /&#10;reincorpora todo +&#10;stock.changed motivo=LIBERACION_RESERVA" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_activa" target="s_expiracion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_canc" value="request.cancelled /&#10;reincorpora todo +&#10;stock.changed motivo=LIBERACION_RESERVA" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_activa" target="s_cancelacion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note_rc12" value="RC.12 — Concurrencia:&#10;cuando dos solicitudes compiten por&#10;el último ejemplar, solo una alcanza ACTIVA.&#10;La otra recibe error 409 sin publicar&#10;request.created. No llega a este diagrama." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;verticalAlign=top" vertex="1" parent="1">
+          <mxGeometry x="60" y="500" width="320" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note_sync" value="El ciclo de la Reserva está sincronizado&#10;con el ciclo de la Solicitud (STATE-02),&#10;pero es una entidad con identidad propia:&#10;la Reserva vive en inventory-svc,&#10;la Solicitud vive en request-svc.&#10;Se mueve por consumo de eventos de dominio." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top" vertex="1" parent="1">
+          <mxGeometry x="1050" y="310" width="340" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg" value="Verde: reserva viva   |   Morado doble borde: terminal" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="40" y="820" width="1520" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

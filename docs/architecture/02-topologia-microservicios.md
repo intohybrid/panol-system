@@ -8,7 +8,7 @@ Cada microservicio corresponde a un **bounded context** del dominio. La separaci
 2. **Data ownership**: cada servicio es único dueño de sus tablas. Si dos servicios necesitan la misma entidad, o está mal recortada o falta un evento.
 3. **Lenguaje ubicuo diferenciado**: "préstamo" en `loan-svc` no es lo mismo que "solicitud" en `request-svc`, aunque se confundan en el habla coloquial.
 
-## Los ocho servicios
+## Los ocho servicios de dominio + reports-svc
 
 ### `api-gateway`
 BFF para portal web y tótem. REST para comandos y queries, WebSocket para notificaciones push in-app. Autentica JWT, agrega datos, aplica rate-limit. No habla con el broker, habla HTTP con los demás servicios (o publica comandos en colas privadas si corresponde). Es el único punto de entrada desde el exterior.
@@ -33,6 +33,9 @@ Servicio de scoring. Expone endpoint `POST /score` con `{userId, requestedItems,
 
 ### `ai-assistant-svc`
 Servidor MCP + cliente que lo consume desde OpenAI. Expone tools al LLM: `consultar_inventario`, `validar_disponibilidad`, `sugerir_recursos_por_actividad`, `crear_solicitud_borrador`. El cliente traduce estas tools MCP a function calls de OpenAI y orquesta la conversación desde el portal web. Detalle en `06-ia-mcp.md`.
+
+### `reports-svc`
+Read-model dedicado bajo CQRS (ver ADR-015). No tiene lógica de dominio ni publica eventos; consume eventos de dominio de `domain.events` y mantiene proyecciones desnormalizadas en su propia base PostgreSQL, optimizadas para los reportes de `RF.13`: stock disponible/no disponible, recursos más y menos solicitados por período, devoluciones fuera de plazo por recurso y por usuario, recursos con mayor tasa de pérdida o baja. Expone sus queries por HTTP a través del API Gateway. Consistencia eventual (ventana típica < 2 s).
 
 ## Comunicación entre servicios
 

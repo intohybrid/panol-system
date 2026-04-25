@@ -32,7 +32,7 @@ Cada rol tiene responsabilidades acotadas y ninguno invade el trabajo del otro. 
 
 ## Componentes principales
 
-La tabla describe los ocho microservicios. El detalle de comunicación y datos vive en `02-topologia-microservicios.md`.
+La tabla describe los nueve microservicios. El detalle de comunicación y datos vive en `02-topologia-microservicios.md`.
 
 | Servicio | Responsabilidad | Ejemplos de eventos publicados |
 |---|---|---|
@@ -43,6 +43,7 @@ La tabla describe los ocho microservicios. El detalle de comunicación y datos v
 | `notification-svc` | Notificaciones in-app, bandeja persistente, ticket PDF. | `notification.delivered` |
 | `ai-risk-svc` | Scoring de riesgo de morosidad por usuario y recurso. | `risk.scored` |
 | `ai-assistant-svc` | Asistente conversacional (servidor MCP + cliente OpenAI). | `assistant.suggested` |
+| `reports-svc` | Read-model consumer puro (CQRS). Proyecciones desnormalizadas para reportes de gestión. | — (no publica eventos de dominio) |
 | `api-gateway` | BFF HTTP/WebSocket entre frontends y los servicios internos. | — |
 
 ## Flujo principal: solicitud a préstamo
@@ -59,7 +60,7 @@ El caso de compensación ocurre cuando el alumno no se presenta en el pañol ant
 
 ## Alcance del MVP
 
-El MVP funcional cubre los flujos de los ocho servicios en modo single-sede, con autenticación local JWT y notificaciones in-app. No incluye:
+El MVP funcional cubre los flujos de los nueve servicios en modo single-sede, con autenticación local JWT y notificaciones in-app. No incluye:
 
 - SSO federado (Keycloak / Entra ID / Google Workspace).
 - Escaneo de QR o código de barras con periféricos en el tótem.

@@ -1,0 +1,149 @@
+<mxfile host="app.diagrams.net" agent="hand-crafted" type="device">
+  <diagram id="state-02-solicitud" name="STATE-02 Solicitud">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="STATE-02 — Máquina de estado: Solicitud&#10;Servicio dueño: request-svc   |   Referencia: docs/architecture/08-estados-entidades.md §2   |   RC.16, RF-C.05, RF-C.06, ADR-010" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1720" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="start" value="" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_borrador" value="BORRADOR&#10;(asistente, auto-caduca 24 h)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="180" y="110" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_pendiente" value="PENDIENTE&#10;(stock reservado + TTL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="380" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_pendap" value="PENDIENTE_APROBACION&#10;(solo Especial multi-día)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="180" y="600" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_aprobada" value="APROBADA&#10;(Especial con stock reservado)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="600" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_rechazada" value="RECHAZADA&#10;(terminal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="180" y="760" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_matfull" value="MATERIALIZADA&#10;(terminal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="900" y="280" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_matparc" value="MATERIALIZADA_PARCIAL&#10;(terminal, RF-C.06)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="900" y="400" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_vencida" value="VENCIDA&#10;(TTL expiró, terminal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="900" y="560" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_cancelada" value="CANCELADA&#10;(terminal)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;strokeWidth=3" vertex="1" parent="1">
+          <mxGeometry x="900" y="720" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_start_pend" value="usuario confirma estándar&#10;[validaciones RF-C.04 OK] /&#10;publica request.created + request.expire (delayed, TTL)" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="start" target="s_pendiente">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_start_bor" value="asistente crea draft" style="endArrow=classic;html=1;fontSize=11" edge="1" parent="1" source="start" target="s_borrador">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_bor_pend" value="usuario confirma" style="endArrow=classic;html=1;fontSize=11" edge="1" parent="1" source="s_borrador" target="s_pendiente">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_start_papr" value="usuario confirma Especial /&#10;publica request.pending_approval" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="start" target="s_pendap">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_pap_apr" value="Coord/Jefe aprueba /&#10;request.approved + reserva" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_pendap" target="s_aprobada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_pap_rech" value="Coord/Jefe rechaza /&#10;request.rejected" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_pendap" target="s_rechazada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_pend_matfull" value="loan.issued&#10;[todos los ítems completos]" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_pendiente" target="s_matfull">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_pend_matparc" value="loan.issued&#10;[parcial, RF-C.06] /&#10;libera reserva faltante" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_pendiente" target="s_matparc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_apr_matfull" value="loan.issued [completo]" style="endArrow=classic;html=1;fontSize=10;curved=1" edge="1" parent="1" source="s_aprobada" target="s_matfull">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="630" />
+              <mxPoint x="850" y="315" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_apr_matparc" value="loan.issued [parcial]" style="endArrow=classic;html=1;fontSize=10;curved=1" edge="1" parent="1" source="s_aprobada" target="s_matparc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_pend_venc" value="mensaje delayed request.expire&#10;[estado == PENDIENTE] /&#10;publica request.expired" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_pendiente" target="s_vencida">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_apr_venc" value="request.expire [estado == APROBADA]" style="endArrow=classic;html=1;fontSize=10;curved=1" edge="1" parent="1" source="s_aprobada" target="s_vencida">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="630" />
+              <mxPoint x="860" y="595" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_pend_canc" value="usuario/operador cancela /&#10;request.cancelled" style="endArrow=classic;html=1;fontSize=10" edge="1" parent="1" source="s_pendiente" target="s_cancelada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_pap_canc" value="usuario cancela" style="endArrow=classic;html=1;fontSize=10;curved=1" edge="1" parent="1" source="s_pendap" target="s_cancelada">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_apr_canc" value="usuario/operador cancela" style="endArrow=classic;html=1;fontSize=10;curved=1" edge="1" parent="1" source="s_aprobada" target="s_cancelada">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="note_blocked" value="Consumer de user.blocked:&#10;cancela automáticamente&#10;solicitudes PENDIENTE/APROBADA&#10;del usuario recién bloqueado." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=top" vertex="1" parent="1">
+          <mxGeometry x="1270" y="720" width="240" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note_ttl" value="request.expire (delayed):&#10;publicado junto con request.created,&#10;x-delay = TTL_ms.&#10;Handler idempotente — descarta&#10;si estado ya es terminal distinto&#10;de PENDIENTE/APROBADA." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=top" vertex="1" parent="1">
+          <mxGeometry x="1270" y="520" width="260" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg" value="Verde: estado operativo   |   Amarillo: transitorio / draft   |   Azul: esperando decisión   |   Morado doble borde: terminal" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="40" y="1020" width="1720" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

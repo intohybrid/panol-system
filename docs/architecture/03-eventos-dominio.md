@@ -56,7 +56,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `createdAt` | ISO-8601 | Timestamp de creación. |
 
 **Publica**: `auth-svc` tras crear un usuario (individual o por importación Excel).  
-**Consumen**: `notification-svc` (saludo personalizado — RS.3), `ai-risk-svc` (para inicializar perfil de riesgo base).
+**Consumen**: `notification-svc` (saludo personalizado — RS.3), `ai-risk-svc` (para inicializar perfil de riesgo base), `reports-svc` (proyección `proyeccion_usuarios`).
 
 #### `user.blocked` / `user.unblocked`
 
@@ -69,7 +69,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `effectiveAt` | ISO-8601 | |
 
 **Publica**: `auth-svc` (al persistir el bloqueo, incluso si fue gatillado por `loan-svc`).  
-**Consumen**: `request-svc` (para rechazar solicitudes futuras — RC.15), `notification-svc` (informar al usuario), `ai-assistant-svc` (el asistente debe negarse a ayudar a un moroso).
+**Consumen**: `request-svc` (para rechazar solicitudes futuras — RC.15), `notification-svc` (informar al usuario), `ai-assistant-svc` (el asistente debe negarse a ayudar a un moroso), `reports-svc` (actualiza proyección de usuarios).
 
 ---
 
@@ -86,19 +86,19 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `loanId` | UUID nullable | Si aplica. |
 
 **Publica**: `inventory-svc` cada vez que cambia el stock de un recurso (transición RC.18).  
-**Consumen**: `notification-svc` (si cruza umbral, emite alerta), proyección de reportes (vía `loan-svc`).
+**Consumen**: `notification-svc` (si cruza umbral, emite alerta), `reports-svc` (proyección de stock y recursos top).
 
 #### `stock.low`
 
 | Campo | Tipo | Descripción |
 |---|---|---|
 | `recursoId` | UUID | |
-| `nivel` | enum | `NORMAL` / `BAJO` / `CRITICO` (RC.05). |
+| `nivel` | enum | `BAJO` / `CRITICO` (RC.05). Un evento `stock.low` solo se publica cuando el stock cruza el umbral descendente. La transición de retorno a `NORMAL` (al reponer stock) se notifica con el evento separado `stock.normalized` (mismo payload, mismo patrón), que permite a `notification-svc` cerrar alertas abiertas sin ambigüedad semántica en el nombre del evento. |
 | `stockActual` | integer | |
 | `umbral` | integer | Umbral configurado para ese recurso. |
 
-**Publica**: `inventory-svc` cuando una transición de stock cruza el umbral descendente (histéresis de un evento por transición).  
-**Consumen**: `notification-svc` (alerta a Jefe, Coord y Pañolero — RS.1, RF.12).
+**Publica**: `inventory-svc` cuando una transición de stock cruza el umbral descendente (histéresis de un evento por transición, sin rebotes). El evento simétrico `stock.normalized` se publica al cruzar el umbral en sentido ascendente.  
+**Consumen**: `notification-svc` (alerta a Jefe, Coord y Pañolero — RS.1, RF.12; `stock.normalized` cierra la alerta), `reports-svc` (estado actual del indicador).
 
 #### `stock.lost`
 
@@ -111,7 +111,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `tipo` | enum | `FALTANTE` / `DANADO_NO_FUNCIONAL`. |
 
 **Publica**: `inventory-svc` al procesar una devolución con faltante o daño (RC.17, RF-C.07).  
-**Consumen**: `loan-svc` (contabiliza contra morosidad — RC.01), `notification-svc` (alerta), reportes.
+**Consumen**: `loan-svc` (contabiliza contra morosidad — RC.01), `notification-svc` (alerta), `reports-svc` (proyección de pérdidas por recurso).
 
 ---
 
@@ -132,7 +132,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `tipoPrestamo` | enum | `NORMAL` / `ESPECIAL_MULTIDIA` (RC.02, RF-C.05). |
 
 **Publica**: `request-svc` tras validar disponibilidad (Request-Reply con `inventory-svc`), consultar scoring (Request-Reply con `ai-risk-svc`) y aplicar RC.01/RC.10/RC.11.  
-**Consumen**: `inventory-svc` (marca la reserva como activa), `notification-svc` (confirma al usuario), `ai-assistant-svc` (actualiza contexto conversacional).
+**Consumen**: `inventory-svc` (marca la reserva como activa), `notification-svc` (confirma al usuario), `ai-assistant-svc` (actualiza contexto conversacional), `reports-svc` (proyección de solicitudes por recurso y período).
 
 #### `request.cancelled`
 
@@ -144,7 +144,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `cancelledAt` | ISO-8601 | |
 
 **Publica**: `request-svc`.  
-**Consumen**: `inventory-svc` (libera reserva), `notification-svc` (informa al usuario).
+**Consumen**: `inventory-svc` (libera reserva), `notification-svc` (informa al usuario), `reports-svc` (actualiza proyección de solicitudes).
 
 #### `request.expired`
 
@@ -154,7 +154,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `expiredAt` | ISO-8601 | |
 
 **Publica**: `request-svc` tras recibir el mensaje delayed del exchange `domain.delayed` (Message Expiration).  
-**Consumen**: `inventory-svc` (libera reserva), `notification-svc` (avisa al usuario).
+**Consumen**: `inventory-svc` (libera reserva), `notification-svc` (avisa al usuario), `reports-svc` (actualiza proyección de solicitudes).
 
 ---
 
@@ -174,7 +174,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `ticketId` | string | Correlativo generado por el sistema (RC.07). |
 
 **Publica**: `loan-svc` tras materializar en el tótem.  
-**Consumen**: `inventory-svc` (descuenta stock definitivamente), `notification-svc` (genera PDF y entrega ticket), reportes.
+**Consumen**: `inventory-svc` (descuenta stock definitivamente), `notification-svc` (genera PDF y entrega ticket), `reports-svc` (proyección de recursos top y agregados de préstamos).
 
 #### `loan.returned`
 
@@ -187,7 +187,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `ticketDevolucionId` | string | Correlativo del ticket de devolución. |
 
 **Publica**: `loan-svc` al registrar devolución en el tótem.  
-**Consumen**: `inventory-svc` (reabre stock y publica `stock.lost` si corresponde), `notification-svc` (PDF de devolución), reportes.
+**Consumen**: `inventory-svc` (reabre stock y publica `stock.lost` si corresponde), `notification-svc` (PDF de devolución), `reports-svc` (proyección de devoluciones tardías por recurso y por usuario).
 
 #### `loan.overdue`
 
@@ -199,7 +199,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `detectedAt` | ISO-8601 | |
 
 **Publica**: `loan-svc` cuando un job periódico detecta que `fechaLimite < now()` y el préstamo sigue abierto.  
-**Consumen**: `notification-svc` (alerta moroso — RF.11), `auth-svc` (evalúa bloqueo automático — RC.01, cuando se cumple el tercer atraso en el semestre).
+**Consumen**: `notification-svc` (alerta moroso — RF.11), `auth-svc` (evalúa bloqueo automático — RC.01, cuando se cumple el tercer atraso en el semestre), `reports-svc` (proyección de devoluciones tardías por usuario).
 
 ---
 
@@ -216,7 +216,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `modelVersion` | string | Para auditabilidad del modelo. |
 
 **Publica**: `ai-risk-svc` asíncrono tras responder un scoring síncrono (Request-Reply). La respuesta síncrona decide el flujo; el evento es para registro y análisis.  
-**Consumen**: reportes, auditoría.
+**Consumen**: `reports-svc` (auditoría del modelo, dataset de reentrenamiento).
 
 ---
 
@@ -233,7 +233,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `deliveredAt` | ISO-8601 | |
 
 **Publica**: `notification-svc`.  
-**Consumen**: Reportes de efectividad de notificación, auditoría.
+**Consumen**: `reports-svc` (efectividad de notificación), auditoría.
 
 ---
 
@@ -244,6 +244,7 @@ Los eventos no se publican directamente desde el código de dominio. El servicio
 | `user.*` | Publish-Subscribe | `domain.events` | `user.*` |
 | `stock.changed` | Publish-Subscribe | `domain.events` | `stock.changed` |
 | `stock.low` | Publish-Subscribe + Content-Based Router | `domain.events` | `stock.low` |
+| `stock.normalized` | Publish-Subscribe | `domain.events` | `stock.normalized` |
 | `stock.lost` | Publish-Subscribe | `domain.events` | `stock.lost` |
 | `request.created` | Publish-Subscribe | `domain.events` | `request.created` |
 | `request.cancelled` | Publish-Subscribe | `domain.events` | `request.cancelled` |
