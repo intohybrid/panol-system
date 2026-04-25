@@ -30,11 +30,19 @@ Total: **1 gateway + 8 servicios de dominio + 1 read-model = 9 microservicios ba
 
 **Tipo**: Gateway / BFF (Backend for Frontend).  
 **Clasificación**: No es microservicio de dominio. Agrega y orquesta.  
-**ADR asociado**: ADR-008.
+**ADR asociado**: ADR-008, ADR-016.
 
 ### Responsabilidad
 
-Es el único punto de entrada HTTP desde los frontends (`web-portal`, `totem`). Autentica con JWT, aplica rate-limit, agrega datos de múltiples servicios cuando es necesario, y expone un WebSocket para notificaciones push in-app.
+Es el único punto de entrada HTTP desde los frontends (`web-portal`, `totem`). Autentica con JWT, aplica rate-limit, agrega datos de múltiples servicios cuando es necesario, y expone un WebSocket para notificaciones push in-app. **Las UIs llaman exclusivamente a este servicio**; nunca hablan directo con otros microservicios.
+
+### Despliegue y contrato con las UIs
+
+Detalle completo en `09-despliegue-uis.md`. Resumen:
+
+- MVP local: gateway en `http://localhost:4000`; portal en `:3000`; tótem en `:3001`. CORS con lista explícita de orígenes.
+- JWT viaja en header `Authorization: Bearer` tanto en REST como en el handshake de Socket.IO.
+- Para producción: topología path-based detrás de reverse proxy (`/`, `/totem`, `/api`, `/api/ws`) sin cambiar el código cliente.
 
 ### Datos propios
 

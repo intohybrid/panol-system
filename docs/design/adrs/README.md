@@ -19,6 +19,7 @@ Registro de decisiones arquitectónicas del Sistema de Pañol. Formato: MADR bre
 | [ADR-013](ADR-013-sso-federado-roadmap.md) | SSO federado como roadmap; JWT local en MVP. | Aceptada para MVP |
 | [ADR-014](ADR-014-coordinador-administra-docentes.md) | Coordinador puede administrar usuarios Docentes (extiende el Caso 11). | Aceptada |
 | [ADR-015](ADR-015-reports-svc-read-model.md) | Reports-svc como microservicio dedicado con read-model propio (CQRS). | Aceptada |
+| [ADR-016](ADR-016-despliegue-uis-path-routing.md) | Despliegue de UIs con puerto separado en MVP, JWT en header. | Aceptada para MVP |
 
 ## Cómo agregar un ADR
 

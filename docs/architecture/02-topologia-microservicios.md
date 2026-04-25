@@ -11,7 +11,7 @@ Cada microservicio corresponde a un **bounded context** del dominio. La separaci
 ## Los ocho servicios de dominio + reports-svc
 
 ### `api-gateway`
-BFF para portal web y tótem. REST para comandos y queries, WebSocket para notificaciones push in-app. Autentica JWT, agrega datos, aplica rate-limit. No habla con el broker, habla HTTP con los demás servicios (o publica comandos en colas privadas si corresponde). Es el único punto de entrada desde el exterior.
+BFF para portal web y tótem. REST para comandos y queries, WebSocket para notificaciones push in-app. Autentica JWT, agrega datos, aplica rate-limit. No habla con el broker, habla HTTP con los demás servicios (o publica comandos en colas privadas si corresponde). **Es el único punto de entrada desde el exterior**: las UIs (`web-portal`, `totem`) llaman exclusivamente a este servicio, nunca directo a otros microservicios. Los detalles de despliegue de las UIs, CORS, transporte de JWT y topología del edge están en `09-despliegue-uis.md` (decisión formalizada en ADR-016).
 
 ### `auth-svc`
 Dueño de usuarios, roles (Jefe de Carrera, Coordinador, Pañolero, Docente, Alumno) y sesiones. Emite `user.created`, `user.blocked`, `user.unblocked`. JWT firmado con clave rotable. SSO federado diferido.
