@@ -1,5 +1,5 @@
 {
-  "name": "Sistema de Pañol — UNAB Viña del Mar",
+  "name": "Sistema de Pañol — UNAB Viña del Mar v2",
   "slug": "panol-unab",
   "description": "Sistema de gestión de pañol para la Escuela de Informática UNAB Viña del Mar. Caso 11 del MIT Design Full Stack + MIT Design AI. Backlog único, metodología LeSS básica con 2 equipos Feature, sprints de 2 semanas.",
   "creation_template": null,
@@ -2947,12 +2947,6 @@
   "issues": [],
   "wiki_pages": [],
   "wiki_links": [],
-  "custom_attributes_values": {
-    "epics": [],
-    "userstories": [],
-    "tasks": [],
-    "issues": []
-  },
   "userstorycustomattributes": [],
   "taskcustomattributes": [],
   "issuecustomattributes": [],

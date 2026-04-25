@@ -1,0 +1,112 @@
+<mxfile host="app.diagrams.net" agent="generator" type="device">
+  <diagram id="SEQ-02" name="Crear solicitud (CU2)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="SEQ-02 — Crear solicitud de préstamo (CU2)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="10" width="1400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Patrones: Request-Reply (verifica stock), Publish-Subscribe (notifica pañolero), Message Expiration (TTL reserva)." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="1400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_alumno" value="Alumno" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_web" value="web-portal" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_gw" value="api-gateway" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_req" value="request-svc" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_inv" value="inventory-svc" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="870" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_broker" value="RabbitMQ&#10;domain.delayed +&#10;domain.events" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_notif" value="notification-svc" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="note_ttl" value="TTL de reserva (Message Expiration):&#10;si request no es validada en 15 min,&#10;DLX dispara compensación (ver SEQ-06)." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="600" width="380" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="1: arma carrito (items + fechas)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="215" y="140" as="sourcePoint" />
+            <mxPoint x="395" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2: POST /requests" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="395" y="175" as="sourcePoint" />
+            <mxPoint x="575" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3: createRequest()" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="575" y="210" as="sourcePoint" />
+            <mxPoint x="755" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="4: GET /stock?items=[...] (Request-Reply)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="245" as="sourcePoint" />
+            <mxPoint x="935" y="245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="5: { item: stock disponible }" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="935" y="280" as="sourcePoint" />
+            <mxPoint x="755" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="6: validar reglas (RC.16) + persistir PENDIENTE_VALIDACION" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;curved=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="315" as="sourcePoint" />
+            <mxPoint x="815" y="345" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="7: publish request.created&#10;x-message-ttl=15min" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="380" as="sourcePoint" />
+            <mxPoint x="1115" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8: 201 Created (requestId)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="420" as="sourcePoint" />
+            <mxPoint x="575" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="9: 201 + tracking link" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="575" y="455" as="sourcePoint" />
+            <mxPoint x="395" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10: muestra solicitud en estado PENDIENTE" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="395" y="490" as="sourcePoint" />
+            <mxPoint x="215" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="11: deliver request.created (binding)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1115" y="540" as="sourcePoint" />
+            <mxPoint x="1295" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m12" value="12: crear notificación in-app al pañolero" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;curved=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1295" y="580" as="sourcePoint" />
+            <mxPoint x="1355" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

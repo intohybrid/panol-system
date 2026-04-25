@@ -306,9 +306,6 @@ def build():
         "issues": [],
         "wiki_pages": [],
         "wiki_links": [],
-        "custom_attributes_values": {
-            "epics": [], "userstories": [], "tasks": [], "issues": []
-        },
         "userstorycustomattributes": [],
         "taskcustomattributes": [],
         "issuecustomattributes": [],

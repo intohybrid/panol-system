@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" agent="generator" type="device">
+  <diagram id="EIP-02" name="Pub-Sub + CBR">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="EIP-02 — Publish-Subscribe + Content-Based Router" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="10" width="1400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="request.created se publica una vez; routing keys lo dirigen a múltiples consumidores." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="1400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="pub" value="request-svc&#10;(Publisher)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="250" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="msg" value="request.created&#10;routing_key=request.created.high_priority" style="sketch=0;html=1;dashed=0;strokeColor=#000;fillColor=#fff;shape=mxgraph.eip.message;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="340" y="260" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="pubsub" value="domain.events&#10;Publish-Subscribe Channel&#10;(topic)" style="sketch=0;html=1;dashed=0;strokeColor=#000;fillColor=#fff;shape=mxgraph.eip.publishSubscribe;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="240" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="router" value="Content-Based Router&#10;(routing key matching)" style="sketch=0;html=1;dashed=0;strokeColor=#000;fillColor=#fff;shape=mxgraph.eip.contentBasedRouter;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="980" y="240" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sub_notif" value="notification-svc&#10;(in-app + ticket PDF)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="100" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sub_risk" value="ai-risk-svc&#10;(actualiza features)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="220" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sub_auth" value="auth-svc&#10;(actualiza historial usuario)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="340" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sub_audit" value="audit log&#10;(persistencia compliance)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="460" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="publish()" style="endArrow=classic;html=1;" edge="1" parent="1" source="pub" target="msg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="msg" target="pubsub">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="pubsub" target="router">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="[*.created.*]" style="endArrow=classic;html=1;" edge="1" parent="1" source="router" target="sub_notif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="[*.created.*]" style="endArrow=classic;html=1;" edge="1" parent="1" source="router" target="sub_risk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="[*.created.high_priority]" style="endArrow=classic;html=1;" edge="1" parent="1" source="router" target="sub_auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="[#] (catch-all)" style="endArrow=classic;html=1;" edge="1" parent="1" source="router" target="sub_audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note1" value="Pub-Sub:&#10;Un evento publicado se entrega a TODOS los consumidores&#10;suscritos. Cada uno tiene su propia cola y avanza independiente." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="450" width="480" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="Content-Based Router:&#10;Las reglas viven en los bindings de RabbitMQ&#10;(routing_key + pattern). Cambiar reglas no requiere&#10;modificar el publisher." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="560" width="480" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

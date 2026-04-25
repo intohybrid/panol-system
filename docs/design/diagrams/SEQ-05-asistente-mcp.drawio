@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net" agent="generator" type="device">
+  <diagram id="SEQ-05" name="Asistente MCP (CU7)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="SEQ-05 — Asistente conversacional con MCP (CU7)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="10" width="1400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Function calling de OpenAI invoca tools MCP del backend. Guardrails RC.15." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="1400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_alumno" value="Alumno" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_web" value="web-portal" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_gw" value="api-gateway" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_assist" value="ai-assistant-svc" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_openai" value="OpenAI API" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="910" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_inv" value="inventory-svc&#10;(via MCP tool)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_req" value="request-svc&#10;(via MCP tool)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="note_mcp" value="MCP expone 6 tools: search_catalog,&#10;check_availability, create_request,&#10;get_user_history, get_blocked_status, get_score_estimate." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="110" y="770" width="480" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="note_block" value="Si guardrail detecta bloqueo (RC.15), el flujo termina&#10;en paso 4 con respuesta de error sin llamar a OpenAI." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="620" y="770" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="1: &quot;necesito multímetro y protoboard para mañana&quot;" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="215" y="140" as="sourcePoint" />
+            <mxPoint x="405" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2: POST /assistant/chat" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="405" y="175" as="sourcePoint" />
+            <mxPoint x="595" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3: chat({userId, message})" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="210" as="sourcePoint" />
+            <mxPoint x="785" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="4: guardrail: usuario bloqueado? (RC.15)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;curved=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="245" as="sourcePoint" />
+            <mxPoint x="845" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="5: chat.completions(messages, tools=MCP)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="295" as="sourcePoint" />
+            <mxPoint x="975" y="295" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="6: tool_call: search_catalog(&quot;multímetro&quot;)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="975" y="335" as="sourcePoint" />
+            <mxPoint x="785" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="7: invoca tool MCP" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="370" as="sourcePoint" />
+            <mxPoint x="1165" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8: [item: multimetro-fluke, stock: 4]" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1165" y="405" as="sourcePoint" />
+            <mxPoint x="785" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="9: tool_response" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="440" as="sourcePoint" />
+            <mxPoint x="975" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10: tool_call: check_availability(itemIds, fechas)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="975" y="475" as="sourcePoint" />
+            <mxPoint x="785" y="475" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="11: invoca tool MCP" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="510" as="sourcePoint" />
+            <mxPoint x="1165" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m12" value="12: { disponible: true }" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1165" y="545" as="sourcePoint" />
+            <mxPoint x="785" y="545" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m13" value="13: tool_response" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="580" as="sourcePoint" />
+            <mxPoint x="975" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m14" value="14: respuesta natural + propuesta create_request" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="975" y="615" as="sourcePoint" />
+            <mxPoint x="785" y="615" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m15" value="15: { reply, suggestedAction }" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="650" as="sourcePoint" />
+            <mxPoint x="595" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m16" value="16: 200 OK" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="685" as="sourcePoint" />
+            <mxPoint x="405" y="685" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m17" value="17: muestra respuesta + botón &quot;crear solicitud&quot;" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;dashed=1;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="405" y="720" as="sourcePoint" />
+            <mxPoint x="215" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

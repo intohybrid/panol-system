@@ -89,6 +89,14 @@ Sprint 1 quedó por encima de la velocity esperada (107 vs ~100 objetivo). En el
 | `epic:portal` | UI Next.js | `web-portal` |
 | `epic:totem` | UI tótem | `totem` |
 
+## Cómo importar
+
+Hay dos destinos soportados, elige el que prefieras:
+
+- **Jira Cloud via API** (recomendado si el CSV importer te falla): script Python que crea epics, sprints y stories directamente via API REST. Guía en [`jira-import-via-api.md`](./jira-import-via-api.md). Script: [`import_to_jira.py`](./import_to_jira.py).
+- **Jira Cloud via CSV**: si el importer CSV de Jira funciona en tu site. Guía en [`jira-import.md`](./jira-import.md). Archivo: [`jira-import.csv`](./jira-import.csv).
+- **Taiga**: JSON dump al Project Importer. Instrucciones más abajo. Archivo: [`taiga-dump.json`](./taiga-dump.json).
+
 ## Cómo importar a Taiga
 
 > **Nota importante**: Taiga **no tiene un CSV importer integrado en la UI**. Las opciones reales son: (1) subir un JSON dump al Project Importer, (2) usar la Taiga API con un script, o (3) cargar manualmente. El método recomendado es (1).

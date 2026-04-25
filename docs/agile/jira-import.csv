@@ -1,0 +1,362 @@
+Issue Id,Issue Type,Summary,Description,Status,Priority,Sprint,Story Points,Parent,Labels,Labels,Labels,Labels
+EPIC-01,Epic,Autenticación y usuarios,"Login, JWT, gestión de usuarios y roles",To Do,Medium,,,,epic:auth,,,
+EPIC-02,Epic,Gestión y administración,"Bloqueos, alertas, parámetros, auditoría",To Do,Medium,,,,epic:gestion,,,
+EPIC-03,Epic,Inteligencia artificial,Scoring de riesgo y asistente conversacional,To Do,Medium,,,,epic:ia,,,
+EPIC-04,Epic,Inventario y catálogo,"CRUD de recursos, estados y niveles de stock",To Do,Medium,,,,epic:inventario,,,
+EPIC-05,Epic,Notificaciones in-app,"Bandeja, WebSocket y PDF de respaldo",To Do,Medium,,,,epic:notificaciones,,,
+EPIC-06,Epic,Plataforma base,Setup monorepo e infraestructura compartida,To Do,Medium,,,,epic:plataforma,,,
+EPIC-07,Epic,Portal web (Next.js),"UI principal para alumnos, docentes y admin",To Do,Medium,,,,epic:portal,,,
+EPIC-08,Epic,Préstamos y devoluciones,"Materialización, devoluciones y tickets",To Do,Medium,,,,epic:prestamos,,,
+EPIC-09,Epic,Reportes operativos y de gestión,"Dashboards para Pañolero, Coordinador y Jefe",To Do,Medium,,,,epic:reportes,,,
+EPIC-10,Epic,Solicitudes web y workflow,"Creación de solicitudes, estados y TTL",To Do,Medium,,,,epic:solicitudes,,,
+EPIC-11,Epic,Tótem (modo kiosko),UI del Pañolero para validar y entregar,To Do,Medium,,,,epic:totem,,,
+US-001,Story,Setup monorepo con pnpm + turborepo,"Como equipo, quiero un monorepo con apps y libs separadas para que cada microservicio se desarrolle de forma independiente compartiendo código tipado.
+
+**Criterios de aceptación**
+- pnpm-workspace.yaml definido con apps/* y libs/*.
+- turbo.json con tareas build, test, lint, typecheck.
+- README de root con instrucciones de boot.
+- Pipeline mínima de build verde en CI.",To Do,Medium,Sprint 0,5,EPIC-06,team:A,tipo:tecnica,,
+US-002,Story,Levantar docker-compose con RabbitMQ + Postgres,"Como equipo, quiero docker-compose que levante el stack mínimo (RabbitMQ con plugins delayed-message y shovel, Postgres 16, Adminer, Grafana, Loki, Tempo) para desarrollar localmente.
+
+**Criterios de aceptación**
+- compose up arranca todos los servicios sin errores.
+- Plugin rabbitmq_delayed_message_exchange habilitado.
+- Postgres expone puerto 5432 con user/passwd de dev.
+- README de infra con comandos de boot, reset y logs.",To Do,Medium,Sprint 0,5,EPIC-06,team:A,tipo:tecnica,,
+US-003,Story,Definir biblioteca compartida libs/events con Zod,"Como equipo, quiero esquemas Zod compartidos entre publishers y consumers para que los contratos de eventos sean type-safe y validables en runtime.
+
+**Criterios de aceptación**
+- libs/events/ con un esquema por evento listado en docs/architecture/03-eventos-dominio.md.
+- Validación al publicar y al consumir.
+- Test unitario por esquema.
+- Versión declarada (x-schema-version).",To Do,Medium,Sprint 0,5,EPIC-06,team:B,tipo:tecnica,,
+US-004,Story,"Crear módulo común infra-nestjs (logging, tracing, outbox)","Como equipo, quiero módulos NestJS reutilizables para que los 8 servicios compartan logging estructurado (Pino), tracing OpenTelemetry y outbox pattern sin duplicar código.
+
+**Criterios de aceptación**
+- Módulo LoggingModule con Pino + correlation-id.
+- Módulo TracingModule con OpenTelemetry SDK + propagación AMQP.
+- Módulo OutboxModule con tabla outbox_events + relay (@nestjs/schedule).
+- Documentación de uso en libs/infra-nestjs/README.",To Do,Medium,Sprint 0,8,EPIC-06,team:B,tipo:tecnica,,
+US-005,Story,Pipeline CI/CD en GitHub Actions,"Como equipo, quiero que cada push corra build, lint, type-check y tests por servicio para que la calidad no dependa de la disciplina manual.
+
+**Criterios de aceptación**
+- Workflow ci.yml con matrix por app.
+- Cache de pnpm y turbo.
+- Build de Docker image por servicio (no push en MVP).
+- Badge de estado en README root.",To Do,Medium,Sprint 0,5,EPIC-06,team:A,tipo:tecnica,,
+US-006,Story,Login con email y password emite JWT,"Como cualquier usuario, quiero autenticarme con email y contraseña para recibir un JWT y operar en el sistema (RF.1).
+
+**Criterios de aceptación**
+- POST /auth/login devuelve access token JWT firmado.
+- Token incluye userId, role, sessionId.
+- Contraseñas almacenadas con bcrypt.
+- Tests unitarios y e2e del happy path y de credenciales inválidas.",To Do,Medium,Sprint 0,5,EPIC-01,team:A,tipo:negocio,RF:RF.1,
+US-007,Story,Cambio obligatorio de clave en primer login,"Como usuario, debo cambiar mi clave la primera vez que inicio sesión y luego cada 90 días para que mi cuenta cumpla la política de seguridad (RF-C.10, RC.13).
+
+**Criterios de aceptación**
+- Flag must_change_password en BD.
+- Endpoint POST /auth/change-password.
+- Bloqueo de toda otra acción hasta que se cumpla.
+- Política configurable de longitud y complejidad.",To Do,Medium,Sprint 0,3,EPIC-01,team:A,tipo:negocio,RF:RF-C.10,
+US-008,Story,Saludo personalizado y cierre por inactividad,"Como usuario logueado, quiero que el portal muestre mi nombre y cierre mi sesión tras X minutos de inactividad para que mi cuenta no quede expuesta (RS.3, RS.4).
+
+**Criterios de aceptación**
+- Saludo con nombre del usuario en header del portal y tótem.
+- Inactividad configurable: portal 15 min por defecto, tótem mantiene sesión durante el turno (excepción RC.14).
+- Modal de aviso 1 min antes del cierre.",To Do,Medium,Sprint 0,3,EPIC-01,team:A,tipo:negocio,RF:RS.3,RF:RS.4
+US-009,Story,"Crear usuarios administrativos (Jefe → Coord, Pañolero)","Como Jefe de Carrera, quiero crear y modificar usuarios de perfil Coordinador y Pañolero para conformar el equipo administrativo del pañol (RF.2, RC.08).
+
+**Criterios de aceptación**
+- UI portal sección Administración → Usuarios.
+- Validaciones de unicidad de documento y email.
+- Solo roles Jefe y (transitivamente) Coord pueden ver esta sección.
+- Baja lógica (no hard delete).
+- Publica user.created/user.updated.",To Do,Medium,Sprint 0,5,EPIC-01,team:A,tipo:negocio,RF:RF.2,
+US-010,Story,Identificación sin RUT chileno,"Como usuario internacional o sin RUT, quiero identificarme con DNI, pasaporte u otro ID para registrarme en el sistema (RF-C.12, RC.04).
+
+**Criterios de aceptación**
+- Campo documento permite cualquier formato alfanumérico hasta 30 caracteres.
+- Tipo_documento enum: RUT, DNI, PASAPORTE, OTRO.
+- Unicidad por (tipo_documento, documento).
+- No hay validación de dígito verificador chileno.",To Do,Medium,Sprint 0,2,EPIC-01,team:B,tipo:negocio,RF:RF-C.12,
+US-011,Story,Crear alumnos individualmente,"Como Coordinador, quiero crear alumnos uno a uno para registrar a un estudiante que se incorporó tarde a la carrera (RF.3, RS-CC.1).
+
+**Criterios de aceptación**
+- Form con nombres, apellidos, documento, email, carrera.
+- Validación obligatoria de nombres en plural (SP.13).
+- Genera contraseña inicial aleatoria que se entrega por canal seguro.
+- Marca must_change_password=true.",To Do,Medium,Sprint 0,3,EPIC-01,team:B,tipo:negocio,RF:RF.3,
+US-012,Story,Importar alumnos desde Excel/CSV,"Como Coordinador, quiero subir un archivo Excel con alumnos para registrar a la generación entrante de un golpe (RS-CC.2, RF.3 alterno).
+
+**Criterios de aceptación**
+- Drag-and-drop en portal acepta .xlsx y .csv.
+- Validación pre-import: fila por fila, errores reportados antes de persistir.
+- Reporte de éxito/fallo descargable.
+- Idempotente: si una fila ya existe (por documento) se omite con warning.",To Do,Medium,Sprint 0,5,EPIC-01,team:B,tipo:negocio,RF:RF.3,
+US-013,Story,Tótem en modo kiosko (shell Vite + React),"Como Pañolero, quiero que el tótem arranque en pantalla completa sin barra de navegador para que no haya distracciones durante la atención.
+
+**Criterios de aceptación**
+- Vite + React + Zustand inicial.
+- Modo fullscreen automático al login.
+- Sesión persistente durante el turno.
+- Configuración por env: URL del API gateway.",To Do,Medium,Sprint 0,5,EPIC-11,team:B,tipo:tecnica,,
+US-014,Story,Portal Next.js con login,"Como Alumno, Docente, Coord o Jefe, quiero entrar al portal para usar las funciones de mi perfil.
+
+**Criterios de aceptación**
+- Next.js 14 con App Router.
+- Página /login y middleware de auth.
+- Redirecciones por rol (alumno → /home, jefe → /admin, etc.).
+- TanStack Query configurado.",To Do,Medium,Sprint 0,5,EPIC-07,team:A,tipo:tecnica,,
+US-015,Story,CRUD de recursos del inventario,"Como Pañolero o Jefe, quiero crear, modificar y dar de baja recursos del inventario para mantener actualizado el catálogo (RF.4, RC.03, RC.18).
+
+**Criterios de aceptación**
+- Form con nombre, descripción, categoría (Material/Herramienta/Equipo), stock, unidad.
+- Baja lógica (estado=BAJA).
+- Publica stock.changed con motivo.
+- Auditoría de cambios.",To Do,Medium,Sprint 1,5,EPIC-04,team:B,tipo:negocio,RF:RF.4,
+US-016,Story,Imagen 150x100 del recurso,"Como Pañolero, al crear un recurso quiero subir una imagen 150x100 px para que aparezca en el portal y en el tótem (RC.09, RS-PN.1).
+
+**Criterios de aceptación**
+- Upload con preview.
+- Validación de tamaño exacto 150x100 px (con redimensionamiento sugerido si excede).
+- Almacenamiento en object storage (filesystem local en MVP).
+- Reflejada en listados y detalle.",To Do,Medium,Sprint 1,3,EPIC-04,team:B,tipo:negocio,RF:RF.4,
+US-017,Story,Estado En Mantención de un recurso,"Como Pañolero o Jefe, quiero marcar un recurso como En Mantención para que no aparezca disponible mientras se repara (RF-C.08, RC.18).
+
+**Criterios de aceptación**
+- Estado adicional en RC.18.
+- Transiciones: Disponible → En_Mantencion → Disponible o Baja.
+- Recursos En_Mantencion no aparecen en validador de disponibilidad.
+- Auditoría con motivo y fecha estimada de retorno.",To Do,Medium,Sprint 1,3,EPIC-04,team:B,tipo:negocio,RF:RF-C.08,
+US-018,Story,Crear solicitud web,"Como Alumno o Docente, quiero crear una solicitud desde el portal seleccionando recursos y fecha de retiro para asegurar disponibilidad antes de ir al pañol (RF.5).
+
+**Criterios de aceptación**
+- UI con buscador de recursos y carrito.
+- Validación de disponibilidad pre-confirmación (Request-Reply a inventory-svc).
+- Confirmación dispara transición Borrador → Reservada.
+- Notificación in-app de confirmación.",To Do,Medium,Sprint 1,8,EPIC-10,team:A,tipo:negocio,RF:RF.5,
+US-019,Story,Workflow de estados de solicitud,"Como sistema, quiero que cada solicitud transite los estados Borrador, Reservada, Materializada, Materializada_Parcial, Cancelada, Expirada para que el flujo sea trazable (RC.16).
+
+**Criterios de aceptación**
+- Máquina de estados implementada en request-svc.
+- Transiciones inválidas rechazadas.
+- Tabla request_state_history para auditoría.
+- Test de cada transición.",To Do,Medium,Sprint 1,5,EPIC-10,team:A,tipo:negocio,RF:RC.16,
+US-020,Story,TTL de reserva con Message Expiration,"Como sistema, quiero que las reservas expiren automáticamente al cumplirse el TTL configurable para liberar el stock sin job externo (RF-C.01, RC.06).
+
+**Criterios de aceptación**
+- Exchange domain.delayed con plugin x-delayed-message.
+- request-svc publica request.expire al crear solicitud con header x-delay=ttl_ms.
+- Al recibir el mensaje, valida estado actual y publica request.expired si aplica.
+- inventory-svc libera reserva.
+- Configurable por Jefe (default 4h).",To Do,Medium,Sprint 1,8,EPIC-10,team:A,tipo:negocio,RF:RF-C.01,
+US-021,Story,Workflow con blacklist en creación de solicitud,"Como sistema, quiero que un usuario en blacklist no pueda crear solicitudes para forzar el cumplimiento de la regla de morosidad (RF-C.04, RC.01, RC.10).
+
+**Criterios de aceptación**
+- request-svc consulta auth-svc por bloqueo activo.
+- Si está bloqueado, retorna 403 con motivo.
+- Notificación in-app al usuario explicando la causa.
+- Test con casos blacklist y unblacklist.",To Do,Medium,Sprint 1,5,EPIC-10,team:A,tipo:negocio,RF:RF-C.04,
+US-022,Story,Validar solicitud en tótem ítem por ítem,"Como Pañolero, quiero abrir la solicitud por documento del solicitante y marcar disponibilidad real ítem por ítem para confirmar que puedo entregar lo solicitado (RF.6, CN.05).
+
+**Criterios de aceptación**
+- UI tótem busca por documento o ID.
+- Lista ítems con checkbox disponible_real.
+- No materializa hasta que el Pañolero confirme.
+- Acción sensible: requiere PIN.",To Do,Medium,Sprint 1,5,EPIC-11,team:A,tipo:negocio,RF:RF.6,
+US-023,Story,PIN de cuatro dígitos para acciones sensibles,"Como sistema, quiero que validar, prestar, devolver y dar de baja exijan re-ingresar PIN de 4 dígitos del Pañolero para reducir el riesgo de uso indebido del tótem (RF-C.09, RC.14).
+
+**Criterios de aceptación**
+- Modal de PIN con 4 dígitos numéricos.
+- 3 intentos antes de bloquear y forzar re-login.
+- Logging de cada validación de PIN (éxito/fracaso) en auditoría.",To Do,Medium,Sprint 1,3,EPIC-11,team:A,tipo:negocio,RF:RF-C.09,
+US-024,Story,Materializar solicitud en préstamo,"Como Pañolero, quiero confirmar la materialización de la solicitud para crear el préstamo y descontar el stock (RF.7, RC.07, RC.17).
+
+**Criterios de aceptación**
+- loan-svc crea préstamo en estado Activo.
+- Genera ticketId correlativo.
+- Publica loan.issued (Outbox).
+- Solicitud transita a Materializada.
+- Concurrencia optimista contra otra materialización simultánea.",To Do,Medium,Sprint 1,8,EPIC-08,team:A,tipo:negocio,RF:RF.7,
+US-025,Story,Registrar préstamos y devoluciones,"Como Pañolero, quiero registrar la devolución de un préstamo consignando el estado de cada recurso para cerrar el ciclo (RF.8, RC.17).
+
+**Criterios de aceptación**
+- UI tótem busca préstamo por documento o ticketId.
+- Para cada ítem: estado OK, DAÑADO, FALTANTE.
+- loan-svc emite loan.returned y stock.lost si corresponde.
+- inventory-svc reabre o decrementa stock según el caso.",To Do,Medium,Sprint 1,8,EPIC-08,team:A,tipo:negocio,RF:RF.8,
+US-026,Story,Préstamo parcial,"Como Pañolero, quiero materializar una solicitud entregando menos unidades de las solicitadas si solo hay parte disponible para que el flujo no se bloquee (RF-C.06).
+
+**Criterios de aceptación**
+- En la pantalla de validación, ajustar cantidad por ítem.
+- loan-svc registra cantidad efectiva.
+- Solicitud transita a Materializada_Parcial.
+- Diferencia se libera de la reserva, no se cuenta como pérdida.",To Do,Medium,Sprint 1,5,EPIC-08,team:A,tipo:negocio,RF:RF-C.06,
+US-027,Story,Estados de devolución (OK/Dañado/Faltante),"Como Pañolero, quiero clasificar cada recurso devuelto para que el inventario refleje pérdidas y daños reales (RF-C.07, RC.17, RC.18).
+
+**Criterios de aceptación**
+- 3 estados disponibles en UI tótem.
+- DAÑADO transiciona el recurso a En_Mantencion.
+- FALTANTE publica stock.lost y registra contra historial del usuario.
+- OK reabre stock disponible.",To Do,Medium,Sprint 1,5,EPIC-08,team:A,tipo:negocio,RF:RF-C.07,
+US-028,Story,Ticket PDF de respaldo,"Como sistema, quiero generar un ticket PDF descargable tras cada préstamo y devolución para que el usuario tenga respaldo (RF.10, RC.07).
+
+**Criterios de aceptación**
+- notification-svc consume loan.issued y loan.returned.
+- Genera PDF con PDFKit (logo, ticketId, items, fecha, firma del Pañolero).
+- Adjunta al evento de notificación.
+- Descargable desde portal y desde la bandeja.",To Do,Medium,Sprint 1,5,EPIC-05,team:B,tipo:negocio,RF:RF.10,
+US-029,Story,Notificaciones in-app por WebSocket,"Como usuario, quiero recibir notificaciones en tiempo real cuando cambia el estado de mi solicitud o préstamo para enterarme sin recargar.
+
+**Criterios de aceptación**
+- Socket.IO en api-gateway.
+- notification-svc empuja evento al gateway.
+- Cliente portal y tótem muestra toast + actualiza bandeja.
+- Reconexión automática.",To Do,Medium,Sprint 1,5,EPIC-05,team:B,tipo:tecnica,,
+US-030,Story,Bandeja persistente in-app,"Como usuario, quiero ver mis notificaciones leídas y no leídas desde el portal y poder marcarlas como leídas para gestionar mi información (RF.10).
+
+**Criterios de aceptación**
+- Tabla notifications en notification-svc con TTL 90 días.
+- UI portal con paginación, filtros (no leídas) y marcar todas.
+- Contador en header.",To Do,Medium,Sprint 1,3,EPIC-05,team:B,tipo:negocio,RF:RF.10,
+US-031,Story,Historial personal de solicitudes y préstamos,"Como Alumno o Docente, quiero ver mi historial de los últimos 24 meses para revisar mis solicitudes pasadas (RF-C.11).
+
+**Criterios de aceptación**
+- UI portal /historial con tabla y filtros (estado, fecha, tipo).
+- Backend: agrega request-svc + loan-svc.
+- Pagina con cursor.
+- Solo el propio usuario puede ver el suyo.",To Do,Medium,Sprint 1,5,EPIC-07,team:B,tipo:negocio,RF:RF-C.11,
+US-032,Story,Asistente conversacional - tools básicas,"Como Alumno o Docente, quiero conversar con un asistente para preguntarle qué hay disponible y armar mi solicitud sin conocer el catálogo de memoria (RF-C.03).
+
+**Criterios de aceptación**
+- ai-assistant-svc con servidor MCP.
+- Tools: consultar_inventario, validar_disponibilidad, crear_solicitud_borrador.
+- Cliente OpenAI function calling.
+- UI chat embebido en portal.
+- Memoria conversacional 7 días.
+- Borrador siempre requiere confirmación explícita del usuario.",To Do,Medium,Sprint 1,13,EPIC-03,team:B,tipo:negocio,RF:RF-C.03,
+US-033,Story,Solicitud en nombre de otro usuario,"Como Pañolero (en tótem) o Coordinador (en portal), quiero crear una solicitud a nombre de un Alumno o Docente que no puede generarla por sí mismo para no bloquear su retiro (RF-C.13).
+
+**Criterios de aceptación**
+- Buscador de usuario en formulario de solicitud.
+- Solicitud queda asociada al documento del solicitante.
+- Flag creada_por_operador=true y operador_id registrado.
+- Notificación al solicitante de que se creó en su nombre.",To Do,Medium,Sprint 1,5,EPIC-10,team:A,tipo:negocio,RF:RF-C.13,
+US-034,Story,Modelo de scoring de riesgo entrenado,"Como ai-risk-svc, quiero un modelo Random Forest entrenado offline en scikit-learn y exportado a ONNX para servir scoring con baja latencia (RF-C.02, RC.11).
+
+**Criterios de aceptación**
+- Notebook de entrenamiento con datos sintéticos.
+- Modelo ONNX en libs/risk-model/.
+- onnxruntime-node en ai-risk-svc.
+- Endpoint AMQP risk.score con timeout 1.5s.
+- Test con 5 perfiles de usuario.",To Do,Medium,Sprint 2,13,EPIC-03,team:B,tipo:negocio,RF:RF-C.02,
+US-035,Story,Aplicar score en flujo de solicitud,"Como request-svc, quiero consultar score antes de aceptar la solicitud y aplicar las acciones por umbral para reducir morosidad preventivamente (RC.11).
+
+**Criterios de aceptación**
+- score<0.4 acepta normal.
+- 0.4-0.7 marca flag riesgo_medio en tótem.
+- ≥0.7 rechaza con drivers como explicación.
+- Umbrales configurables por Jefe.
+- Fallback a score 0.5 si timeout.",To Do,Medium,Sprint 2,5,EPIC-03,team:B,tipo:negocio,RF:RC.11,
+US-036,Story,Préstamo Especial multi-día,"Como Docente, quiero solicitar un préstamo Especial multi-día para llevar un equipo a una clase fuera del horario normal (RF-C.05, RC.02).
+
+**Criterios de aceptación**
+- UI portal opción tipo_prestamo=ESPECIAL_MULTIDIA.
+- Campos adicionales: fecha_inicio, fecha_fin, motivo.
+- Estado adicional Pendiente_Aprobacion.
+- Validación: solo Docente puede solicitar autónomamente; Alumno requiere patrocinador (Docente o Coord).",To Do,Medium,Sprint 2,8,EPIC-10,team:A,tipo:negocio,RF:RF-C.05,
+US-037,Story,Aprobación de préstamos Especiales,"Como Coord o Jefe, quiero aprobar o rechazar los préstamos Especiales pendientes para autorizar el uso multi-día (RF-C.05).
+
+**Criterios de aceptación**
+- Bandeja UI Administración → Pendientes.
+- Acción aprobar/rechazar con motivo.
+- Si aprueba, transita a Reservada y aplica TTL extendido (configurable).
+- Notificación al solicitante.",To Do,Medium,Sprint 2,5,EPIC-10,team:A,tipo:negocio,RF:RF-C.05,
+US-038,Story,Alerta automática de morosos,"Como sistema, quiero detectar préstamos atrasados y emitir loan.overdue para alertar a quienes corresponda (RF.11).
+
+**Criterios de aceptación**
+- Job en loan-svc que cada 5 min detecta fechaLimite < now y estado=Activo.
+- Publica loan.overdue una vez por préstamo.
+- notification-svc avisa al usuario y al Coord como observador.",To Do,Medium,Sprint 2,5,EPIC-02,team:A,tipo:negocio,RF:RF.11,
+US-039,Story,Bloqueo automático por regla RC.01,"Como sistema, quiero bloquear automáticamente al usuario al detectar el tercer atraso del semestre para hacer cumplir la política (RF.14, RC.01).
+
+**Criterios de aceptación**
+- loan-svc cuenta atrasos por usuario en ventana semestral.
+- Al alcanzar el umbral, publica solicitud de bloqueo.
+- auth-svc persiste user.blocked con reason=MOROSIDAD_AUTOMATICA.
+- Notificación al usuario y al Coord.",To Do,Medium,Sprint 2,8,EPIC-02,team:A,tipo:negocio,RF:RF.14,
+US-040,Story,Bloqueo manual de morosos,"Como Coord (alumnos y docentes) o Pañolero (solo alumnos), quiero bloquear o desbloquear con motivo obligatorio para gestionar casos especiales (RC.10, RC.08, RS-CC.3, RS-PN.6).
+
+**Criterios de aceptación**
+- UI Administración → Usuarios con acción Bloquear/Desbloquear.
+- Motivo obligatorio.
+- Auditoría con operador_id y timestamp.
+- Pañolero no ve la opción para Docentes ni Admin.",To Do,Medium,Sprint 2,3,EPIC-02,team:A,tipo:negocio,RF:RC.10,
+US-041,Story,Alerta automática de stock bajo,"Como sistema, quiero emitir alerta cuando el stock cruce el umbral configurado para que la administración reponga a tiempo (RF.12, RS.1).
+
+**Criterios de aceptación**
+- inventory-svc evalúa al cambiar stock.
+- Publica stock.low con nivel.
+- Histéresis: una alerta por transición descendente, no spam.
+- notification-svc avisa a Jefe, Coord y Pañolero.",To Do,Medium,Sprint 2,5,EPIC-02,team:B,tipo:negocio,RF:RF.12,
+US-042,Story,Niveles Normal/Bajo/Crítico de stock,"Como sistema, quiero clasificar el stock en tres niveles configurables por recurso para diferenciar la urgencia (RC.05).
+
+**Criterios de aceptación**
+- Cada recurso tiene umbral_bajo y umbral_critico.
+- UI muestra el nivel con color.
+- Solo Crítico genera notificación urgente.
+- Default global configurable.",To Do,Medium,Sprint 2,3,EPIC-04,team:B,tipo:negocio,RF:RC.05,
+US-043,Story,Reportes operativos del día (Pañolero),"Como Pañolero, quiero ver los préstamos abiertos del día y los pendientes de devolución para gestionar mi turno (RF.9, RS-PN.5).
+
+**Criterios de aceptación**
+- Dashboard tótem con préstamos del día filtrables por estado.
+- Suma de préstamos atrasados.
+- Refresco automático cada 30s.",To Do,Medium,Sprint 2,3,EPIC-09,team:B,tipo:negocio,RF:RF.9,
+US-044,Story,Reportes de gestión (Jefe / Coord),"Como Jefe o Coord, quiero ver reportes de recursos más solicitados, tasas de pérdida, morosidad y stock crítico para tomar decisiones (RF.13, RF.9b, RS-JC.4, RS-CC.4).
+
+**Criterios de aceptación**
+- 5 reportes mínimos: top recursos, morosos, stock crítico, devoluciones con daño, tasa de incumplimiento.
+- Filtros por rango de fecha y carrera.
+- Export CSV.
+- UI portal sección Reportes.",To Do,Medium,Sprint 2,8,EPIC-09,team:B,tipo:negocio,RF:RF.13,
+US-045,Story,Configurar parámetros operativos,"Como Jefe, quiero configurar TTL de reserva, umbrales de stock, ventana semestral y umbrales de scoring sin requerir despliegue (RS-JC.5).
+
+**Criterios de aceptación**
+- Tabla parametros_operativos con auditoría de cambios.
+- UI Administración → Parámetros.
+- Cambio surte efecto sin reiniciar.
+- Test de cada parámetro respetado por el servicio correspondiente.",To Do,Medium,Sprint 2,5,EPIC-02,team:A,tipo:negocio,RF:RS-JC.5,
+US-046,Story,Asistente: sugerir recursos por actividad,"Como Alumno, quiero pedirle al asistente recursos para una actividad concreta (por ejemplo práctica de redes capa 2) y recibir sugerencias para no investigar el catálogo manualmente (RF-C.03).
+
+**Criterios de aceptación**
+- Tool sugerir_recursos_por_actividad alimentada con tabla actividades_recursos curada por Pañolero.
+- RAG simple sobre la tabla.
+- Respuesta cita los ítems sugeridos.",To Do,Medium,Sprint 2,5,EPIC-03,team:B,tipo:negocio,RF:RF-C.03,
+US-047,Story,Asistente con guardrail de moroso,"Como sistema, quiero que el asistente se niegue a ayudar a un usuario bloqueado por morosidad para coherencia con la regla RC.15.
+
+**Criterios de aceptación**
+- Servidor MCP rechaza tools de escritura si user.blocked.
+- Mensaje al usuario explicando la causa y derivando al Coord.
+- Test con usuario bloqueado y no bloqueado.",To Do,Medium,Sprint 2,3,EPIC-03,team:B,tipo:negocio,RF:RC.15,
+US-048,Story,Dead Letter Channel + reconciliación nocturna,"Como sistema, quiero capturar mensajes muertos y reconciliar stock vs préstamos abiertos cada noche para detectar inconsistencias (EIP).
+
+**Criterios de aceptación**
+- Exchange domain.dlx fanout y cola audit.dead-letters.
+- Servicio audit-svc o módulo en notification-svc persiste mensajes muertos.
+- Job nocturno en inventory-svc compara stock vs loans abiertos.
+- Discrepancias generan alerta in-app al Jefe.",To Do,Medium,Sprint 2,5,EPIC-06,team:A,tipo:tecnica,,
+US-049,Story,Observabilidad: OpenTelemetry + Grafana,"Como equipo, quiero tener trazas distribuidas, logs estructurados y métricas básicas para debuggear y mostrar la cadena de eventos en mesa redonda.
+
+**Criterios de aceptación**
+- OpenTelemetry SDK en cada servicio.
+- Propagación de trace-id por headers AMQP.
+- Grafana con dashboards de Tempo y Loki.
+- Demo: una solicitud completa visible como traza única.",To Do,Medium,Sprint 2,5,EPIC-06,team:B,tipo:tecnica,,
+US-050,Story,Auditoría de acciones sensibles,"Como Jefe o auditor, quiero ver un log inmutable de toda acción sensible (login, bloqueo, materialización, baja, cambio de parámetro) para cumplir con la trazabilidad (RC.13, RC.14).
+
+**Criterios de aceptación**
+- Tabla audit_log append-only con tipo, actor, sujeto, payload-resumen, timestamp.
+- Cada servicio publica audit.event.
+- audit-svc consume y persiste.
+- UI Administración → Auditoría con filtros.",To Do,Medium,Sprint 2,5,EPIC-02,team:A,tipo:negocio,,
