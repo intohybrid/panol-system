@@ -13,6 +13,13 @@ Registro de decisiones arquitectónicas del Sistema de Pañol. Formato: MADR bre
 | [ADR-007](ADR-007-notificaciones-in-app-vs-email.md) | Notificaciones in-app en MVP, email diferido. | Aceptada para MVP |
 | [ADR-008](ADR-008-gateway-propio-vs-kong.md) | API Gateway propio en NestJS (BFF) en lugar de Kong/Traefik. | Aceptada para MVP |
 | [ADR-009](ADR-009-cloud-agnostico.md) | Diseño cloud-agnóstico, sin lock-in a AWS/Azure/GCP. | Aceptada |
+| [ADR-010](ADR-010-reserva-stock-ttl.md) | Reserva de stock con TTL configurable usando Message Expiration. | Aceptada |
+| [ADR-011](ADR-011-pin-totem-sesion-persistente.md) | PIN de 4 dígitos en tótem con sesión persistente durante el turno. | Aceptada |
+| [ADR-012](ADR-012-qr-codigo-barras-roadmap.md) | QR y código de barras como roadmap, fuera del MVP. | Aceptada para MVP |
+| [ADR-013](ADR-013-sso-federado-roadmap.md) | SSO federado como roadmap; JWT local en MVP. | Aceptada para MVP |
+| [ADR-014](ADR-014-coordinador-administra-docentes.md) | Coordinador puede administrar usuarios Docentes (extiende el Caso 11). | Aceptada |
+| [ADR-015](ADR-015-reports-svc-read-model.md) | Reports-svc como microservicio dedicado con read-model propio (CQRS). | Aceptada |
+| [ADR-016](ADR-016-despliegue-uis-path-routing.md) | Despliegue de UIs con puerto separado en MVP, JWT en header. | Aceptada para MVP |
 
 ## Cómo agregar un ADR
 

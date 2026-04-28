@@ -1,0 +1,5 @@
+Issue Id,Issue Type,Summary,Description,Status,Priority,Sprint,Story Points,Parent,Labels
+EPIC-01,Epic,Autenticación y usuarios,"Login, JWT, gestión de usuarios y roles",To Do,Medium,,,,epic:auth
+EPIC-06,Epic,Plataforma base,Setup monorepo e infraestructura compartida,To Do,Medium,,,,epic:plataforma
+US-001,Story,Setup monorepo con pnpm + turborepo,Monorepo con pnpm y turborepo para microservicios con libs compartidas.,To Do,Medium,Sprint 0,5,EPIC-06,team:A
+US-006,Story,Login con email y password emite JWT,Autenticación con email y password que devuelve JWT firmado con bcrypt.,To Do,Medium,Sprint 0,5,EPIC-01,team:A

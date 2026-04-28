@@ -246,9 +246,9 @@ La matriz de `07-trazabilidad.md` sección "Por rol" está resumida ("RS-JC.1 a 
 
 Términos como "solicitud", "préstamo", "reserva", "materialización", "validación" se usan consistentemente pero conviene un glosario corto en un archivo aparte o en `00-contexto.md` para la defensa y para acelerar la lectura del revisor.
 
-### HG.18 — Referencias a ADRs que aún no existen
+### HG.18 — Referencias a ADRs que aún no existen [RESUELTO 2026-04-25]
 
-Varios archivos referencian ADR-001…ADR-013 (especialmente `06-supuestos-contradicciones-dudas.md` Sección D). Esos ADRs aún no están escritos (task #1). Mientras no existan, los links son "a futuro". No es un defecto; es una nota para la fase de arquitectura.
+Varios archivos referenciaban ADR-001…ADR-013 (especialmente `06-supuestos-contradicciones-dudas.md` Sección D). **Resuelto**: los 15 ADRs están escritos y versionados en `docs/design/adrs/` (ADR-001 a ADR-015). Índice actualizado en `docs/design/adrs/README.md`. Todas las referencias cruzadas desde requirements, arquitectura y CLAUDE.md apuntan a archivos existentes.
 
 ### HG.19 — RF-C.11 Historial personal podría precisar alcance
 

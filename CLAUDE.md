@@ -12,7 +12,7 @@ Es a la vez un trabajo académico (video final con rúbrica) y un proyecto con p
 
 - **Backend**: Node.js + TypeScript + NestJS (microservicios). No Express puro.
 - **Broker de mensajes**: RabbitMQ. Toda comunicación entre servicios va por el broker, no HTTP directo (salvo excepciones justificadas).
-- **Base de datos**: PostgreSQL con Prisma ORM. No MongoDB — sustitución consciente respecto del stack MERN original (ver `docs/design/adrs/ADR-002-descartar-mongodb.md`).
+- **Base de datos**: PostgreSQL con Prisma ORM. No MongoDB — sustitución consciente respecto del stack MERN original (ver `docs/design/adrs/ADR-002-postgresql-vs-mongodb.md`).
 - **Frontend web (portal alumnos/docentes)**: Next.js + TypeScript.
 - **Frontend tótem (pañolero)**: Vite + React + TypeScript.
 - **IA**: Servidor MCP (`@modelcontextprotocol/sdk`) expuesto al asistente; cliente adapta MCP a OpenAI function calling.
@@ -45,14 +45,14 @@ LeSS básico con dos equipos Feature, un único Product Backlog, Product Owner �
 - No llamar HTTP entre microservicios (salvo API Gateway → servicios, o casos justificados).
 - No acceder a la BD de otro servicio. Cada servicio es dueño de su schema.
 - No mezclar responsabilidades entre frontends (el tótem no hace crear-cuenta; el portal no hace validación de préstamo).
-- No usar `enviar email` — notificaciones son **in-app** en esta fase (ver `ADR-007-notificaciones-in-app.md`).
+- No usar `enviar email` — notificaciones son **in-app** en esta fase (ver `ADR-007-notificaciones-in-app-vs-email.md`).
 - No implementar QR/código de barras todavía — está en roadmap, no en MVP.
 - No introducir librerías sin actualizar `docs/standards/00-coding-standards.md`.
 
 ## Cómo arrancar
 
 1. Leer `docs/requirements/` para entender el caso.
-2. Leer `docs/architecture/00-overview.md` y `03-eip-catalog.md`.
+2. Leer `docs/architecture/00-overview.md` y `04-eip-catalog.md`.
 3. Leer los ADRs relevantes en `docs/design/adrs/`.
 4. Levantar infra local con `docker-compose up` (ver `docs/standards/00-coding-standards.md`).
 

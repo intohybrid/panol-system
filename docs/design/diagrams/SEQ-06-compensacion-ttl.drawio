@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" agent="generator" type="device">
+  <diagram id="SEQ-06" name="Compensación TTL (saga)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="SEQ-06 — Compensación: TTL de reserva vencido" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="10" width="1400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Patrón Message Expiration + Dead Letter Channel + Idempotent Receiver." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="1400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_req" value="request-svc" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_delayed" value="Exchange&#10;domain.delayed" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_dlx" value="Exchange&#10;domain.dlx" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_inv" value="inventory-svc" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_notif" value="notification-svc" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="910" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ll_alumno" value="Alumno&#10;(via in-app)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="80" width="130" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="note_idem" value="Idempotent Receiver: si el evento se reentrega,&#10;request-svc consulta processed_events por&#10;correlation_id y descarta duplicados." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="110" y="640" width="520" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="note_compensation" value="Esta es la compensación principal de la saga.&#10;Aplica también a fallos downstream&#10;(p.ej. inventory-svc rechaza por stock 0)." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="680" y="640" width="420" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="1: publish request.created&#10;x-delay=15min" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="215" y="140" as="sourcePoint" />
+            <mxPoint x="405" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2: tiempo transcurrido sin validación" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;curved=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="405" y="190" as="sourcePoint" />
+            <mxPoint x="465" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3: TTL expirado → DLX captura" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="405" y="250" as="sourcePoint" />
+            <mxPoint x="595" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="4: deliver request.expired" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="300" as="sourcePoint" />
+            <mxPoint x="215" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="5: cancela request → estado EXPIRADA" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;curved=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="215" y="340" as="sourcePoint" />
+            <mxPoint x="275" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="6: publish request.cancelled" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="215" y="400" as="sourcePoint" />
+            <mxPoint x="595" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="7: deliver request.cancelled" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="440" as="sourcePoint" />
+            <mxPoint x="785" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8: libera reserva (no había stock comprometido aún)" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=block;endFill=1;curved=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785" y="480" as="sourcePoint" />
+            <mxPoint x="845" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="9: deliver request.cancelled" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="540" as="sourcePoint" />
+            <mxPoint x="975" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10: notif. &quot;tu solicitud expiró por falta de validación&quot;" style="html=1;verticalAlign=bottom;startSize=8;endSize=8;jettySize=auto;orthogonalLoop=1;endArrow=open;endFill=0;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="975" y="580" as="sourcePoint" />
+            <mxPoint x="1165" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
