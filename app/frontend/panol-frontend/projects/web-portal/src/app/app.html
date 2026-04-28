@@ -1,0 +1,66 @@
+<div style="font-family: sans-serif; padding: 20px; max-width: 800px; margin: auto;">
+  <header style="border-bottom: 2px solid #e11d48; padding-bottom: 10px; margin-bottom: 20px;">
+    <h1 style="color: #e11d48;">Portal de Pañol — UNAB</h1>
+    <p>Bienvenido, Alumno Demo</p>
+  </header>
+
+  <section style="display: grid; grid-template-columns: 1fr 300px; gap: 30px;">
+    <div>
+      <h2>Recursos Disponibles</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+        @for (item of api.resources(); track item.id) {
+          <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; background: #f9f9f9;">
+            <h3 style="margin-top: 0;">{{ item.nombre }}</h3>
+            <p style="color: #666; font-size: 0.9em;">Categoría: {{ item.categoria }}</p>
+            <p>
+              <strong>Disponible:</strong> {{ item.stock - item.stockReservado }}
+            </p>
+            <button 
+              (click)="solicitar(item.id)"
+              style="background: #e11d48; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; width: 100%;"
+              [disabled]="(item.stock - item.stockReservado) <= 0">
+              Solicitar
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Asistente IA -->
+    <aside style="background: #f1f5f9; border-radius: 8px; display: flex; flex-direction: column; border: 1px solid #cbd5e1;">
+      <div style="background: #0f172a; color: white; padding: 10px; border-radius: 8px 8px 0 0; font-weight: bold;">
+        Asistente IA
+      </div>
+      <div style="flex: 1; padding: 10px; overflow-y: auto; min-height: 300px; font-size: 0.9rem;">
+        @for (msg of chatMessages(); track $index) {
+          <div [style.text-align]="msg.role === 'user' ? 'right' : 'left'" style="margin-bottom: 10px;">
+            <div [style.background]="msg.role === 'user' ? '#e11d48' : '#e2e8f0'"
+                 [style.color]="msg.role === 'user' ? 'white' : 'black'"
+                 style="display: inline-block; padding: 8px 12px; border-radius: 12px; max-width: 80%;">
+              {{ msg.text }}
+            </div>
+          </div>
+        }
+        @if (aiSuggestions().length > 0) {
+          <div style="background: #fff; border: 1px solid #e11d48; padding: 10px; border-radius: 8px; margin-top: 10px;">
+            <p style="margin: 0 0 5px 0; font-weight: bold;">Sugerencias:</p>
+            <ul style="margin: 0; padding-left: 15px;">
+              @for (s of aiSuggestions(); track s.recursoId) {
+                <li>{{ s.nombre }}</li>
+              }
+            </ul>
+            <button (click)="aceptarSugerencias()" 
+                    style="margin-top: 10px; width: 100%; background: #22c55e; color: white; border: none; padding: 5px; border-radius: 4px; cursor: pointer;">
+              Confirmar Solicitud
+            </button>
+          </div>
+        }
+      </div>
+      <div style="padding: 10px; border-top: 1px solid #cbd5e1;">
+        <input #chatInput (keyup.enter)="sendToAi(chatInput.value); chatInput.value = ''"
+               placeholder="¿Qué necesitas hacer?" 
+               style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box;">
+      </div>
+    </aside>
+  </section>
+</div>
