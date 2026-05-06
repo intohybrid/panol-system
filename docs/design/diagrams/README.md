@@ -57,7 +57,15 @@ Todos usan `shape=mxgraph.eip.*` con la nomenclatura oficial del libro de Hohpe.
 | `EIP-04-request-reply-correlation.drawio` | Request-Reply + Correlation Identifier | loan-svc envía request con `correlation_id` y `reply_to` a ai-risk-svc. Reply asíncrona vuelve por cola temporal. |
 | `EIP-05-outbox-idempotent-receiver.drawio` | Transactional Outbox + Idempotent Receiver | Servicio escribe BD + tabla `outbox_events` en una transacción. Relay polling publica al broker. Consumer deduplica con `processed_events`. |
 
-### Grupo D — Máquinas de estado UML
+### Grupo D — Modelo de datos (ERD)
+
+Generado por `generate_erd.py` (script aparte del `generate_drawio.py` para aislar el cambio).
+
+| Archivo | Tipo | Qué muestra |
+|---|---|---|
+| `ERD-01-modelo-datos.drawio` | Entidad-Relación con polyglot por servicio | 8 swimlanes (uno por base PostgreSQL) con sus tablas, atributos clave, FK locales (líneas sólidas) y referencias lógicas cross-DB (líneas punteadas). 44 tablas, 28 relaciones. Incluye outbox/processed_events de cada servicio y las 6 proyecciones de `reports_db` (CQRS, ADR-015). |
+
+### Grupo E — Máquinas de estado UML
 
 Cubren el ciclo de vida de cada entidad principal según se contrata en `docs/architecture/08-estados-entidades.md`. Estados terminales con doble borde (`strokeWidth=3`). Notación: `disparador [guard] / efecto`.
 
@@ -79,6 +87,7 @@ Cada diagrama está vinculado a documentos de `docs/architecture/`:
 | DC-03 | `02-topologia-microservicios.md` (sección despliegue) |
 | SEQ-* | `05-saga-coreografiada.md`, `06-ia-mcp.md` |
 | EIP-* | `04-eip-catalog.md`, `03-eventos-dominio.md` |
+| ERD-01 | `10-modelo-datos.md`, `02-topologia-microservicios.md`, `07-microservicios-responsabilidades.md`, ADR-002, ADR-015 |
 | STATE-* | `08-estados-entidades.md`, `05-reglas-de-negocio.md` (RC.16/RC.17/RC.18) |
 
 Y a casos de uso de `docs/requirements/`:

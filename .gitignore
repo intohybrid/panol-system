@@ -36,3 +36,47 @@ lerna-debug.log*
 # System files
 .DS_Store
 Thumbs.db
+# ─── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# ─── Node / pnpm / turborepo ──────────────────────────────
+node_modules/
+.pnpm-store/
+.turbo/
+dist/
+build/
+.next/
+.cache/
+*.tsbuildinfo
+
+# ─── Env y secretos ───────────────────────────────────────
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ─── IDE / OS ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Logs y temporales ────────────────────────────────────
+*.log
+npm-debug.log*
+pnpm-debug.log*
+.tmp/
+tmp/
+
+# ─── Coverage ─────────────────────────────────────────────
+coverage/
+.nyc_output/
+*.lcov

@@ -1,0 +1,8 @@
+# Smoke tests para validar la infraestructura local.
+# psycopg3 reemplaza al viejo psycopg2 — tiene wheels precompilados para
+# Python 3.13+ (psycopg2-binary aún no soporta 3.14 con wheel).
+
+pika==1.3.2
+psycopg[binary]>=3.2,<4
+pymongo>=4.7,<5
+python-dotenv==1.0.1
