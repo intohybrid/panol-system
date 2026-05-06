@@ -1,1 +1,93 @@
-/* You can add global styles to this file, and also import other style files */
+/* ============================================================
+   Sistema de Pañol — UNAB · Global Styles (Tótem)
+   Paleta: Dark UI + Acentos Rojos Institucionales
+   Estética: Pizarra de Laboratorio / Modo Noche Alto Contraste
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  --color-primary:   #C00000;
+  --color-primary-h: #97262E;
+  
+  --color-bg:        #0A0A0A; /* Negro puro Pizarra */
+  --color-surface:   #1A1A1A; /* Superficies elevadas */
+  --color-border:    #333333;
+  --color-text:      #F8F9FA;
+  --color-text-muted:#A3A3A3;
+  
+  --color-success:   #22c55e;
+  --color-warning:   #f59e0b;
+  --color-danger:    #ef4444;
+
+  --radius-sm: 0px; /* Bordes afilados para la estética de laboratorio */
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  
+  --shadow:    0 8px 30px rgba(0,0,0,0.8);
+  --transition: 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  user-select: none; /* Ideal para tótems táctiles */
+  -webkit-user-select: none;
+  overflow: hidden; /* Evitar scroll en body en tótem */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.6rem; font-weight: 600; }
+h3 { font-size: 1.2rem; font-weight: 600; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem; /* Más grande para táctil */
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.btn-primary:active:not(:disabled) { transform: scale(0.96); background: var(--color-primary-h); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-secondary {
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn-secondary:active { background: rgba(255,255,255,0.1); }
+
+/* Scrollbars ocultas o mínimas para tótem */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); }

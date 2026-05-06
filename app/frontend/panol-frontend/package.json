@@ -8,6 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "serve:web": "ng serve web-portal --configuration=development",
+    "serve:totem": "ng serve totem --configuration=development",
     "serve:ssr:web-portal": "node dist/web-portal/server/server.mjs"
   },
   "private": true,

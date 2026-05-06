@@ -1,0 +1,126 @@
+<div class="catalog-layout">
+  <!-- ── Sidebar nav ─────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-badge">P</div>
+      <div>
+        <div class="logo-title">Pañol UNAB</div>
+        <div class="logo-user">{{ auth.currentUser()?.nombre }}</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-link active" href="#">📦 Catálogo</a>
+      <a class="nav-link" (click)="goToMyRequests()">📋 Mis Solicitudes</a>
+    </nav>
+    <button class="btn-secondary logout-btn" (click)="logout()">Cerrar sesión</button>
+  </aside>
+
+  <!-- ── Main content ────────────────────────────────── -->
+  <main class="catalog-main">
+    <!-- Header -->
+    <div class="catalog-header">
+      <div>
+        <h1>Recursos Disponibles</h1>
+        <p>Selecciona los recursos que necesitas y crea tu solicitud</p>
+      </div>
+      @if (selectedItems().length > 0) {
+        <button class="btn-primary request-btn" (click)="createRequest()">
+          🛒 Solicitar {{ selectedItems().length }} ítem(s)
+        </button>
+      }
+    </div>
+
+    <!-- Alerts -->
+    @if (requestSuccess()) {
+      <div class="alert alert-success">✅ {{ requestSuccess() }}</div>
+    }
+    @if (error()) {
+      <div class="alert alert-error">⚠️ {{ error() }}</div>
+    }
+
+    <!-- Cart -->
+    @if (selectedItems().length > 0) {
+      <div class="cart-bar">
+        <span class="cart-title">🛒 Carrito:</span>
+        @for (item of selectedItems(); track item.recursoId) {
+          <span class="cart-item">
+            {{ item.nombre }}
+            <button (click)="removeItem(item.recursoId)" class="cart-remove">×</button>
+          </span>
+        }
+      </div>
+    }
+
+    <!-- Grid de recursos -->
+    @if (loading()) {
+      <div class="loading-state">Cargando inventario...</div>
+    } @else {
+      <div class="resources-grid">
+        @for (res of resources(); track res.id) {
+          <div class="card resource-card">
+            @if (res.imagenUrl) {
+              <img [src]="res.imagenUrl" [alt]="res.nombre" class="resource-img" />
+            }
+            <div class="resource-body">
+              <div class="resource-cat">{{ res.categoria }}</div>
+              <h3>{{ res.nombre }}</h3>
+              <div class="resource-stock"
+                   [class.low]="res.stockDisponible <= 2"
+                   [class.zero]="res.stockDisponible === 0">
+                @if (res.stockDisponible > 0) {
+                  {{ res.stockDisponible }} disponible(s)
+                } @else {
+                  Sin stock
+                }
+              </div>
+              <button
+                class="btn-primary"
+                (click)="addItem(res)"
+                [disabled]="res.stockDisponible === 0 || !!selectedItems().find(i => i.recursoId === res.id)">
+                @if (selectedItems().find(i => i.recursoId === res.id)) {
+                  ✓ Agregado
+                } @else {
+                  Agregar al carrito
+                }
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </main>
+
+  <!-- ── AI Sidebar ──────────────────────────────────── -->
+  <aside class="ai-panel">
+    <div class="ai-header">🤖 Asistente IA</div>
+    <div class="ai-messages" id="ai-messages">
+      @for (msg of chatMessages(); track $index) {
+        <div class="chat-msg" [class.user]="msg.role === 'user'">
+          <div class="msg-bubble" [class.user-bubble]="msg.role === 'user'">
+            {{ msg.text }}
+          </div>
+        </div>
+      }
+      @if (aiSuggestions().length > 0) {
+        <div class="suggestions-box">
+          <p class="sug-title">📌 Sugerencias:</p>
+          @for (s of aiSuggestions(); track s.recursoId) {
+            <div class="sug-item">{{ s.nombre }}</div>
+          }
+          <button class="btn-primary sug-confirm" (click)="acceptSuggestions()">
+            Agregar al carrito
+          </button>
+        </div>
+      }
+    </div>
+    <div class="ai-input-row">
+      <input
+        #chatInput
+        id="chat-input"
+        (keyup.enter)="sendToAi(chatInput)"
+        placeholder="¿Qué necesitas hacer?"
+        class="ai-input"
+      />
+    </div>
+  </aside>
+</div>

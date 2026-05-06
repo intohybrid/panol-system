@@ -1,0 +1,222 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 600px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  /* Animación de entrada elegante */
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Lado Izquierdo: Manifiesto */
+.login-manifesto {
+  flex: 1.2;
+  background: #FDFBF7;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--color-border);
+  position: relative;
+}
+.login-manifesto::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Textura adicional si se desea */
+  pointer-events: none;
+}
+
+.logo-badge {
+  width: 64px; height: 64px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 0; /* Bordes rectos */
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.manifesto-title {
+  font-size: 3.5rem;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.manifesto-text {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 400px;
+  margin-bottom: 3rem;
+}
+
+/* Helpers Demo */
+.demo-helpers {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
+}
+.demo-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+.demo-btns {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.btn-demo {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-demo:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+/* Lado Derecho: Formulario */
+.login-form-side {
+  flex: 1;
+  background: #FFFFFF;
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 360px;
+}
+
+.form-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
+}
+
+.editorial-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Inputs Flotantes Estilo Impreso */
+.field-group {
+  position: relative;
+}
+
+.field-group input {
+  width: 100%;
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  outline: none;
+}
+
+.field-group label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: all var(--transition);
+}
+
+/* Animación del label flotante */
+.field-group input:focus ~ label,
+.field-group input:not(:placeholder-shown) ~ label {
+  top: -1.2rem;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Animación de la línea roja inferior */
+.input-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.field-group input:focus ~ .input-line {
+  width: 100%;
+}
+
+.error-msg {
+  padding: 1rem;
+  background: #FFF5F5;
+  border-left: 4px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.form-actions {
+  margin-top: 1rem;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.05rem;
+}
+
+/* Responsividad */
+@media (max-width: 900px) {
+  .login-container { flex-direction: column; }
+  .login-manifesto, .login-form-side { padding: 2.5rem; }
+  .login-manifesto { border-right: none; border-bottom: 1px solid var(--color-border); }
+  .manifesto-title { font-size: 2.5rem; }
+}

@@ -1,0 +1,68 @@
+<div class="dashboard-layout">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-badge">P</div>
+      <div>
+        <h1>Tótem Pañol</h1>
+        <div class="user-info">Pañolero: {{ auth.currentUser()?.nombre }}</div>
+      </div>
+    </div>
+    <button class="btn-secondary logout-btn" (click)="logout()">Cerrar sesión</button>
+  </header>
+
+  <main class="dashboard-grid">
+    <!-- Solicitudes Pendientes -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Solicitudes Pendientes</h2>
+        <span class="badge">{{ pendingRequests.length }}</span>
+      </div>
+      <div class="panel-body">
+        @if (pendingRequests.length === 0) {
+          <div class="empty-msg">No hay solicitudes pendientes.</div>
+        }
+        <div class="list">
+          @for (req of pendingRequests; track req.id) {
+            <div class="card request-card">
+              <div class="card-head">
+                <span class="id">#{{ req.id.slice(0,6) }}</span>
+                <span class="time">{{ req.createdAt | date:'HH:mm' }}</span>
+              </div>
+              <div class="card-user">{{ req.usuarioNombre }}</div>
+              <div class="card-items">
+                @for (item of req.items; track item.recursoId) {
+                  <span class="chip">{{ api.getResourceName(item.recursoId) }} ×{{ item.cantidad }}</span>
+                }
+              </div>
+              <button class="btn-primary" (click)="materialize(req.id)">Materializar (Entregar)</button>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Préstamos Activos -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Préstamos Activos</h2>
+        <span class="badge">{{ activeLoans.length }}</span>
+      </div>
+      <div class="panel-body">
+        @if (activeLoans.length === 0) {
+          <div class="empty-msg">No hay préstamos activos.</div>
+        }
+        <div class="list">
+          @for (loan of activeLoans; track loan.id) {
+            <div class="card loan-card">
+              <div class="card-head">
+                <span class="id">Préstamo #{{ loan.id.slice(0,6) }}</span>
+                <span class="status-badge">ACTIVO</span>
+              </div>
+              <button class="btn-primary btn-outline" (click)="goToReturn(loan.id)">Recibir Devolución</button>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

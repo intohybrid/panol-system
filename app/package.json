@@ -1,0 +1,16 @@
+{
+  "name": "panol-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo funcional del Sistema de Pañol — monorepo raíz",
+  "scripts": {
+    "demo": "concurrently --kill-others-on-fail -n \"AUTH,INV,REQ,LOAN,AI,GW,WEB,TOT\" -c \"blue,green,yellow,magenta,cyan,red,white,gray\" \"npm run dev --prefix services/auth-svc\" \"npm run dev --prefix services/inventory-svc\" \"npm run dev --prefix services/request-svc\" \"npm run dev --prefix services/loan-svc\" \"npm run dev --prefix services/ai-assistant-svc\" \"npm run dev --prefix services/api-gateway\" \"npm run serve:web --prefix frontend/panol-frontend\" \"npm run serve:totem --prefix frontend/panol-frontend\"",
+    "demo:backend": "concurrently --kill-others-on-fail -n \"AUTH,INV,REQ,LOAN,AI,GW\" -c \"blue,green,yellow,magenta,cyan,red\" \"npm run dev --prefix services/auth-svc\" \"npm run dev --prefix services/inventory-svc\" \"npm run dev --prefix services/request-svc\" \"npm run dev --prefix services/loan-svc\" \"npm run dev --prefix services/ai-assistant-svc\" \"npm run dev --prefix services/api-gateway\"",
+    "demo:frontend": "concurrently --kill-others-on-fail -n \"WEB,TOT\" -c \"white,gray\" \"npm run serve:web --prefix frontend/panol-frontend\" \"npm run serve:totem --prefix frontend/panol-frontend\"",
+    "demo:gateway": "npm run dev --prefix services/api-gateway",
+    "install:all": "npm install --prefix services/auth-svc && npm install --prefix services/inventory-svc && npm install --prefix services/request-svc && npm install --prefix services/loan-svc && npm install --prefix services/ai-assistant-svc && npm install --prefix services/api-gateway && npm install --prefix frontend/panol-frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,96 @@
+<div class="return-layout">
+  <div class="header-row">
+    <button class="btn-secondary" (click)="cancel()">← Cancelar</button>
+    <h1>Recepción de Préstamo</h1>
+  </div>
+
+  @if (!loan()) {
+    <div class="loading">Cargando datos del préstamo...</div>
+  } @else {
+    <div class="content">
+      <div class="loan-info">
+        <span class="id">ID Préstamo: #{{ loan().id }}</span>
+        <span class="user">Solicitante ID: {{ loan().usuarioId }}</span>
+      </div>
+
+      <div class="items-list">
+        <h2>Revisión de Ítems</h2>
+        <p class="muted">Seleccione el estado en el que se devuelve cada ítem.</p>
+        
+        @for (item of loan().items; track item.recursoId) {
+          <div class="item-row">
+            <div class="item-details">
+              <strong>{{ api.getResourceName(item.recursoId) }}</strong>
+              <span class="qty">Cantidad: {{ item.cantidad }}</span>
+            </div>
+            
+            <div class="status-selector">
+              <button 
+                class="status-btn" 
+                [class.active]="itemStatuses()[item.recursoId] === 'BUENO'"
+                (click)="setStatus(item.recursoId, 'BUENO')">
+                BUENO
+              </button>
+              <button 
+                class="status-btn warn" 
+                [class.active]="itemStatuses()[item.recursoId] === 'DAÑADO'"
+                (click)="setStatus(item.recursoId, 'DAÑADO')">
+                DAÑADO
+              </button>
+              <button 
+                class="status-btn danger" 
+                [class.active]="itemStatuses()[item.recursoId] === 'FALTANTE'"
+                (click)="setStatus(item.recursoId, 'FALTANTE')">
+                FALTANTE
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="action-row">
+        <button class="btn-primary confirm-main-btn" (click)="requestConfirm()">
+          Confirmar Devolución
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Modal PIN de confirmación -->
+  @if (showPinModal()) {
+    <div class="modal-backdrop">
+      <div class="modal-card">
+        <h3>Confirmar con PIN</h3>
+        <p>Ingrese su PIN de pañolero para autorizar esta devolución.</p>
+        
+        <div class="pin-display">
+          <div class="pin-dots">
+            <span class="dot" [class.filled]="confirmPin().length >= 1"></span>
+            <span class="dot" [class.filled]="confirmPin().length >= 2"></span>
+            <span class="dot" [class.filled]="confirmPin().length >= 3"></span>
+            <span class="dot" [class.filled]="confirmPin().length >= 4"></span>
+          </div>
+        </div>
+        
+        @if (pinError()) {
+          <div class="error-msg">{{ pinError() }}</div>
+        }
+
+        <div class="numpad">
+          @for (row of [[1,2,3], [4,5,6], [7,8,9]]; track $index) {
+            <div class="numpad-row">
+              @for (digit of row; track digit) {
+                <button class="num-btn" (click)="appendDigit(digit)">{{ digit }}</button>
+              }
+            </div>
+          }
+          <div class="numpad-row">
+            <button class="num-btn action-btn cancel" (click)="cancelModal()">✕</button>
+            <button class="num-btn" (click)="appendDigit(0)">0</button>
+            <button class="num-btn action-btn confirm" (click)="submitReturn()" [disabled]="confirmPin().length !== 4">✓</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

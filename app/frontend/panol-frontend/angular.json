@@ -168,7 +168,8 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-            "allowedHosts": true
+            "allowedHosts": true,
+            "port": 4201
           },
           "configurations": {
             "production": {

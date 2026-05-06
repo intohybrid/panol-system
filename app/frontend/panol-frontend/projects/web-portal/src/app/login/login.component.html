@@ -1,0 +1,72 @@
+<div class="login-page">
+  <div class="login-container">
+    
+    <!-- Lado Izquierdo: Manifiesto Académico -->
+    <div class="login-manifesto">
+      <div class="logo-badge">P</div>
+      <h1 class="manifesto-title">Plataforma de <br>Gestión de Pañol</h1>
+      <p class="manifesto-text">
+        Accede al inventario tecnológico y académico de la Universidad Andrés Bello. 
+        Reserva, solicita y gestiona el equipamiento necesario para tus proyectos e investigaciones.
+      </p>
+      
+      <div class="demo-helpers">
+        <p class="demo-title">Accesos de demostración rápidos:</p>
+        <div class="demo-btns">
+          <button type="button" (click)="fillAlumno()" class="btn-demo">Alumno</button>
+          <button type="button" (click)="fillCoordinador()" class="btn-demo">Docente</button>
+          <button type="button" (click)="fillJefe()" class="btn-demo">Administración</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lado Derecho: Formulario Editorial -->
+    <div class="login-form-side">
+      <div class="form-wrapper">
+        <h2 class="form-title">Ingreso al Sistema</h2>
+        <p class="form-subtitle">Por favor, identifícate con tus credenciales institucionales.</p>
+
+        <form (ngSubmit)="onSubmit()" class="editorial-form">
+          <div class="field-group">
+            <input
+              id="documento"
+              type="text"
+              placeholder=" "
+              [value]="documento()"
+              (input)="documento.set($any($event.target).value)"
+              autocomplete="username"
+              required
+            />
+            <label for="documento">RUT o Documento</label>
+            <div class="input-line"></div>
+          </div>
+
+          <div class="field-group">
+            <input
+              id="password"
+              type="password"
+              placeholder=" "
+              [value]="password()"
+              (input)="password.set($any($event.target).value)"
+              autocomplete="current-password"
+              required
+            />
+            <label for="password">Contraseña</label>
+            <div class="input-line"></div>
+          </div>
+
+          @if (error()) {
+            <div class="error-msg" role="alert">{{ error() }}</div>
+          }
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary login-btn" [disabled]="loading()">
+              @if (loading()) { Verificando... } @else { Acceder al Pañol ➔ }
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+</div>
