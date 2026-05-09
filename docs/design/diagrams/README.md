@@ -65,7 +65,15 @@ Generado por `generate_erd.py` (script aparte del `generate_drawio.py` para aisl
 |---|---|---|
 | `ERD-01-modelo-datos.drawio` | Entidad-Relación con polyglot por servicio | 8 swimlanes (uno por base PostgreSQL) con sus tablas, atributos clave, FK locales (líneas sólidas) y referencias lógicas cross-DB (líneas punteadas). 44 tablas, 28 relaciones. Incluye outbox/processed_events de cada servicio y las 6 proyecciones de `reports_db` (CQRS, ADR-015). |
 
-### Grupo E — Máquinas de estado UML
+### Grupo E — Comparación de arquitecturas
+
+Generado por `generate_arch_compare.py` (script aparte). Pensado específicamente para la mesa redonda: deja explícito qué es demo mock vs arquitectura objetivo.
+
+| Archivo | Tipo | Qué muestra |
+|---|---|---|
+| `ARCH-01-demo-vs-produccion.drawio` | Comparación side-by-side | Dos columnas paralelas (Demo `feature/app-demo` vs Producción `docs/architecture/`) con 6 capas alineadas: UI, Gateway, Servicios, Persistencia, Bus de comunicación, Observabilidad. Color-coding (verde = común, amarillo = demo-only, naranja = prod-only, rojo = diferencia clave). Acompaña el documento `app/ARQUITECTURA-DEMO.md`. |
+
+### Grupo F — Máquinas de estado UML
 
 Cubren el ciclo de vida de cada entidad principal según se contrata en `docs/architecture/08-estados-entidades.md`. Estados terminales con doble borde (`strokeWidth=3`). Notación: `disparador [guard] / efecto`.
 
@@ -88,6 +96,7 @@ Cada diagrama está vinculado a documentos de `docs/architecture/`:
 | SEQ-* | `05-saga-coreografiada.md`, `06-ia-mcp.md` |
 | EIP-* | `04-eip-catalog.md`, `03-eventos-dominio.md` |
 | ERD-01 | `10-modelo-datos.md`, `02-topologia-microservicios.md`, `07-microservicios-responsabilidades.md`, ADR-002, ADR-015 |
+| ARCH-01 | `app/ARQUITECTURA-DEMO.md`, ADR-002, ADR-005, ADR-006, ADR-008, ADR-016 |
 | STATE-* | `08-estados-entidades.md`, `05-reglas-de-negocio.md` (RC.16/RC.17/RC.18) |
 
 Y a casos de uso de `docs/requirements/`:

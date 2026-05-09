@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" width="1100" height="700">
+  <defs>
+    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="counterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#92400e"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="shelfGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a16207"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="1100" height="700" fill="#fef9e7"/>
+
+  <!-- Título -->
+  <text x="550" y="38" text-anchor="middle" fill="#0f172a"
+        font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700"
+        letter-spacing="3">SETUP FÍSICO — MESA REDONDA</text>
+  <text x="550" y="62" text-anchor="middle" fill="#64748b"
+        font-family="Inter,Arial,sans-serif" font-size="13" font-style="italic">
+        vista isométrica · representación esquemática del pañol durante la demo</text>
+
+  <!-- Piso isométrico -->
+  <polygon points="100,520 1000,520 1080,640 20,640" fill="url(#floorGrad)" stroke="#a16207" stroke-width="1.5"/>
+  <!-- Líneas del piso -->
+  <line x1="100" y1="520" x2="20" y2="640" stroke="#d97706" stroke-width="0.5" opacity="0.4"/>
+  <line x1="280" y1="520" x2="225" y2="640" stroke="#d97706" stroke-width="0.5" opacity="0.4"/>
+  <line x1="460" y1="520" x2="430" y2="640" stroke="#d97706" stroke-width="0.5" opacity="0.4"/>
+  <line x1="640" y1="520" x2="635" y2="640" stroke="#d97706" stroke-width="0.5" opacity="0.4"/>
+  <line x1="820" y1="520" x2="840" y2="640" stroke="#d97706" stroke-width="0.5" opacity="0.4"/>
+  <line x1="1000" y1="520" x2="1080" y2="640" stroke="#d97706" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Pared trasera con estanterías -->
+  <rect x="100" y="100" width="900" height="420" fill="#fef3c7" stroke="#a16207" stroke-width="1.5"/>
+
+  <!-- Estanterías con herramientas -->
+  <g transform="translate(140,140)">
+    <!-- Estante 1 -->
+    <rect x="0" y="0" width="240" height="100" fill="url(#shelfGrad)" stroke="#451a03"/>
+    <line x1="0" y1="50" x2="240" y2="50" stroke="#451a03" stroke-width="2"/>
+
+    <!-- Cajas/herramientas -->
+    <g transform="translate(8,8)">
+      <rect width="35" height="35" fill="#dc2626"/>
+      <rect x="40" width="35" height="35" fill="#0891b2"/>
+      <rect x="80" width="35" height="35" fill="#16a34a"/>
+      <rect x="120" width="35" height="35" fill="#a855f7"/>
+      <rect x="160" width="35" height="35" fill="#f59e0b"/>
+      <rect x="200" width="32" height="35" fill="#06b6d4"/>
+    </g>
+    <g transform="translate(8,55)">
+      <rect width="35" height="35" fill="#fbbf24"/>
+      <rect x="40" width="35" height="35" fill="#10b981"/>
+      <rect x="80" width="35" height="35" fill="#3b82f6"/>
+      <rect x="120" width="35" height="35" fill="#ec4899"/>
+      <rect x="160" width="35" height="35" fill="#84cc16"/>
+      <rect x="200" width="32" height="35" fill="#f97316"/>
+    </g>
+    <text x="120" y="124" text-anchor="middle" fill="#451a03"
+          font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">HERRAMIENTAS</text>
+  </g>
+
+  <g transform="translate(420,140)">
+    <rect x="0" y="0" width="240" height="100" fill="url(#shelfGrad)" stroke="#451a03"/>
+    <line x1="0" y1="50" x2="240" y2="50" stroke="#451a03" stroke-width="2"/>
+    <!-- Iconos de herramientas -->
+    <text x="20" y="32" font-family="Arial" font-size="22">🔨</text>
+    <text x="60" y="32" font-family="Arial" font-size="22">🔧</text>
+    <text x="100" y="32" font-family="Arial" font-size="22">📐</text>
+    <text x="140" y="32" font-family="Arial" font-size="22">🪛</text>
+    <text x="180" y="32" font-family="Arial" font-size="22">📏</text>
+    <text x="220" y="32" font-family="Arial" font-size="22">🪚</text>
+
+    <text x="20" y="80" font-family="Arial" font-size="22">⚙️</text>
+    <text x="60" y="80" font-family="Arial" font-size="22">🔩</text>
+    <text x="100" y="80" font-family="Arial" font-size="22">🪟</text>
+    <text x="140" y="80" font-family="Arial" font-size="22">🪜</text>
+    <text x="180" y="80" font-family="Arial" font-size="22">🧰</text>
+    <text x="220" y="80" font-family="Arial" font-size="22">🔌</text>
+    <text x="120" y="124" text-anchor="middle" fill="#451a03"
+          font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">INSTRUMENTOS</text>
+  </g>
+
+  <g transform="translate(700,140)">
+    <rect x="0" y="0" width="240" height="100" fill="url(#shelfGrad)" stroke="#451a03"/>
+    <line x1="0" y1="50" x2="240" y2="50" stroke="#451a03" stroke-width="2"/>
+    <!-- Cajas etiquetadas -->
+    <g font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700">
+      <rect x="8" y="8" width="58" height="35" fill="#fef3c7" stroke="#451a03"/>
+      <text x="37" y="23" text-anchor="middle" fill="#451a03">CAT-A</text>
+      <text x="37" y="35" text-anchor="middle" fill="#a16207" font-size="7">12 unid.</text>
+
+      <rect x="74" y="8" width="58" height="35" fill="#fef3c7" stroke="#451a03"/>
+      <text x="103" y="23" text-anchor="middle" fill="#451a03">CAT-B</text>
+      <text x="103" y="35" text-anchor="middle" fill="#a16207" font-size="7">8 unid.</text>
+
+      <rect x="140" y="8" width="58" height="35" fill="#fef3c7" stroke="#451a03"/>
+      <text x="169" y="23" text-anchor="middle" fill="#451a03">CAT-C</text>
+      <text x="169" y="35" text-anchor="middle" fill="#a16207" font-size="7">5 unid.</text>
+
+      <rect x="8" y="55" width="58" height="35" fill="#fef3c7" stroke="#451a03"/>
+      <text x="37" y="70" text-anchor="middle" fill="#451a03">CAT-D</text>
+      <text x="37" y="82" text-anchor="middle" fill="#a16207" font-size="7">15 unid.</text>
+
+      <rect x="74" y="55" width="58" height="35" fill="#fef3c7" stroke="#451a03"/>
+      <text x="103" y="70" text-anchor="middle" fill="#451a03">CAT-E</text>
+      <text x="103" y="82" text-anchor="middle" fill="#a16207" font-size="7">3 unid.</text>
+
+      <rect x="140" y="55" width="58" height="35" fill="#fef3c7" stroke="#451a03"/>
+      <text x="169" y="70" text-anchor="middle" fill="#451a03">CAT-F</text>
+      <text x="169" y="82" text-anchor="middle" fill="#a16207" font-size="7">9 unid.</text>
+    </g>
+    <text x="120" y="124" text-anchor="middle" fill="#451a03"
+          font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">REPUESTOS</text>
+  </g>
+
+  <!-- Estanterías inferiores -->
+  <g transform="translate(140,300)">
+    <rect x="0" y="0" width="800" height="80" fill="url(#shelfGrad)" stroke="#451a03"/>
+    <line x1="0" y1="40" x2="800" y2="40" stroke="#451a03" stroke-width="2"/>
+    <text x="400" y="64" text-anchor="middle" fill="#451a03"
+          font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">MATERIALES MAYORES · BOSCH · STANLEY · DEWALT</text>
+  </g>
+
+  <!-- Mostrador principal (counter) -->
+  <g transform="translate(160,420)">
+    <!-- Frente -->
+    <rect width="780" height="100" fill="url(#counterGrad)" stroke="#451a03" stroke-width="2"/>
+    <!-- Tope superior -->
+    <polygon points="0,0 780,0 800,-20 -20,-20" fill="#a16207" stroke="#451a03" stroke-width="2"/>
+
+    <!-- Tótem (tablet sobre stand) -->
+    <g transform="translate(110,-130)">
+      <!-- Stand -->
+      <polygon points="-12,110 12,110 6,90 -6,90" fill="#475569"/>
+      <rect x="-3" y="40" width="6" height="50" fill="#64748b"/>
+      <!-- Tablet -->
+      <rect x="-50" y="-8" width="100" height="60" rx="4" fill="#0f172a" stroke="#1e293b"/>
+      <rect x="-46" y="-4" width="92" height="52" rx="2" fill="#dc2626"/>
+      <text x="0" y="14" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700">TÓTEM</text>
+      <text x="0" y="28" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="7">PIN: ____</text>
+      <text x="0" y="40" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="7">▶ Solicitudes</text>
+
+      <text x="0" y="-18" text-anchor="middle" fill="#0f172a"
+            font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700">TÓTEM</text>
+    </g>
+
+    <!-- Laptop del pañolero (atrás, para reportes) -->
+    <g transform="translate(390,-115)">
+      <!-- Pantalla -->
+      <rect x="-45" y="-20" width="90" height="56" rx="2" fill="#0f172a" stroke="#1e293b"/>
+      <rect x="-42" y="-17" width="84" height="50" fill="#1e293b"/>
+      <text x="0" y="-5" text-anchor="middle" fill="#22c55e" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700">DASHBOARD</text>
+      <text x="0" y="6" text-anchor="middle" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="6">142 préstamos hoy</text>
+      <text x="0" y="16" text-anchor="middle" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="6">98% a tiempo</text>
+      <rect x="-25" y="20" width="50" height="10" fill="#3b82f6"/>
+      <!-- Base -->
+      <polygon points="-50,36 50,36 60,42 -60,42" fill="#334155"/>
+      <text x="0" y="-30" text-anchor="middle" fill="#0f172a"
+            font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700">REPORTES</text>
+    </g>
+
+    <!-- Cartelito en mostrador -->
+    <g transform="translate(640,-25)">
+      <rect width="100" height="22" fill="#fef3c7" stroke="#451a03"/>
+      <text x="50" y="14" text-anchor="middle" fill="#451a03"
+            font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700">PAÑOL · UNAB</text>
+    </g>
+  </g>
+
+  <!-- Pañolero -->
+  <g transform="translate(285,470)">
+    <!-- Cabeza -->
+    <circle cx="0" cy="0" r="14" fill="#fbbf24"/>
+    <!-- Cuerpo -->
+    <path d="M -16 16 L -22 50 L 22 50 L 16 16 Z" fill="#dc2626"/>
+    <!-- Brazos -->
+    <line x1="-18" y1="22" x2="-30" y2="38" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+    <line x1="18" y1="22" x2="22" y2="14" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+    <!-- Etiqueta credencial -->
+    <rect x="-10" y="22" width="20" height="10" fill="#fff" stroke="#1e293b"/>
+    <text x="0" y="30" text-anchor="middle" fill="#1e293b" font-family="Arial" font-size="6" font-weight="700">PNL</text>
+
+    <text x="0" y="80" text-anchor="middle" fill="#0f172a"
+          font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">PAÑOLERO</text>
+    <text x="0" y="93" text-anchor="middle" fill="#64748b"
+          font-family="Inter,Arial,sans-serif" font-size="9" font-style="italic">opera tótem + reportes</text>
+  </g>
+
+  <!-- Alumno con celular delante del mostrador -->
+  <g transform="translate(620,620)">
+    <!-- Cabeza -->
+    <circle cx="0" cy="0" r="13" fill="#fed7aa"/>
+    <!-- Cuerpo -->
+    <path d="M -15 14 L -20 50 L 20 50 L 15 14 Z" fill="#1e3a8a"/>
+    <!-- Brazo con celular -->
+    <line x1="14" y1="20" x2="22" y2="8" stroke="#fed7aa" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-15" y1="20" x2="-22" y2="32" stroke="#fed7aa" stroke-width="6" stroke-linecap="round"/>
+    <!-- Celular -->
+    <rect x="18" y="-2" width="10" height="16" rx="1.5" fill="#0f172a"/>
+    <rect x="19" y="-1" width="8" height="14" fill="#3b82f6"/>
+
+    <text x="0" y="78" text-anchor="middle" fill="#0f172a"
+          font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">ALUMNO</text>
+    <text x="0" y="91" text-anchor="middle" fill="#64748b"
+          font-family="Inter,Arial,sans-serif" font-size="9" font-style="italic">arma carrito en portal</text>
+  </g>
+
+  <!-- Cartel sobre la pared con ícono Wi-Fi (conectividad) -->
+  <g transform="translate(960,140)">
+    <rect width="40" height="40" rx="6" fill="#fff" stroke="#0f172a"/>
+    <g transform="translate(20,22)">
+      <path d="M -12 0 Q 0 -10 12 0" fill="none" stroke="#0f172a" stroke-width="2"/>
+      <path d="M -8 4 Q 0 -3 8 4" fill="none" stroke="#0f172a" stroke-width="2"/>
+      <path d="M -4 8 Q 0 5 4 8" fill="none" stroke="#0f172a" stroke-width="2"/>
+      <circle cx="0" cy="11" r="1.5" fill="#0f172a"/>
+    </g>
+  </g>
+
+  <!-- Banner inferior (anotaciones) -->
+  <g transform="translate(50,660)">
+    <text x="0" y="0" fill="#475569" font-family="Inter,Arial,sans-serif"
+          font-size="11" font-weight="600">
+      ① Tótem (tablet) — pañolero materializa préstamos
+      &#160;&#160;&#160;② Laptop dashboard — reportes en vivo
+      &#160;&#160;&#160;③ Estanterías catalogadas
+      &#160;&#160;&#160;④ Alumno conectado vía portal web (smartphone/laptop)
+    </text>
+  </g>
+</svg>

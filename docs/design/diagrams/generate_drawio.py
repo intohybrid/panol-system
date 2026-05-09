@@ -760,9 +760,9 @@ def eip_01_topologia():
 
     # Exchanges (Message Channel / Pub-Sub Channel — shape ipoChannel)
     exchanges = [
-        ("ex_events",  "domain.events\n(topic)\n— Pub-Sub Channel",     360, 120, "publishSubscribe"),
-        ("ex_cmd",     "domain.commands\n(direct)\n— Point-to-Point",   360, 250, "pointToPointChannel"),
-        ("ex_delayed", "domain.delayed\n(x-delayed-message)\n— Message Expiration", 360, 380, "messageExpiration"),
+        ("ex_events",  "domain.events\n(topic)\n— Pub-Sub Channel",     360, 120, "messageChannel"),
+        ("ex_cmd",     "domain.commands\n(direct)\n— Point-to-Point",   360, 250, "messageChannel"),
+        ("ex_delayed", "domain.delayed\n(x-delayed-message)\n— Message Expiration", 360, 380, "messExp"),
         ("ex_dlx",     "domain.dlx\n(fanout)\n— Dead Letter Channel",   360, 510, "deadLetterChannel"),
     ]
     for eid, lbl, x, y, shape in exchanges:
@@ -839,15 +839,15 @@ def eip_02_pubsub_router():
 
     # Mensaje
     cells.append(eip_node("msg", "request.created\nrouting_key=request.created.high_priority",
-                          340, 260, 280, 70, "message"))
+                          340, 260, 280, 70, "message_1"))
 
     # Pub-Sub Channel
     cells.append(eip_node("pubsub", "domain.events\nPublish-Subscribe Channel\n(topic)",
-                          680, 240, 240, 110, "publishSubscribe"))
+                          680, 240, 240, 110, "messageChannel"))
 
     # Content-Based Router
     cells.append(eip_node("router", "Content-Based Router\n(routing key matching)",
-                          980, 240, 220, 110, "contentBasedRouter"))
+                          980, 240, 220, 110, "content_based_router"))
 
     # Subscribers
     subs = [
@@ -897,7 +897,7 @@ def eip_03_expiration_dlc():
 
     # Mensaje con expiración
     cells.append(eip_node("msg","request.created\nx-delay=900000ms\n(15 min)",
-                          320, 240, 220, 100, "messageExpiration"))
+                          320, 240, 220, 100, "messExp"))
 
     # Delayed Exchange
     cells.append(eip_node("delayed","domain.delayed\n(x-delayed-message)",
@@ -956,10 +956,10 @@ def eip_04_request_reply():
     # Request msg
     cells.append(eip_node("req_msg",
                           "request:\n• payload: {userId, items}\n• correlation_id: uuid-1\n• reply_to: queue.reply.loan",
-                          320, 130, 280, 110, "documentMessage"))
+                          320, 130, 280, 110, "message_1"))
 
     cells.append(eip_node("req_channel","queue.commands.risk\n(Point-to-Point)",
-                          640, 130, 220, 80, "pointToPointChannel"))
+                          640, 130, 220, 80, "messageChannel"))
 
     # Replier
     cells.append(cell_vertex("replier","ai-risk-svc\n(Replier)",
@@ -967,12 +967,12 @@ def eip_04_request_reply():
 
     # Correlation
     cells.append(eip_node("corr","Correlation Identifier",
-                          580, 290, 220, 70, "correlationIdentifier"))
+                          580, 290, 220, 70, "message_2"))
 
     # Reply msg
     cells.append(eip_node("rep_msg",
                           "reply:\n• payload: {score, drivers}\n• correlation_id: uuid-1",
-                          320, 480, 280, 100, "documentMessage"))
+                          320, 480, 280, 100, "message_1"))
     cells.append(eip_node("rep_channel","queue.reply.loan\n(temporal/exclusive)",
                           640, 490, 220, 80, "messageChannel"))
 
@@ -1023,7 +1023,7 @@ def eip_05_outbox_idempotent():
 
     # Broker
     cells.append(eip_node("broker","domain.events\n(Pub-Sub)",
-                          1020, 220, 200, 80, "publishSubscribe"))
+                          1020, 220, 200, 80, "messageChannel"))
 
     # Consumer
     cells.append(cell_vertex("svc_cons","notification-svc\n(consumer)",
@@ -1031,7 +1031,7 @@ def eip_05_outbox_idempotent():
 
     # Idempotent receiver (tabla processed_events)
     cells.append(eip_node("idempotent","Idempotent Receiver",
-                          1280, 360, 200, 70, "idempotentReceiver"))
+                          1280, 360, 200, 70, "selective_consumer"))
     cells.append(cell_vertex("tbl_processed","tabla processed_events\n(correlation_id PK)",
                              STYLE_BOX_DB, 1280, 470, 200, 90))
 

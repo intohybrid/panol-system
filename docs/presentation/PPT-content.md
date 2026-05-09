@@ -52,7 +52,7 @@
 **Notas del expositor (~15 seg):**
 "Buenas tardes. Presentamos el Caso 11: el Sistema de Pañol de la Escuela de Informática UNAB Viña del Mar. Una plataforma distribuida con inteligencia artificial diseñada con metodología LeSS, MIT Design FullStack y MIT Design AI."
 
-**Visual:** [Imagen institucional UNAB] + ícono o foto del pañol + logos discretos de las tendencias usadas
+**Visual:** `docs/presentation/images/icon-panol.svg` (ícono institucional generado, ~200×200px, centrado). Logo UNAB queda a tu cargo si lo querés sumar.
 
 **Rúbrica:** —
 
@@ -100,7 +100,7 @@
 **Notas del expositor (~25 seg):**
 "El pañol es la bodega donde la Escuela de Informática presta multímetros, osciloscopios, protoboards y todo el equipamiento que un alumno de informática necesita para sus laboratorios. Tiene tres tipos de actores: el alumno que pide, el pañolero que opera, y la administración que gestiona el catálogo. En peak académico se mueven entre 400 y 600 préstamos al mes."
 
-**Visual:** [Imagen del pañol o foto referencial] + diagrama simple de actores con stick figures (4 roles)
+**Visual:** `docs/presentation/images/icon-panol.svg` (decorativo arriba a la derecha) + tabla con los 4 roles (Alumno, Pañolero, Coordinador, Jefe de Carrera) y sus permisos clave. Render con stick figures opcional, no es prioritario.
 
 **Rúbrica:** C1, C8
 
@@ -122,7 +122,7 @@
 **Notas del expositor (~25 seg):**
 "Hoy el proceso es manual. Se anota en papel, no hay historial, las pérdidas se descubren tarde, los atrasos no se sancionan de manera consistente. Y para el alumno la experiencia es frustrante: llega y no hay stock, o no sabe qué necesita exactamente. Todo el sistema depende de una persona y su libreta."
 
-**Visual:** [Imagen de cuaderno/libreta de registro manual] o ilustración "antes / después"
+**Visual:** `docs/presentation/images/before-after.svg` (split-view papel manual vs dashboard digital, fullbleed 1000×500). Captura el "antes con tachones e ilegible" vs "después con KPIs, IA y notificaciones".
 
 **Rúbrica:** C1, C8
 
@@ -148,7 +148,7 @@
 **Notas del expositor (~25 seg):**
 "Nuestra propuesta tiene tres pilares. Primero, una experiencia digital de doble cara: el alumno arma su solicitud en la web, el pañolero la materializa en un tótem físico en el mostrador. Segundo, una arquitectura de microservicios con bus de eventos que desacopla y escala. Y tercero, IA integrada: scoring para predecir riesgo de atraso, y un asistente conversacional para guiar al alumno."
 
-**Visual:** [Imagen mockup combinado: pantalla web + tótem + chat del asistente]
+**Visual:** `docs/presentation/images/mockup-three-uis.svg` (mockup combinado de las 3 UIs lado a lado: web-portal, tótem, asistente conversacional, fullbleed 1200×600).
 
 **Rúbrica:** C8
 
@@ -366,7 +366,14 @@ Mapeados a 11 épicas: `auth`, `inventario`, `solicitudes`, `prestamos`, `notifi
 **Notas del expositor (~25 seg):**
 "La plataforma elegida es Jira. Es el estándar de la industria, tiene JQL, integración con CI/CD, reportes nativos. Cargamos las 50 user stories con sus épicas, sprints, equipos y story points usando un script Python que llama a la API REST. La trazabilidad RF a story queda en las etiquetas de cada issue."
 
-**Visual:** [Screenshot de Jira — vista de Backlog con sprints + tablero del Sprint 1] — capturar al momento de grabar el video
+**Visual:** [TODO — pegar `docs/presentation/images/jira-backlog.png`]
+
+**Cómo capturarla:**
+1. Cargar `docs/agile/jira-import.csv` en tu Jira con `import_to_jira.py` o el wizard de Jira.
+2. Abrir vista "Backlog" del proyecto PNL — debe mostrar las épicas plegables, los 3 sprints (Sprint 0, 1, 2) con sus US asignadas y story points.
+3. Hacer una segunda toma del tablero del Sprint 1 con las columnas To Do / In Progress / Done.
+4. Capturar pantalla completa, recortar al área útil, exportar como PNG ≥1200px de ancho.
+5. Guardar como `docs/presentation/images/jira-backlog.png`.
 
 **Rúbrica:** C3
 
@@ -401,7 +408,13 @@ Mapeados a 11 épicas: `auth`, `inventario`, `solicitudes`, `prestamos`, `notifi
 **Notas del expositor (~20 seg):**
 "Cada user story tiene una etiqueta que apunta al requerimiento que implementa. En Jira esto permite filtros JQL para verificar cobertura: ¿qué stories cubren el RF de scoring? ¿Qué requerimientos no tienen story aún? La matriz completa en setenta filas vive en el documento de trazabilidad."
 
-**Visual:** Tabla extracto + [Screenshot de Jira con filtro JQL aplicado mostrando US filtradas por etiqueta `RF:*`]
+**Visual:** Tabla extracto a la izquierda + [TODO — pegar `docs/presentation/images/jira-jql-filter.png`] a la derecha.
+
+**Cómo capturarla:**
+1. En Jira del paso anterior, abrir "Issues" → "Advanced" (JQL).
+2. Ejecutar la query: `project = PNL AND labels = "RF:RF.4"` (o cualquier RF concreto que prefieras mostrar).
+3. Tomar screenshot de los resultados con la barra de query visible y la lista de issues filtradas.
+4. Exportar como PNG ≥1200px de ancho. Guardar como `docs/presentation/images/jira-jql-filter.png`.
 
 **Rúbrica:** C2, C3
 
@@ -467,7 +480,7 @@ Fullstack tradicional = un dev que toca front y back. Design FullStack = **el pr
 **Notas del expositor (~30 seg):**
 "En la práctica esto se traduce en: TypeScript en todas las capas — front, back, scripts y tests; un único lenguaje. Contratos explícitos: OpenAPI auto-generado, schemas de eventos versionados, Prisma como fuente única del modelo. Cloud-agnóstico: docker-compose para la demo, los mismos containers van a Kubernetes sin tocar código. Y observabilidad ya en el Sprint 0: OpenTelemetry, trazas distribuidas, Grafana — no es un agregado tardío, es parte de la plataforma base."
 
-**Visual:** [Diagrama DC-02 Componentes] con etiquetas resaltadas en cada capa: "TypeScript", "OpenAPI", "AMQP versionado", "OTel"
+**Visual:** [TODO — exportar `docs/design/diagrams/DC-02-componentes.drawio` a `docs/presentation/images/DC-02-componentes.png`] con etiquetas resaltadas en cada capa: "TypeScript", "OpenAPI", "AMQP versionado", "OTel". Export a PNG @300dpi desde drawio (`File → Export as → PNG`).
 
 **Rúbrica:** C7
 
@@ -526,7 +539,7 @@ Agregar IA = "tenemos un sistema, ¿le ponemos un chatbot?". Design AI = "el sis
 **Notas del expositor (~30 seg):**
 "En la práctica son dos componentes. Primero, scoring de riesgo: Random Forest en ONNX, con features explícitas, drivers obligatorios para explicabilidad, umbrales documentados en la regla RC.11, y fallback a 0.5 si el modelo cae. Mitigación de bias: prohibimos features como sexo o carrera. Segundo, asistente conversacional: OpenAI con function calling sobre seis tools MCP que el alumno usa con lenguaje natural. Guardrail: si el usuario está bloqueado, no llamamos al LLM, respondemos directamente."
 
-**Visual:** [Diagrama SEQ-05 Asistente MCP] miniatura + caja con 6 tools listadas + caja con drivers de ejemplo del scoring
+**Visual:** [TODO — exportar `docs/design/diagrams/SEQ-05-asistente-mcp.drawio` a `docs/presentation/images/SEQ-05-asistente-mcp.png`] como miniatura + caja con 6 tools listadas + caja con drivers de ejemplo del scoring.
 
 **Rúbrica:** C7
 
@@ -583,7 +596,7 @@ Agregar IA = "tenemos un sistema, ¿le ponemos un chatbot?". Design AI = "el sis
 **Notas del expositor (~20 seg):**
 "En una sola imagen, el sistema. Tres actores: alumno, pañolero, administrador. Tres sistemas externos con los que dialoga: el SSO de UNAB para autenticación, OpenAI para el asistente, y un servicio de email pospuesto a post-MVP. Lo que entra son solicitudes y validaciones; lo que sale son notificaciones, tickets y reportes."
 
-**Visual:** **[Diagrama DC-01 — Contexto del Sistema]** (fullbleed)
+**Visual:** [TODO — exportar `docs/design/diagrams/DC-01-contexto.drawio` a `docs/presentation/images/DC-01-contexto.png`] (fullbleed, PNG @300dpi).
 
 **Rúbrica:** C8
 
@@ -617,7 +630,7 @@ Agregar IA = "tenemos un sistema, ¿le ponemos un chatbot?". Design AI = "el sis
 **Notas del expositor (~25 seg):**
 "La topología tiene tres capas. Presentación: portal web y tótem. Gateway que centraliza autenticación. Ocho microservicios con NestJS, cada uno con su schema en PostgreSQL — bounded context. Y RabbitMQ como bus de eventos con cuatro exchanges: eventos de dominio, comandos punto a punto, mensajes con TTL, y dead letter."
 
-**Visual:** **[Diagrama DC-02 — Componentes]** (fullbleed)
+**Visual:** [TODO — exportar `docs/design/diagrams/DC-02-componentes.drawio` a `docs/presentation/images/DC-02-componentes.png`] (fullbleed, PNG @300dpi).
 
 **Rúbrica:** C8
 
@@ -650,7 +663,7 @@ Agregar IA = "tenemos un sistema, ¿le ponemos un chatbot?". Design AI = "el sis
 **Notas del expositor (~30 seg):**
 "El flujo crítico tiene dos pasos. Primero, el alumno en la web: arma su solicitud, request-svc valida stock contra inventory-svc, persiste en estado pendiente y publica un evento con TTL de 15 minutos. Segundo, el pañolero en el tótem: selecciona la solicitud, loan-svc pide scoring a ai-risk-svc, materializa el préstamo, y publica loan.created. Inventory baja el stock, notification genera el ticket PDF. Todo coreografiado por eventos, sin orquestador central."
 
-**Visual:** **[Diagrama SEQ-02]** y **[Diagrama SEQ-03]** lado a lado, o uno arriba y otro abajo
+**Visual:** [TODO — exportar `SEQ-02-crear-solicitud.drawio` y `SEQ-03-materializar-prestamo.drawio` a `docs/presentation/images/SEQ-02-crear-solicitud.png` y `docs/presentation/images/SEQ-03-materializar-prestamo.png`] colocados lado a lado o uno arriba/otro abajo.
 
 **Rúbrica:** C8, C9 (preview)
 
@@ -680,7 +693,7 @@ Agregar IA = "tenemos un sistema, ¿le ponemos un chatbot?". Design AI = "el sis
 **Notas del expositor (~30 seg):**
 "Los dos componentes IA actúan en momentos distintos. El scoring se invoca durante la validación: el modelo devuelve un score con drivers explicables y la regla RC.11 decide si acepta, requiere PIN o bloquea. El asistente actúa cuando el alumno arma la solicitud: convierte lenguaje natural en llamadas estructuradas a tools MCP del backend. Si el alumno está bloqueado, ni siquiera consultamos a OpenAI — guardrail explícito."
 
-**Visual:** **[Diagrama SEQ-05 — Asistente MCP]** (mitad superior) + diagrama simple de scoring con drivers de ejemplo (mitad inferior)
+**Visual:** [TODO — exportar `docs/design/diagrams/SEQ-05-asistente-mcp.drawio` a `docs/presentation/images/SEQ-05-asistente-mcp.png`] en la mitad superior + diagrama simple de scoring con drivers de ejemplo en la mitad inferior (puede ser tabla en el slide directamente, no necesita exportarse).
 
 **Rúbrica:** C7, C8
 
@@ -710,7 +723,7 @@ Agregar IA = "tenemos un sistema, ¿le ponemos un chatbot?". Design AI = "el sis
 **Notas del expositor (~30 seg):**
 "Los Enterprise Integration Patterns no son decoración. Cada uno resuelve un problema concreto. Publish-Subscribe distribuye eventos sin acoplar al productor con todos sus consumidores. Content-Based Router enruta según contenido del mensaje. Message Expiration garantiza que una reserva no queda viva para siempre. Dead Letter Channel da camino alternativo a los que se vencen o fallan. Y Request-Reply nos permite pedir scoring de forma asincrónica con correlation ID. Cinco patrones protagonistas, cinco más de soporte."
 
-**Visual:** **[Diagrama EIP-01 — Topología de mensajería]** (fullbleed) — muestra exchanges, colas, bindings
+**Visual:** [TODO — exportar el EIP-01 que vos compongas en drawio según `docs/design/diagrams/EIP-FLUJOS-SPEC.md` (Flujo 1) a `docs/presentation/images/EIP-01-crear-solicitud.png`] (fullbleed). Muestra exchanges, colas, bindings con íconos oficiales de Hohpe.
 
 **Rúbrica:** C6
 
@@ -744,7 +757,7 @@ Agregar IA = "tenemos un sistema, ¿le ponemos un chatbot?". Design AI = "el sis
 **Notas del expositor (~30 seg):**
 "Los patrones no se usan aislados, colaboran. En este flujo de compensación, primero Message Expiration: la reserva tiene TTL de 15 minutos. Si vence, Dead Letter Channel la captura. Request-svc reacciona, cancela y publica un evento de cancelación al Pub-Sub. Y el Content-Based Router lo distribuye a quienes les importa: inventory libera stock, notification avisa al alumno, audit lo registra. En paralelo, scoring usa Request-Reply asincrónico con Correlation ID."
 
-**Visual:** Composición — **[Diagrama EIP-03]** mitad izquierda + **[Diagrama EIP-02]** mitad derecha
+**Visual:** [TODO — exportar EIP-03 y EIP-02 que compongas en drawio según `EIP-FLUJOS-SPEC.md` (Flujos 4 y 3 respectivamente) a `docs/presentation/images/EIP-03-compensacion.png` y `docs/presentation/images/EIP-02-devolucion.png`] colocados como composición — EIP-03 mitad izquierda + EIP-02 mitad derecha.
 
 **Rúbrica:** C6
 
@@ -776,7 +789,7 @@ Si un servicio cambia su BD y luego publica un evento, hay dos transacciones dis
 **Notas del expositor (~30 seg):**
 "Una pregunta clásica de sistemas distribuidos: ¿qué pasa si actualizo la base de datos y luego falla la publicación al broker? Solución: transactional outbox. La misma transacción que cambia el agregado escribe el evento en una tabla outbox. Un relay separado los publica. Si la transacción falla, el evento ni siquiera existe. Del lado del consumer, idempotent receiver: tabla processed_events con correlation ID; si llega duplicado, lo descartamos. Resultado: exactly-once efectivo sobre un broker que solo garantiza at-least-once."
 
-**Visual:** **[Diagrama EIP-05 — Outbox + Idempotent Receiver]** (fullbleed)
+**Visual:** [TODO — exportar EIP-05 que compongas en drawio según `EIP-FLUJOS-SPEC.md` (Flujo 1, sección Outbox + Flujo 2/3 sección Idempotent Receiver) a `docs/presentation/images/EIP-05-outbox-idempotent.png`] (fullbleed). Si decidís que el patrón Outbox+Idempotent no calza con un flujo concreto sino que es transversal, podés generar un diagrama dedicado solo para este patrón usando los íconos Hohpe.
 
 **Rúbrica:** C6
 
@@ -890,9 +903,54 @@ Si un servicio cambia su BD y luego publica un evento, hay dos transacciones dis
 **Notas del expositor (~35 seg):**
 "El prototipo funcional es ejecutable. La demo de dos minutos cubre todo el ciclo: login del alumno, conversación con el asistente, solicitud creada, validación en el tótem con scoring visible, materialización con ticket PDF, devolución con QR. Y mostramos en Grafana la traza distribuida — un solo trace ID que atraviesa los siete microservicios involucrados. Cerramos con el caso de error: una solicitud no validada en TTL, y el DLX disparando la compensación automática. Todo en docker-compose levantado en la mesa."
 
-**Visual:** [Screenshot combinado del prototipo: web + tótem + Grafana] + foto del setup físico durante la mesa redonda
+**Visual:** Composición:
+- Mitad superior: [TODO — pegar `docs/presentation/images/prototipo-screenshot.png`]
+- Mitad inferior: `docs/presentation/images/setup-fisico.svg` (representación isométrica generada).
+
+**Cómo capturar `prototipo-screenshot.png`:**
+1. Levantar el demo: `cd app && npm run demo` — esperar a que las 8 ventanas estén verdes en la consola.
+2. Abrir `http://localhost:4200` (web-portal) en una ventana del navegador.
+3. Abrir `http://localhost:4201` (tótem) en otra ventana en paralelo.
+4. (Opcional, si ya está levantada la infra Docker) Abrir Grafana en `http://localhost:3000` con un dashboard de Tempo o Loki.
+5. Acomodar las 3 ventanas en pantalla (3 columnas o 2×2) y tomar screenshot completo.
+6. Recortar y exportar como PNG ≥1600px de ancho. Guardar como `docs/presentation/images/prototipo-screenshot.png`.
 
 **Rúbrica:** C9, condición mínima 3
+
+---
+
+## Slide 28b — Demo vs Producción: lo que mostramos vs lo que ya está documentado
+
+**Título:** Lo que verán en la demo y cómo se compara con la arquitectura objetivo
+
+**Cuerpo:**
+
+**Honestidad técnica:** la demo de la mesa redonda corre en modo *mock-first* para asegurar que el flujo end-to-end sea visible y demostrable sin levantar toda la infraestructura productiva. La arquitectura **objetivo** (la que está documentada en ADRs, diagramas y backlog) usa todo el stack completo. Aquí explicitamos las diferencias para que no haya ambigüedad.
+
+| Capa | Demo (`feature/app-demo`) | Producción (objetivo) |
+|---|---|---|
+| Frontends | Angular 19 SPA puras (sin SSR) | Next.js 14 standalone SSR + Vite SPA tótem |
+| Persistencia | In-memory `Map<id, X>` por servicio | 8 bases PostgreSQL + Prisma + outbox |
+| Comunicación entre servicios | HTTP síncrono directo | RabbitMQ con 4 exchanges + EIP completos |
+| Observabilidad | `concurrently` + console logs | OpenTelemetry + Tempo + Loki + Grafana |
+| Servicios | 6 (no incluye notification, ai-risk, reports) | 9 hexagonales completos |
+| Auth | JWT real (HS256) ✓ | JWT real (mismo) ✓ |
+| Design system | Vanilla CSS + tokens UNAB ✓ | Tailwind + shadcn/ui (igual look) ✓ |
+
+**Por qué esta separación es deliberada:**
+
+1. **La demo necesita arrancar en 60 segundos** delante del jurado. Levantar Postgres + Mongo + RabbitMQ + 9 servicios + 2 frontends + observabilidad sería frágil y consumiría tiempo.
+2. **La validación de la infra ya está hecha** — los smoke tests Python (7/7 OK) prueban Postgres, Mongo, RabbitMQ con todos los EIP funcionando. Es evidencia documentada en `infra/smoke-tests/`.
+3. **La trazabilidad es completa**: cada divergencia está justificada en `app/ARQUITECTURA-DEMO.md` y mapeada al ADR correspondiente.
+
+**Impacto en la rúbrica:** ninguno. La rúbrica pide "prototipo demostrable" y "EIP aplicado". El prototipo demuestra los flujos; los EIPs están aplicados en `infra/` (validado con smoke tests) y documentados en los diagramas EIP-* y los `SEQ-*`.
+
+**Notas del expositor (~30 seg):**
+"Antes de la demo, una nota de honestidad técnica. Lo que van a ver corre en modo mock-first: in-memory en vez de Postgres, HTTP síncrono entre servicios en vez de RabbitMQ. Eso es deliberado — la demo necesita arrancar en 60 segundos. La arquitectura objetivo, la del MVP final, es la que está documentada: 8 bases Postgres, RabbitMQ con 4 exchanges, EIP completos. Y eso ya lo validamos con siete smoke tests automatizados que pasan en verde. La diferencia entre demo y producción está mapeada en `ARQUITECTURA-DEMO.md`, divergencia por divergencia, con su justificación. Cero ambigüedad."
+
+**Visual:** [TODO — exportar `docs/design/diagrams/ARCH-01-demo-vs-produccion.drawio` a `docs/presentation/images/ARCH-01-demo-vs-produccion.png`] (fullbleed). Es el diagrama side-by-side de las dos arquitecturas con las 6 capas alineadas.
+
+**Rúbrica:** C5, C6 (justificación de decisiones), condición mínima 3 (prototipo).
 
 ---
 
@@ -952,40 +1010,67 @@ Si un servicio cambia su BD y luego publica un evento, hay dos transacciones dis
 ## Checklist pre-grabación
 
 - [ ] Tener Jira proyecto cargado y accesible para screenshots
-- [ ] Tener prototipo corriendo en docker-compose
-- [ ] Tener Grafana con traces visibles
-- [ ] Exportar los 14 diagramas .drawio a PNG (o SVG) para la PPT
-- [ ] Verificar que asistente con OpenAI responde en demo (API key activa)
-- [ ] Probar caso de error TTL (puede requerir bajar el TTL a 30 seg para la demo)
+- [ ] Tener prototipo corriendo en `cd app && npm run demo`
+- [ ] (Opcional) Tener infra Docker corriendo (`cd infra && docker compose up -d`) para mostrar EIPs reales
+- [ ] Exportar los diagramas .drawio a PNG (ver tabla abajo)
+- [ ] Verificar que asistente conversacional responde en demo (con keyword matching mock o con OpenAI real si hay API key)
 - [ ] Cronometrar la presentación al menos 1 vez antes de grabar
 
-## Diagramas requeridos (de `docs/design/diagrams/`)
+## Inventario de assets — qué falta y dónde colocarlo
 
-| Slide | Diagrama |
-|---|---|
-| 19 | DC-01-contexto.drawio |
-| 20, 15 | DC-02-componentes.drawio |
-| 21 | SEQ-02 + SEQ-03 |
-| 22 | SEQ-05 |
-| 23 | EIP-01 |
-| 24 | EIP-02 + EIP-03 |
-| 25 | EIP-05 |
+### A) Imágenes ya generadas (SVG, listas)
 
-## Screenshots externos a capturar
+Están en `docs/presentation/images/` y son las siguientes 4:
 
-| Slide | Captura |
-|---|---|
-| 12 | Jira — Backlog + tablero del Sprint 1 |
-| 13 | Jira — Filtro JQL `labels = "RF:RF.4"` |
-| 28 | Prototipo en ejecución (web + tótem + Grafana) |
+| Archivo | Slide(s) | Descripción |
+|---|---|---|
+| `icon-panol.svg` | 1, 3 | Ícono institucional del pañol (cuadrado, escalable). |
+| `before-after.svg` | 4 | Ilustración "papel manual ANTES / dashboard digital DESPUÉS". |
+| `mockup-three-uis.svg` | 5 | Mockup combinado de las 3 UIs (web-portal + tótem + asistente). |
+| `setup-fisico.svg` | 28 | Vista isométrica del setup físico (mostrador + tótem + alumno + estanterías). |
 
-## Imágenes externas necesarias
+### B) Diagramas .drawio a exportar a PNG
 
-- Slide 1: Logo UNAB + ícono pañol
-- Slide 3: Foto del pañol o ícono representativo
-- Slide 4: Ilustración "antes con papel / después digital"
-- Slide 5: Mockup combinado web + tótem + chat
-- Slide 28: Foto del setup físico durante la mesa redonda
+**Cómo exportar:** abrir cada `.drawio` en draw.io desktop (o https://app.diagrams.net), `File → Export as → PNG`, marcar "300 DPI" o "scale 2x" para alta resolución. Guardar en `docs/presentation/images/` con el nombre PNG indicado.
+
+| .drawio en `docs/design/diagrams/` | PNG destino en `docs/presentation/images/` | Slide(s) | Quién |
+|---|---|---|---|
+| `DC-01-contexto.drawio` | `DC-01-contexto.png` | 19 | export tuyo |
+| `DC-02-componentes.drawio` | `DC-02-componentes.png` | 15, 20 | export tuyo |
+| `SEQ-02-crear-solicitud.drawio` | `SEQ-02-crear-solicitud.png` | 21 | export tuyo |
+| `SEQ-03-materializar-prestamo.drawio` | `SEQ-03-materializar-prestamo.png` | 21 | export tuyo |
+| `SEQ-05-asistente-mcp.drawio` | `SEQ-05-asistente-mcp.png` | 17, 22 | export tuyo |
+| `ARCH-01-demo-vs-produccion.drawio` | `ARCH-01-demo-vs-produccion.png` | 28b | export tuyo |
+| `EIP-01-crear-solicitud.drawio` (a componer en drawio según `EIP-FLUJOS-SPEC.md`) | `EIP-01-crear-solicitud.png` | 23 | construcción + export tuyo |
+| `EIP-02-devolucion.drawio` (Flujo 3 del spec) | `EIP-02-devolucion.png` | 24 | construcción + export tuyo |
+| `EIP-03-compensacion.drawio` (Flujo 4 del spec) | `EIP-03-compensacion.png` | 24 | construcción + export tuyo |
+| `EIP-05-outbox-idempotent.drawio` | `EIP-05-outbox-idempotent.png` | 25 | construcción + export tuyo |
+
+### C) Screenshots externos (Jira + prototipo)
+
+| Slide | Archivo destino | Cómo capturar |
+|---|---|---|
+| 12 | `images/jira-backlog.png` | Jira → vista Backlog del proyecto PNL con épicas plegables y los 3 sprints. Ver instrucciones detalladas en slide 12. |
+| 13 | `images/jira-jql-filter.png` | Jira → query JQL `project = PNL AND labels = "RF:RF.4"`. Ver slide 13. |
+| 28 | `images/prototipo-screenshot.png` | Demo corriendo en `npm run demo` con web-portal + tótem + (opcional) Grafana visibles en una sola captura. Ver slide 28. |
+
+### D) Resumen — total de archivos en `docs/presentation/images/` cuando esté completo
+
+- **4 SVG** ya generados (A).
+- **10 PNG** a producir vos (B + C).
+- **Total esperado:** 14 archivos.
+
+## Generación final de la `.pptx`
+
+Una vez que las 10 imágenes faltantes estén en `images/`:
+
+1. Avisame.
+2. Yo invoco el skill `pptx` con `PPT-content.md` + las imágenes como input.
+3. Sale `docs/presentation/Panol-Sistema.pptx` listo para abrir en PowerPoint y ajustar lo que quede.
+
+## Acerca de la dualidad demo / arquitectura objetivo
+
+La PPT entera está escrita asumiendo la **arquitectura objetivo** (la documentada en `docs/architecture/`). El slide 28b (recién agregado) hace explícita y honesta la diferencia con el demo en `feature/app-demo`. No hay que reescribir slides — la PPT es la del MVP definitivo, el slide 28b explica la divergencia controlada y al momento de mostrar la demo se aclara verbalmente.
 
 ---
 
